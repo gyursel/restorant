@@ -18,7 +18,7 @@ export async function POST(request:Request,{params}:{params:Promise<{action:stri
    if(Number(request.headers.get('content-length')||0)>4.4*1024*1024)throw new HttpError(413,'Снимката трябва да е до 4 MB.');
    const form=await request.formData();const file=form.get('file');
    if(!(file instanceof File)||file.size>4*1024*1024||file.size<12)throw new HttpError(400,'Избери снимка до 4 MB.');
-   const bytes=new Uint8Array(await file.arrayBuffer());
+   const bytes=Buffer.from(await file.arrayBuffer());
    const magic=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47?'image/png':bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff?'image/jpeg':String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP'?'image/webp':null;
    if(!magic||magic!==file.type)throw new HttpError(400,'Поддържаме JPG, PNG и WebP изображения.');
    const id=crypto.randomUUID(),ext=magic==='image/png'?'png':magic==='image/jpeg'?'jpg':'webp';
