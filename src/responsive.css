@@ -1,0 +1,7 @@
+/* Additive corrections to the preserved original design. */
+html {scroll-padding-top:110px} .hero-main>*{min-width:0}.hero-copy h1{overflow-wrap:normal;font-size:clamp(2rem,4.5vw,3.75rem)}
+.food-add-button{min-width:44px;min-height:44px}.category-nav{max-width:100%}.hero-favorites>div:first-child{flex-wrap:wrap}.site-header-inner{gap:8px}
+[data-testid="mobile-nav"]{max-height:calc(100dvh - 76px);overflow-y:auto}.food-card-content h3{overflow-wrap:anywhere}
+@media(min-width:640px) and (max-width:900px){.hero-main{grid-template-columns:1fr 1fr;gap:20px}.hero-frame{padding-left:24px;padding-right:24px}.hero-copy h1{font-size:clamp(2rem,4.5vw,2.8rem)}.hero-benefits{flex-wrap:wrap}.hero-food-note{left:0}}
+@media(max-width:420px){.hero-copy h1{font-size:clamp(1.95rem,9.2vw,2.5rem)}.hero-frame{padding-left:16px;padding-right:16px}.hero-benefits{gap:12px}.brand-wordmark{font-size:19px}.brand-tagline{font-size:6px;letter-spacing:.13em}.hero-food-note{left:-5px}.hero-food-caption{left:8%;font-size:6px}.hero-favorites .grid{grid-template-columns:1fr}.hero-favorites .food-card-photo{max-width:180px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

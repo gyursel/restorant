@@ -1,0 +1,1120 @@
+{
+  "schemaVersion": 1,
+  "locale": "bg-BG",
+  "meta": {
+    "title": "APEX DRIVE BULGARIA",
+    "description": "Премиум Drive-Thru ресторант. Не просто храна. Изживяване."
+  },
+  "theme": {
+    "--fd-bg": "#171717",
+    "--fd-panel": "#242424",
+    "--fd-red": "#e62429",
+    "--fd-accent": "#f05255",
+    "--fd-text": "#f6f3ee",
+    "--fd-muted": "#aaa59e",
+    "--fd-line": "rgba(255, 255, 255, 0.12)"
+  },
+  "copy": {
+    "Hero_jsx_1": "Нещо вкусно за начало",
+    "Hero_jsx_2": "/menu",
+    "Hero_jsx_3": "Цялото меню",
+    "Hero_jsx_4": "ДОБЪР ВКУС. В ТВОЕТО ТЕМПО.",
+    "Hero_jsx_5": "Не просто",
+    "Hero_jsx_6": "храна.",
+    "Hero_jsx_7": "Изживяване.",
+    "Hero_jsx_8": "Сочни бургери. Подбрани съставки.",
+    "Hero_jsx_9": "Малко удоволствие по твоя път.",
+    "Hero_jsx_10": "/menu",
+    "Hero_jsx_11": "Виж менюто",
+    "Hero_jsx_12": "/kiosk",
+    "Hero_jsx_13": "Поръчай с APEX Assist",
+    "Hero_jsx_14": "Приготвено",
+    "Hero_jsx_15": "с внимание",
+    "Hero_jsx_16": "Вземи в",
+    "Hero_jsx_17": "удобен час",
+    "Hero_jsx_18": "ПРИГОТВЕНО НА МЯСТО · APEX DRIVE",
+    "Hero_jsx_19": "Истински съставки.",
+    "Hero_jsx_20": "Без компромиси.",
+    "Hero_jsx_21": "/#menu",
+    "Hero_jsx_22": "Разгледай менюто по-долу",
+    "HeroBackground_jsx_1": "Спри видеофона",
+    "HeroBackground_jsx_2": "Пусни видеофона",
+    "HeroBackground_jsx_3": "Пауза",
+    "HeroBackground_jsx_4": "Пусни видео",
+    "Location_jsx_1": "Затворено",
+    "Location_jsx_2": "Локация",
+    "Location_jsx_3": "Намерете ни",
+    "Location_jsx_4": "Картата показва примерна локация и се сменя от администраторския панел.",
+    "Location_jsx_5": "Карта с локацията на ресторанта",
+    "Location_jsx_6": "Примерна локация",
+    "Location_jsx_7": "Работно време",
+    "Location_jsx_8": "Примерно",
+    "Location_jsx_9": "Контакти",
+    "MenuSection_jsx_1": "Всички",
+    "MenuSection_jsx_2": "Меню",
+    "MenuSection_jsx_3": "Цялото меню",
+    "MenuSection_jsx_4": "Избери своя вкус",
+    "MenuSection_jsx_5": "Бургери, пилешко, картофки, напитки, десерти и комбо менюта. Персонализирай всяка поръчка.",
+    "MenuSection_jsx_6": "Примерни продукти и цени в EUR",
+    "MenuSection_jsx_7": "Категории",
+    "MenuSection_jsx_8": "Менюто не можа да се зареди. Опитайте отново.",
+    "Sections_jsx_1": "Промоции",
+    "Sections_jsx_2": "Специални оферти",
+    "Sections_jsx_3": "Използвайте промо кода при финализиране на поръчката.",
+    "Sections_jsx_4": "Примерни промоции",
+    "Sections_jsx_5": "Код:",
+    "Sections_jsx_6": "Изберете",
+    "Sections_jsx_7": "Разгледайте менюто онлайн или говорете с AI асистента.",
+    "Sections_jsx_8": "Персонализирайте",
+    "Sections_jsx_9": "Махнете съставки, добавете екстри и изберете количества.",
+    "Sections_jsx_10": "Час за взимане",
+    "Sections_jsx_11": "Изберете удобен слот и получете уникален номер на поръчката.",
+    "Sections_jsx_12": "Вземете",
+    "Sections_jsx_13": "Подайте номера на прозореца и платете при взимане.",
+    "Sections_jsx_14": "Как работи",
+    "Sections_jsx_15": "Четири стъпки до вашата поръчка",
+    "Sections_jsx_16": "AI киоск за гласови поръчки",
+    "Sections_jsx_17": "ГЛАСОВО ПОРЪЧВАНЕ",
+    "Sections_jsx_18": "Поръчайте с глас или текст",
+    "Sections_jsx_19": "Предстоящият APEX асистент ще помага с избора от менюто. Гласовите и текстовите поръчки са планирани за следваща фаза.",
+    "Sections_jsx_20": "/kiosk",
+    "Sections_jsx_21": "Научете повече",
+    "Sections_jsx_22": "Не е свързан с физически киоск, микрофон, високоговорител или система на ресторанта.",
+    "Footer_jsx_1": "Меню",
+    "Footer_jsx_2": "AI гласова поръчка",
+    "Footer_jsx_3": "Проследи поръчка",
+    "Footer_jsx_4": "Алергени",
+    "Footer_jsx_5": "Поверителност",
+    "Footer_jsx_6": "Общи условия",
+    "Footer_jsx_7": "Вход за персонал",
+    "Footer_jsx_8": "Премиум Drive-Thru концепция от ново поколение. Всички продукти, цени и промоции на сайта са примерни и са подготвени за бъдещо управление от администраторския панел.",
+    "Footer_jsx_9": "Използвайте сайта само когато автомобилът е паркиран или спрял на безопасно място.",
+    "Footer_jsx_10": "©",
+    "Footer_jsx_11": "APEX DRIVE · БЪЛГАРИЯ",
+    "Header_jsx_1": "Начало",
+    "Header_jsx_2": "Меню",
+    "Header_jsx_3": "Как работи",
+    "Header_jsx_4": "Локация",
+    "Header_jsx_5": "Контакти",
+    "Header_jsx_6": "/",
+    "Header_jsx_7": "APEX DRIVE – начало",
+    "Header_jsx_8": "Основна навигация",
+    "Header_jsx_9": "/kiosk",
+    "Header_jsx_10": "APEX Assist",
+    "Header_jsx_11": "Меню",
+    "Header_jsx_12": "AI гласова поръчка",
+    "Header_jsx_13": "Проследи поръчка",
+    "Primitives_jsx_1": "APEX",
+    "Primitives_jsx_2": " DRIVE",
+    "Primitives_jsx_3": ".",
+    "Primitives_jsx_4": "БЪЛГАРИЯ · ВКУС ПО ТВОЯ ПЪТ",
+    "Primitives_jsx_5": "Примерни цени",
+    "ProductCard_jsx_1": "Изчерпано",
+    "SiteLayout_jsx_1": "#main",
+    "SiteLayout_jsx_2": "Към съдържанието",
+    "api_js_1": "Понеделник",
+    "api_js_2": "Вторник",
+    "api_js_3": "Сряда",
+    "api_js_4": "Четвъртък",
+    "api_js_5": "Петък",
+    "api_js_6": "Събота",
+    "api_js_7": "Неделя",
+    "Preview_jsx_1": "Първа фаза · Преглед",
+    "Preview_jsx_2": "Подготвяме следващата стъпка.",
+    "Preview_jsx_3": "Онлайн поръчките, асистентът, плащанията и входът за персонал ще бъдат разработени в следваща фаза. Този преглед не приема поръчки.",
+    "Preview_jsx_4": "/menu",
+    "Preview_jsx_5": "Разгледай менюто",
+    "Preview_jsx_6": "/menu",
+    "Preview_jsx_7": "← Обратно към менюто",
+    "Preview_jsx_8": "Примерно меню",
+    "Preview_jsx_9": "Онлайн поръчките ще бъдат достъпни в следваща фаза.",
+    "cartLabel": "Онлайн поръчки — предстояща функция"
+  },
+  "menu": {
+    "categories": [
+      {
+        "id": "66f45e9eb13640568a3afe82d80dc207",
+        "slug": "burgers",
+        "name": "Бургери",
+        "sort": 0,
+        "active": true,
+        "created_at": "2026-10-13T16:38:45.120574+00:00"
+      },
+      {
+        "id": "226f0c56dfc341c58c18ca35fca8b6d0",
+        "slug": "chicken",
+        "name": "Пилешко",
+        "sort": 1,
+        "active": true,
+        "created_at": "2026-10-13T16:38:45.120589+00:00"
+      },
+      {
+        "id": "4166fd5233724bb79a65191fcc866610",
+        "slug": "fries",
+        "name": "Картофки",
+        "sort": 2,
+        "active": true,
+        "created_at": "2026-10-13T16:38:45.120599+00:00"
+      },
+      {
+        "id": "ce4eafd0068d4266b8ac0a8cc5c3ae85",
+        "slug": "drinks",
+        "name": "Напитки",
+        "sort": 3,
+        "active": true,
+        "created_at": "2026-10-13T16:38:45.120604+00:00"
+      },
+      {
+        "id": "38ea98592b6f476f96f7ab98abaae741",
+        "slug": "desserts",
+        "name": "Десерти",
+        "sort": 4,
+        "active": true,
+        "created_at": "2026-10-13T16:38:45.120608+00:00"
+      },
+      {
+        "id": "cca81ebc31e1444ca35040013010cd83",
+        "slug": "combos",
+        "name": "Комбо менюта",
+        "sort": 5,
+        "active": true,
+        "created_at": "2026-10-13T16:38:45.120612+00:00"
+      }
+    ],
+    "products": [
+      {
+        "id": "95dff1702d0c4a46b2a9b923ca9efbf5",
+        "slug": "quantum-classic",
+        "name": "Quantum Classic",
+        "category": "burgers",
+        "description": "180 г говеждо кюфте на скара, отлежал чедър, хрупкава маруля, домат и фирмен сос FD в бриош питка.",
+        "price": 8.9,
+        "image": "/images/fd_burger_classic.webp",
+        "available": true,
+        "popular": true,
+        "badge": "Хит",
+        "calories": 720,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам"
+        ],
+        "ingredients": [
+          {
+            "key": "lettuce",
+            "name": "Маруля"
+          },
+          {
+            "key": "tomato",
+            "name": "Домат"
+          },
+          {
+            "key": "onion",
+            "name": "Червен лук"
+          },
+          {
+            "key": "pickles",
+            "name": "Кисели краставички"
+          },
+          {
+            "key": "sauce",
+            "name": "Сос FD"
+          }
+        ],
+        "extras": [
+          {
+            "key": "bacon",
+            "name": "Бекон",
+            "price": 1.5
+          },
+          {
+            "key": "cheese",
+            "name": "Двойно сирене",
+            "price": 1
+          },
+          {
+            "key": "patty",
+            "name": "Допълнително кюфте",
+            "price": 3
+          },
+          {
+            "key": "jalapeno",
+            "name": "Халапеньо",
+            "price": 0.7
+          },
+          {
+            "key": "egg",
+            "name": "Яйце",
+            "price": 1
+          }
+        ],
+        "sort": 1,
+        "created_at": "2026-10-13T16:38:45.121236+00:00"
+      },
+      {
+        "id": "03e07ee5e23247268b08270278e49609",
+        "slug": "crispy-pulse",
+        "name": "Crispy Pulse",
+        "category": "chicken",
+        "description": "Хрупкаво пилешко филе, коулслоу, пикантна майонеза и кисели краставички.",
+        "price": 9.4,
+        "image": "/images/fd_chicken_burger.webp",
+        "available": true,
+        "popular": true,
+        "badge": "",
+        "calories": 760,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам"
+        ],
+        "ingredients": [
+          {
+            "key": "lettuce",
+            "name": "Маруля"
+          },
+          {
+            "key": "tomato",
+            "name": "Домат"
+          },
+          {
+            "key": "onion",
+            "name": "Червен лук"
+          },
+          {
+            "key": "pickles",
+            "name": "Кисели краставички"
+          },
+          {
+            "key": "mayo",
+            "name": "Пикантна майонеза"
+          }
+        ],
+        "extras": [
+          {
+            "key": "bacon",
+            "name": "Бекон",
+            "price": 1.5
+          },
+          {
+            "key": "cheese",
+            "name": "Двойно сирене",
+            "price": 1
+          },
+          {
+            "key": "jalapeno",
+            "name": "Халапеньо",
+            "price": 0.7
+          }
+        ],
+        "sort": 1,
+        "created_at": "2026-10-13T16:38:45.121243+00:00"
+      },
+      {
+        "id": "b40b3189b102444d97fcfbe93026a560",
+        "slug": "classic-fries",
+        "name": "Класически картофки",
+        "category": "fries",
+        "description": "Златисти картофки с морска сол.",
+        "price": 3.4,
+        "image": "/images/fd_fries.webp",
+        "available": true,
+        "popular": true,
+        "badge": "",
+        "calories": 340,
+        "allergens": [],
+        "ingredients": [
+          {
+            "key": "salt",
+            "name": "Сол"
+          }
+        ],
+        "extras": [
+          {
+            "key": "large",
+            "name": "Голяма порция",
+            "price": 1
+          },
+          {
+            "key": "cheese-sauce",
+            "name": "Сирене сос",
+            "price": 0.9
+          }
+        ],
+        "sort": 1,
+        "created_at": "2026-10-13T16:38:45.121247+00:00"
+      },
+      {
+        "id": "24f8708f42f6423180df8f3363f58248",
+        "slug": "cola",
+        "name": "Кола с лед",
+        "category": "drinks",
+        "description": "Освежаваща газирана напитка с лед, 400 мл.",
+        "price": 2.8,
+        "image": "/images/fd_cola.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 170,
+        "allergens": [],
+        "ingredients": [
+          {
+            "key": "ice",
+            "name": "Лед"
+          }
+        ],
+        "extras": [
+          {
+            "key": "large",
+            "name": "Голяма (600 мл)",
+            "price": 0.8
+          }
+        ],
+        "sort": 1,
+        "created_at": "2026-10-13T16:38:45.121258+00:00"
+      },
+      {
+        "id": "7a30d6bd174c4e1d89742b9a279563de",
+        "slug": "lava-cake",
+        "name": "Лава кейк",
+        "category": "desserts",
+        "description": "Топъл шоколадов кейк с течен център и ванилов сладолед.",
+        "price": 5.4,
+        "image": "/images/fd_lava.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 560,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца"
+        ],
+        "ingredients": [
+          {
+            "key": "icecream",
+            "name": "Ванилов сладолед"
+          }
+        ],
+        "extras": [],
+        "sort": 1,
+        "created_at": "2026-10-13T16:38:45.121262+00:00"
+      },
+      {
+        "id": "e27e24ab9bb9451295feb55ff81fc4e0",
+        "slug": "drive-combo",
+        "name": "Drive Combo",
+        "category": "combos",
+        "description": "Quantum Classic, класически картофки и напитка по избор.",
+        "price": 12.9,
+        "image": "/images/fd_combo.webp",
+        "available": true,
+        "popular": true,
+        "badge": "Изгодно",
+        "calories": 1230,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам"
+        ],
+        "ingredients": [
+          {
+            "key": "lettuce",
+            "name": "Маруля"
+          },
+          {
+            "key": "tomato",
+            "name": "Домат"
+          },
+          {
+            "key": "onion",
+            "name": "Червен лук"
+          },
+          {
+            "key": "pickles",
+            "name": "Кисели краставички"
+          },
+          {
+            "key": "sauce",
+            "name": "Сос FD"
+          }
+        ],
+        "extras": [
+          {
+            "key": "large",
+            "name": "Голямо меню",
+            "price": 1.5
+          },
+          {
+            "key": "bacon",
+            "name": "Бекон",
+            "price": 1.5
+          },
+          {
+            "key": "shake",
+            "name": "Смяна с шейк",
+            "price": 1.9
+          }
+        ],
+        "sort": 1,
+        "created_at": "2026-10-13T16:38:45.121266+00:00"
+      },
+      {
+        "id": "83ec36957f9f49c8a361472b81ede923",
+        "slug": "double-turbo",
+        "name": "Double Turbo",
+        "category": "burgers",
+        "description": "Две смачкани говежди кюфтета, двоен чедър, карамелизиран лук и кисели краставички.",
+        "price": 11.9,
+        "image": "/images/fd_burger_double.webp",
+        "available": true,
+        "popular": true,
+        "badge": "",
+        "calories": 980,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам"
+        ],
+        "ingredients": [
+          {
+            "key": "lettuce",
+            "name": "Маруля"
+          },
+          {
+            "key": "tomato",
+            "name": "Домат"
+          },
+          {
+            "key": "onion",
+            "name": "Червен лук"
+          },
+          {
+            "key": "pickles",
+            "name": "Кисели краставички"
+          },
+          {
+            "key": "sauce",
+            "name": "Сос FD"
+          }
+        ],
+        "extras": [
+          {
+            "key": "bacon",
+            "name": "Бекон",
+            "price": 1.5
+          },
+          {
+            "key": "cheese",
+            "name": "Двойно сирене",
+            "price": 1
+          },
+          {
+            "key": "patty",
+            "name": "Допълнително кюфте",
+            "price": 3
+          },
+          {
+            "key": "jalapeno",
+            "name": "Халапеньо",
+            "price": 0.7
+          },
+          {
+            "key": "egg",
+            "name": "Яйце",
+            "price": 1
+          }
+        ],
+        "sort": 2,
+        "created_at": "2026-10-13T16:38:45.121271+00:00"
+      },
+      {
+        "id": "bb0bcfb67fd5416eb5ab089ff407cd4c",
+        "slug": "nitro-wings",
+        "name": "Nitro Wings (8 бр.)",
+        "category": "chicken",
+        "description": "Глазирани пилешки крилца със сусам и чили.",
+        "price": 8.5,
+        "image": "/images/fd_wings.webp",
+        "available": true,
+        "popular": false,
+        "badge": "Лютиво",
+        "calories": 640,
+        "allergens": [
+          "Соя",
+          "Сусам",
+          "Глутен"
+        ],
+        "ingredients": [
+          {
+            "key": "chili",
+            "name": "Чили люспи"
+          }
+        ],
+        "extras": [
+          {
+            "key": "bbq",
+            "name": "BBQ сос",
+            "price": 0.6
+          },
+          {
+            "key": "garlic",
+            "name": "Чеснов сос",
+            "price": 0.6
+          },
+          {
+            "key": "spicy",
+            "name": "Лютив сос",
+            "price": 0.6
+          }
+        ],
+        "sort": 2,
+        "created_at": "2026-10-13T16:38:45.121275+00:00"
+      },
+      {
+        "id": "57c1376e04544bb282762662d6d9b79f",
+        "slug": "loaded-fries",
+        "name": "Loaded Cheese Fries",
+        "category": "fries",
+        "description": "Картофки с разтопен чедър, бекон, халапеньо и пресен лук.",
+        "price": 5.9,
+        "image": "/images/fd_loaded_fries.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 690,
+        "allergens": [
+          "Мляко"
+        ],
+        "ingredients": [
+          {
+            "key": "jalapeno",
+            "name": "Халапеньо"
+          },
+          {
+            "key": "bacon",
+            "name": "Бекон"
+          }
+        ],
+        "extras": [
+          {
+            "key": "extra-cheese",
+            "name": "Още сирене",
+            "price": 0.9
+          }
+        ],
+        "sort": 2,
+        "created_at": "2026-10-13T16:38:45.121279+00:00"
+      },
+      {
+        "id": "cd4dc911ae6c4c5c815a61befd30376b",
+        "slug": "lemonade",
+        "name": "Цитрусова лимонада",
+        "category": "drinks",
+        "description": "Домашна лимонада с лимон, мента и лед, 450 мл.",
+        "price": 3.9,
+        "image": "/images/fd_lemonade.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 140,
+        "allergens": [],
+        "ingredients": [
+          {
+            "key": "ice",
+            "name": "Лед"
+          },
+          {
+            "key": "mint",
+            "name": "Мента"
+          }
+        ],
+        "extras": [
+          {
+            "key": "large",
+            "name": "Голяма (650 мл)",
+            "price": 1
+          }
+        ],
+        "sort": 2,
+        "created_at": "2026-10-13T16:38:45.121283+00:00"
+      },
+      {
+        "id": "c667355546384996ad804270bae993ca",
+        "slug": "caramel-sundae",
+        "name": "Карамелено сънде",
+        "category": "desserts",
+        "description": "Ванилов сладолед с солен карамел и печени ядки.",
+        "price": 4.4,
+        "image": "/images/fd_sundae.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 430,
+        "allergens": [
+          "Мляко",
+          "Ядки"
+        ],
+        "ingredients": [
+          {
+            "key": "nuts",
+            "name": "Ядки"
+          }
+        ],
+        "extras": [
+          {
+            "key": "extra-caramel",
+            "name": "Още карамел",
+            "price": 0.5
+          }
+        ],
+        "sort": 2,
+        "created_at": "2026-10-13T16:38:45.121287+00:00"
+      },
+      {
+        "id": "f1475fb78d9c4560b4886654b9c16ea5",
+        "slug": "family-pack",
+        "name": "Family Pack",
+        "category": "combos",
+        "description": "4 бургера, 8 крилца, 2 големи картофки и 4 напитки.",
+        "price": 34.9,
+        "image": "/images/fd_family.webp",
+        "available": true,
+        "popular": false,
+        "badge": "За 4-ма",
+        "calories": 4200,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам",
+          "Соя"
+        ],
+        "ingredients": [],
+        "extras": [
+          {
+            "key": "dessert",
+            "name": "+2 десерта",
+            "price": 6.9
+          }
+        ],
+        "sort": 2,
+        "created_at": "2026-10-13T16:38:45.121290+00:00"
+      },
+      {
+        "id": "ef60516f021941e4be86426c90d006cf",
+        "slug": "smoky-volt",
+        "name": "Smoky Volt BBQ",
+        "category": "burgers",
+        "description": "Опушен чедър, хрупкав бекон, лучени кръгчета и пушен BBQ сос.",
+        "price": 10.9,
+        "image": "/images/fd_burger_bbq.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 910,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам"
+        ],
+        "ingredients": [
+          {
+            "key": "lettuce",
+            "name": "Маруля"
+          },
+          {
+            "key": "tomato",
+            "name": "Домат"
+          },
+          {
+            "key": "onion",
+            "name": "Червен лук"
+          },
+          {
+            "key": "pickles",
+            "name": "Кисели краставички"
+          },
+          {
+            "key": "sauce",
+            "name": "Сос FD"
+          }
+        ],
+        "extras": [
+          {
+            "key": "bacon",
+            "name": "Бекон",
+            "price": 1.5
+          },
+          {
+            "key": "cheese",
+            "name": "Двойно сирене",
+            "price": 1
+          },
+          {
+            "key": "patty",
+            "name": "Допълнително кюфте",
+            "price": 3
+          },
+          {
+            "key": "jalapeno",
+            "name": "Халапеньо",
+            "price": 0.7
+          },
+          {
+            "key": "egg",
+            "name": "Яйце",
+            "price": 1
+          }
+        ],
+        "sort": 3,
+        "created_at": "2026-10-13T16:38:45.121294+00:00"
+      },
+      {
+        "id": "34d96358d61d47129a212849633cfb04",
+        "slug": "chicken-strips",
+        "name": "Хрупкави стрипс (5 бр.)",
+        "category": "chicken",
+        "description": "Пилешки филенца в хрупкава панировка със сос по избор.",
+        "price": 7.2,
+        "image": "/images/fd_strips.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 580,
+        "allergens": [
+          "Глутен",
+          "Яйца",
+          "Мляко"
+        ],
+        "ingredients": [],
+        "extras": [
+          {
+            "key": "bbq",
+            "name": "BBQ сос",
+            "price": 0.6
+          },
+          {
+            "key": "garlic",
+            "name": "Чеснов сос",
+            "price": 0.6
+          },
+          {
+            "key": "spicy",
+            "name": "Лютив сос",
+            "price": 0.6
+          }
+        ],
+        "sort": 3,
+        "created_at": "2026-10-13T16:38:45.121297+00:00"
+      },
+      {
+        "id": "7cdcefa93b1a4846bc3e6374d52b4d9e",
+        "slug": "sweet-potato",
+        "name": "Сладки картофи",
+        "category": "fries",
+        "description": "Хрупкави сладки картофи с айоли.",
+        "price": 4.6,
+        "image": "/images/fd_sweet_fries.webp",
+        "available": true,
+        "popular": false,
+        "badge": "",
+        "calories": 420,
+        "allergens": [
+          "Яйца",
+          "Горчица"
+        ],
+        "ingredients": [
+          {
+            "key": "aioli",
+            "name": "Айоли"
+          }
+        ],
+        "extras": [
+          {
+            "key": "large",
+            "name": "Голяма порция",
+            "price": 1.2
+          }
+        ],
+        "sort": 3,
+        "created_at": "2026-10-13T16:38:45.121301+00:00"
+      },
+      {
+        "id": "e22ecf86331144f8be59539876508b09",
+        "slug": "choco-shake",
+        "name": "Шоколадов шейк",
+        "category": "drinks",
+        "description": "Гъст шейк от белгийски шоколад с бита сметана.",
+        "price": 4.9,
+        "image": "/images/fd_shake.webp",
+        "available": true,
+        "popular": true,
+        "badge": "",
+        "calories": 520,
+        "allergens": [
+          "Мляко"
+        ],
+        "ingredients": [
+          {
+            "key": "cream",
+            "name": "Бита сметана"
+          }
+        ],
+        "extras": [
+          {
+            "key": "espresso",
+            "name": "Шот еспресо",
+            "price": 0.9
+          }
+        ],
+        "sort": 3,
+        "created_at": "2026-10-13T16:38:45.121304+00:00"
+      },
+      {
+        "id": "9a8cf2a412eb4038b8475cdafc931c12",
+        "slug": "truffle-noir",
+        "name": "Truffle Noir",
+        "category": "burgers",
+        "description": "Премиум говеждо, задушени гъби, швейцарско сирене и трюфелова майонеза в черна питка със сусам.",
+        "price": 13.9,
+        "image": "/images/fd_burger_truffle.webp",
+        "available": true,
+        "popular": true,
+        "badge": "Премиум",
+        "calories": 860,
+        "allergens": [
+          "Глутен",
+          "Мляко",
+          "Яйца",
+          "Горчица",
+          "Сусам"
+        ],
+        "ingredients": [
+          {
+            "key": "lettuce",
+            "name": "Маруля"
+          },
+          {
+            "key": "tomato",
+            "name": "Домат"
+          },
+          {
+            "key": "onion",
+            "name": "Червен лук"
+          },
+          {
+            "key": "pickles",
+            "name": "Кисели краставички"
+          },
+          {
+            "key": "sauce",
+            "name": "Сос FD"
+          }
+        ],
+        "extras": [
+          {
+            "key": "bacon",
+            "name": "Бекон",
+            "price": 1.5
+          },
+          {
+            "key": "cheese",
+            "name": "Двойно сирене",
+            "price": 1
+          },
+          {
+            "key": "patty",
+            "name": "Допълнително кюфте",
+            "price": 3
+          },
+          {
+            "key": "jalapeno",
+            "name": "Халапеньо",
+            "price": 0.7
+          },
+          {
+            "key": "egg",
+            "name": "Яйце",
+            "price": 1
+          }
+        ],
+        "sort": 4,
+        "created_at": "2026-10-13T16:38:45.121309+00:00"
+      }
+    ]
+  },
+  "settings": {
+    "accepting_orders": false,
+    "address": "[Адрес на ресторанта]",
+    "email": "[Имейл за контакт]",
+    "hours": [
+      {
+        "day": 0,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      },
+      {
+        "day": 1,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      },
+      {
+        "day": 2,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      },
+      {
+        "day": 3,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      },
+      {
+        "day": 4,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      },
+      {
+        "day": 5,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      },
+      {
+        "day": 6,
+        "open": "08:00",
+        "close": "23:30",
+        "closed": false
+      }
+    ],
+    "hours_are_sample": true,
+    "map_query": "София, България",
+    "max_orders_per_slot": 6,
+    "media": {
+      "hero_image": "/images/fd_burger_classic.webp",
+      "kiosk_image": "/images/fd_kiosk.webp",
+      "hero_video": "/videos/food-burger.mp4",
+      "video_enabled": false
+    },
+    "phone": "[Телефон за контакт]",
+    "prep_time_min": 15,
+    "restaurant_name": "APEX DRIVE BULGARIA",
+    "slot_interval_min": 10
+  },
+  "promotions": [
+    {
+      "id": "a6fe2696402b4a28a8a32c8adc4e1a4c",
+      "title": "Вечерно Drive Combo",
+      "description": "15% отстъпка на цялата поръчка с код DRIVE15. Примерна промоция.",
+      "code": "DRIVE15",
+      "discount_percent": 15,
+      "badge": "-15%",
+      "image": "/images/fd_promo.webp",
+      "active": true,
+      "created_at": "2026-10-13T16:38:45.122058+00:00"
+    },
+    {
+      "id": "d0088c7453834c7d9e2e9644ab5c062d",
+      "title": "Първа поръчка",
+      "description": "10% отстъпка за първата ви онлайн Drive-Thru поръчка с код FIRST10. Примерна промоция.",
+      "code": "FIRST10",
+      "discount_percent": 10,
+      "badge": "-10%",
+      "image": "/images/fd_combo.webp",
+      "active": true,
+      "created_at": "2026-10-13T16:38:45.122066+00:00"
+    },
+    {
+      "id": "6948b65b6bbc4eb3ae0c7dd49f91ac67",
+      "title": "Truffle Noir седмица",
+      "description": "Опитайте новия премиум бургер с трюфел. Примерна промоция без код.",
+      "code": "",
+      "discount_percent": 0,
+      "badge": "Ново",
+      "image": "/images/fd_burger_truffle.webp",
+      "active": true,
+      "created_at": "2026-10-13T16:38:45.122071+00:00"
+    }
+  ],
+  "pages": {
+    "home": {
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "visible": true
+        },
+        {
+          "id": "menu",
+          "type": "menu",
+          "visible": true
+        },
+        {
+          "id": "promotions",
+          "type": "promotions",
+          "visible": true
+        },
+        {
+          "id": "assistant",
+          "type": "assistant",
+          "visible": true
+        },
+        {
+          "id": "steps",
+          "type": "steps",
+          "visible": true
+        },
+        {
+          "id": "location",
+          "type": "location",
+          "visible": true
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "header": [
+      {
+        "label": "Начало",
+        "to": "/",
+        "testid": "nav-home-link"
+      },
+      {
+        "label": "Меню",
+        "to": "/menu",
+        "testid": "nav-menu-link"
+      },
+      {
+        "label": "Как работи",
+        "to": "/#how-it-works",
+        "testid": "nav-how-it-works-link"
+      },
+      {
+        "label": "Локация",
+        "to": "/#location",
+        "testid": "nav-location-link"
+      },
+      {
+        "label": "Контакти",
+        "to": "/#contact",
+        "testid": "nav-contact-link"
+      }
+    ]
+  }
+}

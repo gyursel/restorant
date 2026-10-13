@@ -1,0 +1,107 @@
+.App { min-height: 100vh; }
+
+/* The restaurant's graphite, porcelain and crimson visual system. */
+a, button, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+:focus-visible { outline: 2px solid var(--fd-accent); outline-offset: 4px; }
+input, textarea, select { color-scheme: dark; }
+h1.font-display { font-family: "Playfair Display", Georgia, serif; font-weight: 400; text-transform: none; letter-spacing: -0.035em; }
+.brand-wordmark { display: inline-flex; flex-direction: column; font-family: "Playfair Display", Georgia, serif; font-size: 23px; letter-spacing: -0.04em; line-height: 1.2; color: #f6f3ee; white-space: nowrap; }
+.brand-period { color: #f05255; }
+.brand-tagline { font-family: "Manrope", sans-serif; font-size: 8px; letter-spacing: 0.28em; margin-top: 6px; color: #aaa59e; }
+.brand-wordmark-small { font-size: 19px; }
+.brand-wordmark-small .brand-tagline { font-size: 7px; }
+.site-header-inner { max-width: 1280px; height: 100px; margin: auto; padding: 0 36px; }
+.site-header { background: rgba(23,23,23,0.95); }
+.site-header nav a[aria-current="page"] { color: #fff; }
+.site-header nav a[aria-current="page"]::after { transform: scaleX(1); }
+.hero-section { padding: 26px 28px 0; background: #101010; }
+.hero-frame { max-width: 1380px; margin: auto; padding: 120px 68px 46px; border: 1px solid #55534e; border-radius: 38px; background: #232323; }
+.hero-main { display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 45px; min-height: 490px; }
+.hero-title-last { color: #f6f3ee; }
+.hero-benefits { display: flex; gap: 30px; margin-top: 36px; }
+.hero-benefits > span { display: flex; align-items: center; gap: 12px; font-size: 10px; line-height: 1.8; color: #aaa59e; }
+.hero-benefits svg { color: #d5b782; }
+.hero-benefits strong { font-weight: 500; color: #e7e4df; }
+.hero-food { position: relative; padding: 32px 0; }
+.hero-food-plate { aspect-ratio: 1; width: 100%; position: relative; overflow: hidden; border-radius: 50%; border: 12px solid #30302e; outline: 1px solid #44423e; box-shadow: 0 24px 45px -15px #080808; }
+.hero-food-plate img, .hero-food-plate video { object-position: center; }
+.hero-food-caption { position: absolute; top: 5px; left: 22%; color: #aaa59e; font-size: 9px; letter-spacing: 0.26em; }
+.hero-food-note { position: absolute; left: -28px; bottom: 65px; display: flex; gap: 10px; align-items: center; background: #30312b; border: 1px solid #55554a; padding: 14px 20px; border-radius: 14px; color: #e4dccb; font-size: 10px; line-height: 1.6; box-shadow: 0 10px 30px #0004; transform: rotate(-5deg); }
+.hero-food-note svg { color: #a5b47d; }
+.hero-food-note strong { font-weight: 500; }
+.hero-discover { position: absolute; right: 0; bottom: 30px; display: grid; place-items: center; width: 60px; height: 60px; border: 1px solid #77736e; border-radius: 50%; background: #232323; transition: background-color 0.2s, transform 0.2s; }
+.hero-discover:hover { background: #e62429; transform: rotate(10deg); }
+.hero-favorites { margin-top: 42px; }
+.food-card { position: relative; margin-top: 70px; display: flex; flex-direction: column; min-width: 0; height: calc(100% - 70px); border-radius: 24px; background: #252525; border: 1px solid #363432; box-shadow: 0 14px 30px -20px #000; transition: transform 0.3s ease, border-color 0.3s ease; }
+.food-card:hover { transform: translateY(-5px); border-color: #6a4543; }
+.food-card-photo { display: block; aspect-ratio: 1; width: 76%; margin: -54px auto 0; border: 5px solid #3d3b37; border-radius: 50%; overflow: hidden; box-shadow: 0 16px 24px -12px #000b; }
+.food-card-content { padding: 22px; flex: 1 1; display: flex; flex-direction: column; }
+.food-card-badge { color: #c7b18b; font-size: 8px; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 9px; }
+.food-card-featured { background: #2b2b2b; }
+.food-card-featured .food-card-photo { width: 70%; }
+.food-card-featured .food-card-content > p { -webkit-line-clamp: 1; }
+.food-add-button { display: grid; place-items: center; flex-shrink: 0; width: 43px; height: 43px; border-radius: 15px 15px 20px 15px; background: #e62429; color: white; transition: background-color 0.2s, transform 0.2s; }
+.food-add-button:hover { background: #c91c23; transform: rotate(-5deg); }
+.food-add-button:disabled { opacity: 0.4; cursor: not-allowed; }
+[data-testid="menu-section"] { background: #171717; }
+[data-testid="menu-section"] .category-nav { background: #1d1d1d; border: 1px solid #363432; }
+[data-testid="product-detail-page"] .product-photo { border-radius: 50%; border: 10px solid #34332f; box-shadow: 0 25px 50px -15px #0009; }
+[data-testid="product-detail-page"] h1 { font-size: clamp(2.25rem, 4vw, 3.75rem); }
+[data-testid="cart-drawer"] { border-radius: 28px 0 0 28px; }
+[data-testid="cart-drawer"] h2 { font-family: "Playfair Display", Georgia, serif; font-size: 24px; font-weight: 400; text-transform: none; letter-spacing: -0.03em; }
+[data-testid="checkout-page"] > h1, [data-testid="track-lookup-page"] h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); }
+[data-testid="checkout-summary"] { border-top: 2px solid #e62429; }
+[data-testid="order-page"] .glass-strong { border-top: 2px solid #e62429; }
+[data-testid="kiosk-page"] h1 { font-family: "Playfair Display", Georgia, serif; font-size: 42px; text-transform: none; }
+[data-testid="staff-login-page"] { background: #171717; }
+[data-testid="staff-login-page"] > div { border-top: 2px solid #e62429; }
+[data-testid="admin-dashboard"] table tbody tr:hover { background: #ffffff03; }
+[data-testid="admin-dashboard"] [role="tab"][data-state="active"] { background: #e62429; color: #fff; }
+[data-testid="admin-dashboard"] [role="tablist"] { border: 1px solid #363432; }
+[data-testid="admin-dashboard"] .admin-intro { margin: 0 auto; max-width: 1500px; padding: 36px 24px 0; }
+[data-testid="admin-dashboard"] .admin-intro h1 { font-family: "Playfair Display", Georgia, serif; font-size: 36px; letter-spacing: -0.03em; }
+[data-testid="kitchen-page"] { font-variant-numeric: tabular-nums; }
+
+@media (max-width: 1023px) {
+  .site-header-inner { height: 80px; padding: 0 24px; }
+  .hero-section { padding: 12px 12px 0; }
+  .hero-frame { padding: 110px 30px 35px; border-radius: 26px; }
+  .hero-main { gap: 25px; min-height: auto; }
+  .hero-food-note { left: -14px; padding: 10px 12px; }
+  .hero-food-caption { font-size: 7px; letter-spacing: 0.13em; }
+  .hero-benefits { gap: 18px; }
+  .hero-discover { width: 45px; height: 45px; }
+}
+@media (max-width: 639px) {
+  .site-header-inner { height: 76px; padding: 0 20px; }
+  .brand-wordmark { font-size: 20px; }
+  .brand-tagline { font-size: 7px; }
+  .hero-frame { padding: 105px 22px 28px; }
+  .hero-main { grid-template-columns: 1fr; gap: 15px; }
+  .hero-copy h1 { font-size: 43px; }
+  .hero-copy .eyebrow { font-size: 8px; letter-spacing: 0.15em; }
+  .hero-copy .btn-primary, .hero-copy .btn-cream { padding: 0 18px; font-size: 11px; min-height: 48px; }
+  .hero-copy > p { font-size: 13px; }
+  .hero-benefits { margin-top: 25px; }
+  .hero-food { width: 90%; max-width: 360px; margin: 10px auto 0; }
+  .hero-food-plate { border-width: 8px; }
+  .hero-food-note { bottom: 38px; }
+  .hero-food-caption { top: 8px; }
+  .hero-favorites { margin-top: 24px; }
+  .hero-favorites h2 { font-size: 13px; }
+  .hero-favorites > div:first-child > a { font-size: 10px; }
+  .hero-favorites > div:first-child span { display: none; }
+  .food-card { border-radius: 19px; margin-top: 50px; height: calc(100% - 50px); }
+  .food-card-photo { margin-top: -35px; width: 80%; border-width: 3px; }
+  .food-card-content { padding: 15px 12px; }
+  .food-card-content h3 { font-size: 14px; }
+  .food-card-content > p { font-size: 11px; }
+  .food-card-badge { font-size: 7px; }
+  .food-add-button { width: 36px; height: 36px; border-radius: 12px; }
+  [data-testid="cart-drawer"] { border-radius: 0; }
+  [data-testid="settings-tab"] input[type="time"] { padding: 4px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .food-card:hover, .hero-discover:hover, .food-add-button:hover { transform: none; }
+}
