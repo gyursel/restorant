@@ -17,7 +17,9 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
   const [pausedByUser, setPausedByUser] = useState(false);
   const [inView, setInView] = useState(true);
   const poster = mediaSrc(media?.hero_image || "/images/fd_burger_classic.webp");
-  const dataSaver = typeof navigator !== "undefined" && Boolean(navigator.connection?.saveData);
+  const connection = typeof navigator !== "undefined" ? navigator.connection : null;
+  const dataSaver = Boolean(connection?.saveData) || /^(slow-2g|2g)$/.test(connection?.effectiveType || "");
+  const mobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
   const enabled = mode === "backdrop" && Boolean(media?.video_enabled && media?.hero_video) && !reducedMotion && !dataSaver;
 
   useEffect(() => {
@@ -83,7 +85,7 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload={mobile ? "none" : "metadata"}
           tabIndex={-1}
           data-testid="hero-background-video"
           className={"hero-video-element" + (ready && playing ? " is-visible" : "")}
