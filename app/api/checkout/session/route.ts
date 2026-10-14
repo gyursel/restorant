@@ -34,7 +34,7 @@ export async function POST(request:Request) {
       const session=await stripe.checkout.sessions.create({
         mode:'payment',
         locale:'bg',
-        payment_method_types:['card'],
+        // Stripe v23 selects supported payment methods from the Dashboard configuration.
         line_items:lineItems.map(item=>({
           quantity:item.quantity,
           price_data:{
