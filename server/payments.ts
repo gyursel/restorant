@@ -1,17 +1,25 @@
 import Stripe from 'stripe';
-import {db, HttpError, state} from './cms';
+import {neon} from '@neondatabase/serverless';
+import {HttpError, state} from './cms';
 
 export type CheckoutItem = {slug:string;quantity:number};
 export type CustomerDetails = {name:string;phone:string;note:string};
 
 export const isCheckoutEnabled = () => {
   const key = process.env.STRIPE_SECRET_KEY || '';
-  if (!process.env.DATABASE_URL) return false;
+  // Payments always use an isolated database, never the CMS database.
+  // Missing or invalid configuration keeps the checkout button disabled.
+  if (!process.env.PAYMENT_DATABASE_URL) return false;
   if (process.env.VERCEL_ENV === 'production')
     return process.env.ONLINE_ORDERING_ENABLED === 'true' && key.startsWith('sk_live_');
   // The experimental branch must only accept test payments.
   return process.env.CHECKOUT_TEST_MODE_ENABLED === 'true' && key.startsWith('sk_test_');
 };
+
+export function paymentsDb() {
+  if (!process.env.PAYMENT_DATABASE_URL) throw new HttpError(503,'Тестовата база за поръчки не е настроена.');
+  return neon(process.env.PAYMENT_DATABASE_URL);
+}
 
 export function stripeClient() {
   if (!isCheckoutEnabled()) throw new HttpError(503, 'Онлайн плащанията още се настройват. Опитай отново по-късно.');
@@ -83,7 +91,7 @@ export async function pricedItems(cart: CheckoutItem[]) {
 }
 
 export async function orderStatus(id:string) {
-  const sql=db();
+  const sql=paymentsDb();
   const result=await sql`SELECT id,status,amount_cents,currency,items,created_at
     FROM payment_orders WHERE id=${id}::uuid`;
   if (!result.length) throw new HttpError(404,'Поръчката не е намерена.');
