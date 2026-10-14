@@ -15,13 +15,15 @@ export async function POST(request:Request,{params}:{params:Promise<{action:stri
  try{sameOrigin(request);const user=await authorize();const {action}=await params;
   if(action==='media'){
    // Vercel Functions enforce a 4.5 MB request limit; use 4 MB maximum here.
-   if(Number(request.headers.get('content-length')||0)>4.4*1024*1024)throw new HttpError(413,'Снимката трябва да е до 4 MB.');
+   if(Number(request.headers.get('content-length')||0)>4.4*1024*1024)throw new HttpError(413,'Файлът трябва да е до 4 MB.');
    const form=await request.formData();const file=form.get('file');
-   if(!(file instanceof File)||file.size>4*1024*1024||file.size<12)throw new HttpError(400,'Избери снимка до 4 MB.');
+   if(!(file instanceof File)||file.size>4*1024*1024||file.size<12)throw new HttpError(400,'Избери файл до 4 MB.');
    const bytes=Buffer.from(await file.arrayBuffer());
-   const magic=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47?'image/png':bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff?'image/jpeg':String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP'?'image/webp':null;
-   if(!magic||magic!==file.type)throw new HttpError(400,'Поддържаме JPG, PNG и WebP изображения.');
-   const id=crypto.randomUUID(),ext=magic==='image/png'?'png':magic==='image/jpeg'?'jpg':'webp';
+   const isWebm=bytes[0]===0x1a&&bytes[1]===0x45&&bytes[2]===0xdf&&bytes[3]===0xa3;
+   const isMp4=bytes.toString('ascii',4,8)==='ftyp';
+   const magic=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47?'image/png':bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff?'image/jpeg':bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP'?'image/webp':isWebm?'video/webm':isMp4?'video/mp4':null;
+   if(!magic||magic!==file.type)throw new HttpError(400,'Поддържаме JPG, PNG, WebP снимки и MP4, WebM видео.');
+   const id=crypto.randomUUID(),ext=({'image/png':'png','image/jpeg':'jpg','image/webp':'webp','video/mp4':'mp4','video/webm':'webm'} as Record<string,string>)[magic];
    const blob=await put(`apex/${id}.${ext}`,bytes,{access:'public',contentType:magic,addRandomSuffix:false});
    try{const sql=db();await sql`INSERT INTO cms_media(id,name,mime,size,url,created_at) VALUES(${id},${file.name.slice(0,200)},${magic},${file.size},${blob.url},${new Date().toISOString()})`;}
    catch(e){await del(blob.url).catch(()=>{});throw e;}
