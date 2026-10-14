@@ -90,12 +90,57 @@ export async function pricedItems(cart: CheckoutItem[]) {
   return {lineItems,totalCents};
 }
 
+/**
+ * Reconcile a pending order from Stripe's authoritative Checkout session.
+ *
+ * The signed webhook is still the primary payment notification. However,
+ * network failures or delayed event delivery must not leave paid customers
+ * on a perpetual spinner. The browser-supplied order UUID NEVER determines
+ * paid status: Stripe's API must confirm the exact saved Checkout session,
+ * server-calculated amount, currency and order reference.
+ */
 export async function orderStatus(id:string) {
   const sql=paymentsDb();
-  const result=await sql`SELECT id,status,amount_cents,currency,items,created_at
+  const result=await sql`SELECT id,status,checkout_session_id,amount_cents,currency,items,created_at
     FROM payment_orders WHERE id=${id}::uuid`;
   if (!result.length) throw new HttpError(404,'Поръчката не е намерена.');
-  const row=result[0];
+  let row=result[0];
+
+  if (row.status==='pending' && typeof row.checkout_session_id==='string' &&
+      row.checkout_session_id.startsWith('cs_')) {
+    try {
+      const session=await stripeClient().checkout.sessions.retrieve(row.checkout_session_id);
+      const expectedMode=process.env.VERCEL_ENV==='production';
+      const paid=session.status==='complete' && session.payment_status==='paid' &&
+        session.mode==='payment' && session.livemode===expectedMode &&
+        session.id===row.checkout_session_id &&
+        session.currency===row.currency &&
+        session.amount_total===row.amount_cents &&
+        session.metadata?.order_id===id &&
+        session.client_reference_id===id;
+      if (paid) {
+        const paymentIntent=typeof session.payment_intent==='string'
+          ? session.payment_intent : session.payment_intent?.id || null;
+        const updated=await sql`UPDATE payment_orders SET status='paid',
+          stripe_payment_intent=${paymentIntent},
+          paid_at=COALESCE(paid_at,NOW()),updated_at=NOW()
+          WHERE id=${id}::uuid AND status='pending'
+          AND checkout_session_id=${session.id}
+          AND amount_cents=${session.amount_total} AND currency=${session.currency}
+          RETURNING id,status,checkout_session_id,amount_cents,currency,items,created_at`;
+        if (updated.length) row=updated[0];
+        else {
+          // A webhook may have updated the same order while we verified Stripe.
+          const current=await sql`SELECT id,status,checkout_session_id,amount_cents,currency,items,created_at
+            FROM payment_orders WHERE id=${id}::uuid`;
+          if (current.length) row=current[0];
+        }
+      }
+    } catch(error) {
+      // Keep the order pending if Stripe cannot be reached; do not infer success.
+      console.error('Stripe order reconciliation failed:',error instanceof Error ? error.name : 'unknown');
+    }
+  }
   return {
     id:row.id,
     status:row.status,
