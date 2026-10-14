@@ -1,6 +1,6 @@
 import {randomUUID} from 'node:crypto';
-import {sameOrigin, db, json, failure, HttpError} from '../../../../server/cms';
-import {stripeClient, validateCart, validateCustomer, pricedItems} from '../../../../server/payments';
+import {sameOrigin, json, failure, HttpError} from '../../../../server/cms';
+import {stripeClient, validateCart, validateCustomer, pricedItems, paymentsDb} from '../../../../server/payments';
 
 export const dynamic='force-dynamic';
 export const runtime='nodejs';
@@ -19,7 +19,7 @@ export async function POST(request:Request) {
     const customer=validateCustomer(input?.customer);
     const {lineItems,totalCents}=await pricedItems(cart);
     const stripe=stripeClient();
-    const sql=db();
+    const sql=paymentsDb();
     const id=randomUUID();
 
     // The database record starts pending. A signed Stripe webhook, not the
