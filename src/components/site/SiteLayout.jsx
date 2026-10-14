@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import MobileDock from "@/components/site/MobileDock";
 export default function SiteLayout() {
   const {
     pathname,
@@ -28,5 +29,6 @@ export default function SiteLayout() {
         <Outlet />
       </main>
       <Footer />
+      <MobileDock />
     </div>;
 }
