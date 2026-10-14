@@ -526,13 +526,13 @@ video {
   color: hsl(var(--foreground));
 }
     .font-display {
-        font-family: "Manrope", sans-serif;
+        font-family: "Onest Variable", sans-serif;
         letter-spacing: 0.01em;
     }
     .font-editorial {
-        font-family: "Playfair Display", Georgia, serif;
-        font-weight: 400;
-        letter-spacing: -0.04em;
+        font-family: "Montserrat Variable", Arial, sans-serif;
+         font-weight: 750;
+         letter-spacing: -0.045em;
     }
     .glass {
         background: rgba(38, 38, 38, 0.8);
@@ -568,7 +568,7 @@ video {
   line-height: 1.25rem;
   font-weight: 600;
         min-height: 52px;
-        font-family: "Manrope", sans-serif;
+        font-family: "Onest Variable", sans-serif;
         transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
     .btn-primary {
@@ -583,7 +583,7 @@ video {
     .btn-ghost:hover { border-color: var(--fd-accent); background: rgba(230, 36, 41, 0.06); transform: translateY(-2px); }
     .btn-cream { color: #202020; background: #f6f3ee; border: 1px solid transparent; }
     .btn-cream:hover { background: #ddd7ce; transform: translateY(-2px); }
-    .price { font-family: "Manrope", sans-serif; color: var(--fd-accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .price { font-family: "Onest Variable", sans-serif; color: var(--fd-accent); font-weight: 700; font-variant-numeric: tabular-nums; }
     .grid-floor { background-color: #171717; }
     .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -2558,7 +2558,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Manrope", system-ui, sans-serif;
+    font-family: "Onest Variable", system-ui, sans-serif;
     background: var(--fd-bg);
     color: var(--fd-text);
     -webkit-font-smoothing: antialiased;
@@ -2606,7 +2606,7 @@ body {
     display: contents !important;
 }
     .\[\&_h2\]\:font-display h2 {
-        font-family: "Manrope", sans-serif;
+        font-family: "Onest Variable", sans-serif;
         letter-spacing: 0.01em;
     }
 
