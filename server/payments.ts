@@ -101,7 +101,7 @@ export async function pricedItems(cart: CheckoutItem[]) {
  */
 export async function orderStatus(id:string) {
   const sql=paymentsDb();
-  const result=await sql`SELECT id,status,fulfillment_status,checkout_session_id,amount_cents,currency,items,created_at
+  const result=await sql`SELECT id,status,COALESCE(to_jsonb(payment_orders)->>'fulfillment_status','new') AS fulfillment_status,checkout_session_id,amount_cents,currency,items,created_at
     FROM payment_orders WHERE id=${id}::uuid`;
   if (!result.length) throw new HttpError(404,'Поръчката не е намерена.');
   let row=result[0];
@@ -131,7 +131,7 @@ export async function orderStatus(id:string) {
         if (updated.length) row=updated[0];
         else {
           // A webhook may have updated the same order while we verified Stripe.
-          const current=await sql`SELECT id,status,fulfillment_status,checkout_session_id,amount_cents,currency,items,created_at
+          const current=await sql`SELECT id,status,COALESCE(to_jsonb(payment_orders)->>'fulfillment_status','new') AS fulfillment_status,checkout_session_id,amount_cents,currency,items,created_at
             FROM payment_orders WHERE id=${id}::uuid`;
           if (current.length) row=current[0];
         }
