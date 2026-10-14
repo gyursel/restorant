@@ -1,0 +1,377 @@
+/* APEX DRIVE • Mobile-first refinements for the Premium preview.
+   All rules are storefront-scoped. The admin panel, Production branch,
+   database and CMS content are intentionally untouched. */
+.site-experience {
+  min-height: 100dvh;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+.site-experience img,
+.site-experience video,
+.site-experience iframe { max-width: 100%; }
+.site-experience .hero-main > *,
+.site-experience .food-card,
+.site-experience .food-card-content,
+.site-experience .hero-copy,
+.site-experience .hero-favorites { min-width: 0; }
+.site-experience .food-card-content { flex: 1; }
+.site-experience a,
+.site-experience button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.site-experience a:focus-visible,
+.site-experience button:focus-visible {
+  outline: 2px solid #ffa585;
+  outline-offset: 3px;
+}
+.site-experience .premium-mobile-dock { display: none; }
+@media (max-width: 1023px) {
+  .site-experience .site-header-inner { height: 76px; padding-inline: clamp(16px,3.5vw,30px); }
+  .site-experience .site-header { z-index: 90; }
+  .site-experience .premium-mobile-toggle {
+    position: relative;
+    z-index: 2;
+    min-width: 48px; min-height: 48px;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(21,16,15,.88);
+    border-radius: 15px;
+  }
+  .site-experience .premium-mobile-menu {
+    position: fixed;
+    top: 76px;
+    left: 0; right: 0;
+    height: calc(100dvh - 76px);
+    padding: 18px clamp(18px,5vw,52px) calc(40px + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: linear-gradient(155deg, rgba(28,18,16,.985),rgba(11,10,10,.99) 75%);
+    border-top: 1px solid rgba(255,205,177,.14);
+    box-shadow: 0 15px 60px rgba(0,0,0,.5);
+    backdrop-filter: blur(24px);
+    z-index: 91;
+  }
+  .site-experience .premium-mobile-menu-label {
+    margin: 14px 0 18px;
+    font: 800 11px/1.5 "Manrope",sans-serif;
+    letter-spacing: .2em;
+    color: #ed9d83;
+  }
+  .site-experience .premium-mobile-menu-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    min-height: 59px;
+    font: 700 clamp(17px,2.3vw,23px)/1.45 "Manrope",sans-serif;
+    letter-spacing: -.025em;
+    color: #f9e9db;
+    border-bottom: 1px solid rgba(255,224,200,.11);
+    border-radius: 4px;
+  }
+  .site-experience .premium-mobile-menu-link:last-child { border: 0; }
+  .site-experience .premium-mobile-menu-link:hover,
+  .site-experience .premium-mobile-menu-link:focus-visible { color: #ff9c7b; }
+  .site-experience .hero-main { min-height: 0; }
+  .site-experience .hero-section { padding-top: 88px; }
+  .site-experience section[data-testid="menu-section"] .category-nav { top: 76px; }
+}
+@media (max-width: 767px) {
+  .site-experience { --mobile-dock-height: 72px; }
+  .site-experience main { padding-bottom: calc(var(--mobile-dock-height) + env(safe-area-inset-bottom)); }
+  .site-experience .premium-mobile-dock {
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    align-items: stretch;
+    inset: auto 0 0;
+    padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
+    min-height: calc(var(--mobile-dock-height) + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(255,222,198,.14);
+    background: rgba(17,13,12,.97);
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+    box-shadow: 0 -18px 35px rgba(0,0,0,.32);
+    z-index: 80;
+  }
+  .site-experience .premium-mobile-dock.is-hidden,
+  .site-experience:has(.premium-mobile-menu) .premium-mobile-dock { display: none; }
+  .site-experience .premium-dock-item {
+    display: flex;
+    min-width: 0;
+    min-height: 55px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 14px;
+    color: #bbaaa0;
+    font: 700 10px/1.3 "Manrope",sans-serif;
+    letter-spacing: .01em;
+    text-decoration: none;
+  }
+  .site-experience .premium-dock-item svg { flex-shrink: 0; }
+  .site-experience .premium-dock-item.is-active {
+    color: #ff967a;
+    background: rgba(243,100,70,.12);
+  }
+  .site-experience .premium-dock-item:active { background: rgba(255,150,122,.16); }
+  .site-experience .site-header-inner { height: 70px; padding-inline: 16px; }
+  .site-experience .site-header .brand-wordmark { font-size: clamp(19px,5.8vw,24px); }
+  .site-experience .site-header .brand-tagline { font-size: 7px; letter-spacing: .16em; }
+  .site-experience .premium-mobile-toggle { min-height: 46px; min-width: 46px; }
+  .site-experience .premium-mobile-menu { top: 70px; height: calc(100dvh - 70px); padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  .site-experience .hero-section { padding: 78px 8px 0; }
+  .site-experience .hero-frame {
+    border-radius: 20px;
+    padding: 74px clamp(16px,4vw,26px) 28px;
+  }
+  .site-experience .hero-frame::before { inset: 8px; border-radius: 14px; }
+  .site-experience .hero-film-top {
+    top: 22px; left: 21px; right: 21px;
+    padding-bottom: 13px;
+    font-size: 7px;
+    letter-spacing: .12em;
+  }
+  .site-experience .hero-main {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .site-experience .hero-copy { width: 100%; }
+  .site-experience .hero-copy h1,
+  .site-experience .hero-copy h1.font-editorial {
+    font-size: clamp(42px,11.1vw,68px);
+    line-height: 1.01;
+    letter-spacing: -.065em;
+    margin-top: 24px;
+    text-wrap: pretty;
+  }
+  .site-experience .hero-title-last {
+    overflow-wrap: anywhere;
+    line-height: 1.05;
+  }
+  .site-experience .hero-copy > p:not(.eyebrow) {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.75;
+    max-width: 36ch;
+  }
+  .site-experience .hero-copy > div:has(> .btn-primary) {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .site-experience .hero-copy .btn-primary,
+  .site-experience .hero-copy .btn-cream {
+    display: inline-flex;
+    min-height: 50px;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 13px;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: normal;
+    gap: 6px;
+  }
+  .site-experience .hero-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+  .site-experience .hero-benefits > span { font-size: 10px; gap: 8px; }
+  .site-experience .hero-benefits svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .site-experience .hero-food {
+    width: 100%;
+    padding: 8px 12px 10px;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+  .site-experience .hero-food-plate {
+    aspect-ratio: 1.18;
+    border-radius: 44% 44% 18px 18px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .site-experience .hero-food-caption { top: 8px; left: 13%; font-size: 8px; letter-spacing: .12em; }
+  .site-experience .hero-food-note { left: 0; bottom: 29px; padding: 11px 13px; font-size: 9px; }
+  .site-experience .hero-discover { width: 52px; height: 52px; right: 3px; bottom: 2px; }
+  .site-experience .hero-video-element { filter: brightness(.85) saturate(.93); }
+  .site-experience .hero-video-poster { animation: none; transform: scale(1.03); }
+  .site-experience .hero-video-noise { display: none; }
+  .site-experience .hero-video-tint {
+    background: linear-gradient(180deg,rgba(10,7,7,.93) 0%, rgba(10,7,7,.75) 58%,rgba(10,7,7,.91) 100%);
+  }
+  .site-experience .hero-video-toggle { right: 14px; bottom: 15px; top: auto; padding: 10px 12px; min-height: 42px; }
+  .site-experience .hero-film-bottom { margin-top: 14px; padding: 16px 0 0; font-size: 8px; padding-right: 96px; }
+  .site-experience .hero-favorites { margin-top: 32px; padding-top: 27px; }
+  .site-experience .hero-favorites > div:first-child { gap: 14px; }
+  .site-experience .hero-favorites h2 { font-size: clamp(22px,6.4vw,30px); }
+  .site-experience .hero-favorites > div:first-child a { font-size: 11px; min-height: 44px; display: inline-flex; align-items: center; }
+  .site-experience .hero-favorites .grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 11px; }
+  .site-experience section[data-testid="menu-section"],
+  .site-experience section[data-testid="promotions-section"],
+  .site-experience section[data-testid="kiosk-teaser-section"],
+  .site-experience section[data-testid="location-section"] {
+    padding-block: clamp(62px,13vw,92px);
+  }
+  .site-experience section[data-testid="menu-section"] .category-nav {
+    top: 70px;
+    margin-inline: -12px;
+    border-radius: 0 0 16px 16px;
+    border-top: 0;
+    padding: 7px 10px;
+    scroll-padding-inline: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  }
+  .site-experience .category-nav [role="tab"] {
+    min-height: 44px;
+    height: 44px;
+    white-space: nowrap;
+    font-size: 12px;
+    padding-inline: 16px;
+    scroll-snap-align: start;
+  }
+  .site-experience .category-nav [role="tablist"] {
+    gap: 6px;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .site-experience .category-nav [role="tablist"]::-webkit-scrollbar { display: none; }
+  .site-experience section:not(.hero-section) .max-w-2xl > h1,
+  .site-experience section:not(.hero-section) .max-w-2xl > h2 {
+    font-size: clamp(32px,8.4vw,46px) !important;
+    line-height: 1.14;
+  }
+  .site-experience [data-testid="product-grid"],
+  .site-experience .hero-favorites .grid {
+    margin-top: 22px;
+    gap: 12px;
+  }
+  .site-experience [data-testid="product-grid"] { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .site-experience .food-card { margin: 0; height: 100%; border-radius: 17px; }
+  .site-experience .food-card-photo,
+  .site-experience .food-card-featured .food-card-photo {
+    display: block;
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 1.07;
+    border-radius: 0;
+  }
+  .site-experience .food-card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 11px 13px;
+  }
+  .site-experience .food-card-content h3 {
+    font-size: 13px;
+    line-height: 1.34;
+    letter-spacing: -.02em;
+    overflow-wrap: anywhere;
+  }
+  .site-experience .food-card-content > p {
+    font-size: 11px;
+    line-height: 1.45;
+    margin-top: 8px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .site-experience .food-card-badge { font-size: 9px; line-height: 1.35; letter-spacing: .08em; }
+  .site-experience .food-card-content .price {
+    font-size: clamp(15px,4.1vw,20px);
+    white-space: nowrap;
+  }
+  .site-experience .food-card-content > div:last-child {
+    padding-top: 13px;
+    align-items: center;
+    gap: 5px;
+  }
+  .site-experience .food-add-button {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+  .site-experience .food-add-button svg { width: 17px; height: 17px; }
+  .site-experience section[data-testid="promotions-section"] .mt-12 { margin-top: 26px; }
+  .site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] {
+    min-height: 252px;
+    border-radius: 20px;
+  }
+  .site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] .p-6,
+  .site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] .sm\\:p-8 { padding: 20px; }
+  .site-experience section[data-testid="promotions-section"] h3 { font-size: clamp(23px,6.8vw,35px); line-height: 1.12; }
+  .site-experience section[data-testid="how-it-works-section"] { padding-block: 65px; }
+  .site-experience section[data-testid="how-it-works-section"] ol { gap: 12px; margin-top: 28px; }
+  .site-experience section[data-testid="how-it-works-section"] li { padding: 20px; border-radius: 18px; }
+  .site-experience section[data-testid="kiosk-teaser-section"] .grid { gap: 30px; }
+  .site-experience section[data-testid="kiosk-teaser-section"] .aspect-\\[3\\/4\\] { max-height: 390px; }
+  .site-experience section[data-testid="location-section"] .mt-12 { margin-top: 26px; }
+  .site-experience section[data-testid="location-section"] iframe { min-height: 245px; }
+  .site-experience section[data-testid="location-section"] .glass { padding: 19px; border-radius: 19px; overflow-wrap: anywhere; }
+  .site-experience section[data-testid="location-section"] li { gap: 10px; }
+  .site-experience [data-testid="site-footer"] { padding: 50px 0 28px; }
+  .site-experience [data-testid="site-footer"] ul { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px 20px; }
+  .site-experience [data-testid="site-footer"] a { display: inline-flex; align-items: center; min-height: 44px; }
+  .site-experience [data-testid="product-detail-page"] { padding-bottom: 46px; }
+  .site-experience [data-testid="product-detail-page"] .product-photo {
+    width: min(78vw,320px);
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    border-radius: 25%;
+    border-width: 5px;
+  }
+  .site-experience [data-testid="product-detail-page"] h1 { font-size: clamp(29px,8.7vw,42px); line-height: 1.14; }
+  .site-experience [data-testid="product-detail-page"] .grid { gap: 26px; }
+  .site-experience [data-testid="product-detail-page"] a:first-child {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+  }
+}
+@media (min-width: 540px) and (max-width: 767px) {
+  .site-experience .hero-frame { padding-inline: 28px; }
+  .site-experience .hero-main { display: grid; grid-template-columns: 1.08fr .92fr; gap: 18px; }
+  .site-experience .hero-copy h1 { font-size: clamp(37px,7vw,50px); }
+  .site-experience .hero-food { padding: 18px 0; }
+  .site-experience .hero-copy > div:has(> .btn-primary) { grid-template-columns: 1fr; }
+  .site-experience .hero-benefits { grid-template-columns: 1fr; gap: 12px; }
+  .site-experience [data-testid="product-grid"] { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 359px) {
+  .site-experience .hero-frame { padding-inline: 13px; }
+  .site-experience .hero-copy h1 { font-size: 40px; }
+  .site-experience .hero-copy > div:has(> .btn-primary) { grid-template-columns: 1fr; }
+  .site-experience .hero-benefits { gap: 7px; }
+  .site-experience [data-testid="product-grid"] { grid-template-columns: 1fr; }
+  .site-experience .hero-favorites .grid { grid-template-columns: 1fr; }
+  .site-experience .food-card-photo { aspect-ratio: 1.45; }
+  .site-experience .food-card-content { padding: 15px; }
+  .site-experience .food-card-content h3 { font-size: 16px; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .site-experience .food-card:hover,
+  .site-experience .btn-primary:hover,
+  .site-experience .btn-cream:hover { transform: none; }
+  .site-experience .food-card-photo img,
+  .site-experience .food-card:hover .food-card-photo img { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-experience .hero-video-element,
+  .site-experience .food-card-photo img,
+  .site-experience .premium-dock-item,
+  .site-experience .hero-film-down {
+    animation: none !important; transition: none !important;
+  }
+}
