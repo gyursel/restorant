@@ -5,12 +5,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu as MenuIcon, ShoppingBag, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "@/components/site/Primitives";
+import {useCart} from "@/context/CartContext";
 
 export const Header = () => {
  const NAV = getContent().navigation.header;
-  const count = 0;
+  const {itemCount:count}=useCart();
   const navigate = useNavigate();
-  const setOpen = () => navigate("/phase-one");
+  const setOpen = () => navigate("/cart");
   const {
     pathname,
     hash
@@ -59,7 +60,7 @@ export const Header = () => {
         <div className="flex items-center gap-2">
           <Link to={copy["Header_jsx_9"]} data-testid="header-kiosk-link" className="btn-primary !min-h-11 !px-5 !text-xs hidden md:inline-flex"><CmsText field="Header_jsx_10"/><span className="h-1.5 w-1.5 rounded-full bg-white" />
           </Link>
-          <button onClick={() => setOpen(true)} data-testid="header-cart-button" aria-label={copy.cartLabel} className="relative hidden sm:grid h-11 w-11 place-items-center rounded-full glass hover:border-[#f05255]/60 transition-colors">
+          <button onClick={() => setOpen(true)} data-testid="header-cart-button" aria-label={`Количка, ${count} продукта`} className="relative grid h-11 w-11 place-items-center rounded-full glass hover:border-[#f05255]/60 transition-colors">
             <ShoppingBag className="h-5 w-5" />
             {count > 0 && <span data-testid="header-cart-count" className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[#e62429] px-1 text-[10px] font-bold text-white">{count}</span>}
           </button>
