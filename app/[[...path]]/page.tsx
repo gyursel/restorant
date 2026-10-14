@@ -2,6 +2,8 @@ import type {Metadata} from 'next';
 import PublicSite from '../public-site';
 import {publishedContent} from '../../server/public-content';
 
+export const dynamic='force-dynamic';
+
 const base='https://apex-drive-bulgaria.vercel.app';
 type Props={params:Promise<{path?:string[]}>};
 const description='Премиум Drive-Thru ресторант. Бургери, меню и вземане от място в APEX DRIVE BULGARIA.';
