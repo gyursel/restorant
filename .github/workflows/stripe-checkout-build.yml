@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/stripe-checkout-test
+      - feature/official-orders-admin-v1
   workflow_dispatch:
 
 permissions:
