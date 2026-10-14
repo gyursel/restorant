@@ -1,5 +1,5 @@
 import {CmsText} from "@/content/CmsText";
-import { copy } from "@/content/repository";
+import { copy, getContent } from "@/content/repository";
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "@/components/site/Header";
@@ -11,6 +11,23 @@ export default function SiteLayout() {
     pathname,
     hash
   } = useLocation();
+  useEffect(() => {
+    // BrowserRouter navigation is client-side; keep the tab title and page
+    // description in sync with server-rendered product metadata.
+    const content=getContent();
+    if (!content) return;
+    const product=pathname.startsWith('/product/')
+      ? content.menu?.products?.find(p=>p.slug===pathname.slice('/product/'.length))
+      : null;
+    const homeTitle=content.meta?.title||'APEX DRIVE BULGARIA';
+    document.title=product
+      ? product.name+' | '+homeTitle
+      : pathname==='/menu' ? 'Меню и цени | '+homeTitle : homeTitle;
+    const description=product?.description||
+      (pathname==='/menu'?'Разгледай актуалното меню, цени и предложения в APEX DRIVE BULGARIA.':content.meta?.description);
+    const meta=document.querySelector('meta[name="description"]');
+    if(meta&&description)meta.setAttribute('content',description);
+  },[pathname]);
   useEffect(() => {
     if (new URLSearchParams(window.location.search).has("editor")) return;
     if (hash) {
