@@ -1,6 +1,7 @@
 'use client';
 
 import {useCallback,useEffect,useRef,useState} from 'react';
+import './orders.css';
 import {AlertCircle,ArrowRight,Bell,BellOff,Check,CheckCircle2,Clock3,
   CreditCard,RefreshCw,ShoppingBag,Volume2,VolumeX,XCircle} from 'lucide-react';
 
