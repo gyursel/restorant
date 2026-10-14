@@ -1,6 +1,6 @@
 import type Stripe from 'stripe';
-import {db,json,failure,HttpError} from '../../../../server/cms';
-import {stripeClient} from '../../../../server/payments';
+import {json,failure,HttpError} from '../../../../server/cms';
+import {stripeClient,paymentsDb} from '../../../../server/payments';
 
 export const dynamic='force-dynamic';
 export const runtime='nodejs';
@@ -28,7 +28,7 @@ export async function POST(request:Request) {
     if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))
       throw new HttpError(400,'Невалиден идентификатор.');
 
-    const sql=db();
+    const sql=paymentsDb();
     const paymentIntent=typeof session.payment_intent==='string' ? session.payment_intent : session.payment_intent?.id || null;
     if ((event.type==='checkout.session.completed'||event.type==='checkout.session.async_payment_succeeded')
         && session.payment_status==='paid' && session.currency==='eur' && typeof session.amount_total==='number' && Number.isSafeInteger(session.amount_total) && session.amount_total>0) {
