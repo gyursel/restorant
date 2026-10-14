@@ -37,7 +37,7 @@ export async function POST(request:Request) {
       await sql`UPDATE payment_orders SET status='paid',stripe_payment_intent=${paymentIntent},
           paid_at=COALESCE(paid_at,NOW()),updated_at=NOW()
         WHERE id=${id}::uuid AND checkout_session_id=${session.id}
-        AND amount_cents=${session.amount_total!} AND currency='eur'
+        AND amount_cents=${session.amount_total} AND currency='eur'
         AND status='pending'`;
     } else if (event.type==='checkout.session.expired') {
       await sql`UPDATE payment_orders SET status='expired',updated_at=NOW()
