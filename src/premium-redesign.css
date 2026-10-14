@@ -1,0 +1,497 @@
+/*
+  APEX DRIVE — Premium editorial redesign (preview branch).
+  Scope all styling to the public React storefront. Admin styles stay untouched.
+  Content, media URLs, cart links and CMS-managed labels remain dynamic.
+*/
+.site-experience {
+  --apx-bg: #0e0c0c;
+  --apx-card: #1a1616;
+  --apx-warm: #f5eee6;
+  --apx-red: #f15a43;
+  --apx-muted: #b7a9a1;
+  background: var(--apx-bg) !important;
+  color: var(--apx-warm);
+  overflow: clip;
+}
+.site-experience ::selection { background: #f15a43; color: #140e0d; }
+.site-experience a:focus-visible,
+.site-experience button:focus-visible { outline: 2px solid #ffb5a0; outline-offset: 5px; }
+.site-experience .site-header {
+  background: rgba(13, 12, 12, .78);
+  border-bottom: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+.site-experience .site-header-inner {
+  max-width: 1496px;
+  height: 90px;
+  padding-inline: clamp(20px, 4vw, 65px);
+}
+.site-experience .brand-wordmark {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -.085em;
+}
+.site-experience .brand-tagline {
+  font-weight: 600;
+  font-size: 8px;
+  margin-top: 9px;
+  letter-spacing: .26em;
+  color: #9f938e;
+}
+.site-experience .site-header nav a {
+  font-size: 12px;
+  letter-spacing: .035em;
+  color: #c2b8b2;
+}
+.site-experience .site-header nav a:hover,
+.site-experience .site-header nav a[aria-current="page"] { color: #fff5e8; }
+.site-experience .btn-primary,
+.site-experience .btn-cream {
+  border-radius: 999px;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  min-height: 54px;
+  padding-inline: 28px;
+  transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease;
+}
+.site-experience .btn-primary {
+  background: #f15a43;
+  color: #180d0c;
+  border: 1px solid #ff8b73;
+  box-shadow: 0 12px 30px rgba(218,59,36,.16);
+}
+.site-experience .btn-primary:hover {
+  background: #ff7057;
+  box-shadow: 0 16px 40px rgba(218,59,36,.26);
+  transform: translateY(-3px);
+}
+.site-experience .btn-cream { background: transparent; color: #f8eee7; border: 1px solid rgba(255,245,232,.38); }
+.site-experience .btn-cream:hover { background: rgba(255,255,255,.1); transform: translateY(-3px); }
+
+/* A cinematic first fold with a strong editorial grid */
+.site-experience .hero-section {
+  position: relative;
+  background: #0e0c0c;
+  padding: 106px clamp(12px,2.5vw,38px) 0;
+}
+.site-experience .hero-frame {
+  position: relative;
+  isolation: isolate;
+  max-width: 1560px;
+  padding: clamp(34px,5.6vw,84px) clamp(20px,5vw,80px) clamp(46px,5vw,75px);
+  border-radius: 28px;
+  border: 1px solid rgba(254,199,175,.12);
+  background:
+    radial-gradient(ellipse 55% 70% at 82% 26%, rgba(148,47,30,.22), transparent 76%),
+    radial-gradient(circle at 15% 80%, rgba(91,44,34,.11), transparent 50%),
+    linear-gradient(130deg, #1c1716 2%, #111010 64%, #171110);
+  overflow: hidden;
+}
+.site-experience .hero-frame::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(255,238,216,.045);
+  border-radius: 18px;
+}
+.site-experience .hero-frame::after {
+  content: "APEX DRIVE  /  БУРГЕРИ С ХАРАКТЕР";
+  pointer-events: none;
+  position: absolute;
+  top: 30px;
+  right: clamp(28px,5vw,82px);
+  color: rgba(246,225,209,.42);
+  font: 700 9px/1.5 "Manrope",sans-serif;
+  letter-spacing: .24em;
+}
+.site-experience .hero-main {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.07fr .93fr;
+  align-items: center;
+  gap: clamp(30px,5vw,80px);
+  min-height: 640px;
+}
+.site-experience .hero-copy { position: relative; z-index: 2; }
+.site-experience .hero-copy .eyebrow {
+  color: #ff9a7c;
+  letter-spacing: .23em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 800;
+}
+.site-experience .hero-copy .eyebrow .h-px { background: #ed6249; width: 36px; }
+.site-experience .hero-copy h1,
+.site-experience .hero-copy h1.font-editorial {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(3.5rem, 5.55vw, 6.75rem);
+  font-weight: 500;
+  line-height: .995;
+  letter-spacing: -.068em;
+  margin-top: 29px;
+  max-width: 760px;
+  color: #fff5eb;
+  text-wrap: balance;
+}
+.site-experience .hero-title-last {
+  display: inline-block;
+  color: #fd7658;
+  font-style: italic;
+  letter-spacing: -.082em;
+  padding-right: .12em;
+}
+.site-experience .hero-copy > p:not(.eyebrow) {
+  max-width: 475px;
+  font-size: clamp(14px,1.2vw,17px);
+  line-height: 1.9;
+  color: #cbbcb3;
+  margin-top: 30px;
+}
+.site-experience .hero-copy > div:has(> .btn-primary) { margin-top: 38px; }
+.site-experience .hero-benefits {
+  gap: 36px;
+  margin-top: 55px;
+  padding-top: 27px;
+  border-top: 1px solid rgba(255,255,255,.14);
+  max-width: 460px;
+}
+.site-experience .hero-benefits > span {
+  font-size: 11px;
+  line-height: 1.65;
+  color: #9f9188;
+}
+.site-experience .hero-benefits strong { color: #fff1e5; font-weight: 700; }
+.site-experience .hero-benefits svg { color: #f17c5e; }
+.site-experience .hero-food { position: relative; padding: 42px 24px 40px 0; }
+.site-experience .hero-food::before {
+  content: "";
+  position: absolute;
+  width: 112%;
+  aspect-ratio: 1;
+  left: 2%;
+  top: 6%;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(247,97,57,.17), transparent 70%);
+  filter: blur(18px);
+}
+.site-experience .hero-food-plate {
+  position: relative;
+  display: block;
+  aspect-ratio: 4/4.65;
+  width: min(100%,540px);
+  border: 1px solid rgba(252,170,126,.33);
+  border-radius: 48% 48% 24px 24px;
+  outline: 0;
+  background: #322019;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,.52), 18px 16px 0 -11px rgba(248,135,91,.08);
+}
+.site-experience .hero-food-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,8,8,.06), transparent 46%, rgba(9,4,3,.53));
+}
+.site-experience .hero-food-plate img,
+.site-experience .hero-food-plate video {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.06);
+}
+.site-experience .hero-food-caption {
+  z-index: 3;
+  top: 14px;
+  left: 8%;
+  font-size: 10px;
+  font-weight: 800;
+  color: #f6b69b;
+  letter-spacing: .24em;
+}
+.site-experience .hero-food-note {
+  z-index: 2;
+  transform: rotate(-4deg);
+  left: -44px;
+  bottom: 100px;
+  border-radius: 18px;
+  padding: 20px 24px;
+  border: 1px solid rgba(255,204,179,.22);
+  background: rgba(29,23,21,.84);
+  backdrop-filter: blur(20px);
+  color: #efe4db;
+  box-shadow: 0 15px 45px rgba(0,0,0,.3);
+  font-size: 11px;
+}
+.site-experience .hero-food-note svg { color: #fa876a; }
+.site-experience .hero-discover {
+  width: 72px;
+  height: 72px;
+  right: -8px;
+  bottom: 23px;
+  color: #23100c;
+  background: #f15a43;
+  border: 1px solid #ff9b83;
+  box-shadow: 0 15px 40px rgba(241,90,67,.23);
+}
+.site-experience .hero-discover:hover { background: #ff8467; transform: rotate(45deg); }
+
+/* Food photography gets the spotlight, not circular thumbnail frames */
+.site-experience .hero-favorites {
+  position: relative;
+  margin-top: clamp(40px,6.5vw,100px);
+  padding-top: 38px;
+  border-top: 1px solid rgba(255,255,255,.11);
+}
+.site-experience .hero-favorites h2 {
+  font-family: "Playfair Display",Georgia,serif;
+  font-size: clamp(24px,2.25vw,36px);
+  letter-spacing: -.035em;
+  font-weight: 500;
+}
+.site-experience .hero-favorites > div:first-child { margin-bottom: 29px; }
+.site-experience .hero-favorites > div:first-child a {
+  color: #fa9d84;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 700;
+}
+.site-experience .food-card {
+  margin-top: 0;
+  height: 100%;
+  border-radius: 22px;
+  background: linear-gradient(145deg,#251e1b,#191516 90%);
+  border: 1px solid rgba(255,221,202,.11);
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0,0,0,.12);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s, box-shadow .35s;
+}
+.site-experience .food-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(252,126,87,.53);
+  box-shadow: 0 24px 50px rgba(0,0,0,.3);
+}
+.site-experience .food-card-photo,
+.site-experience .food-card-featured .food-card-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.1;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  background: #352923;
+}
+.site-experience .food-card-photo::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: auto 0 0;
+  height: 35%;
+  background: linear-gradient(transparent,rgba(10,6,5,.32));
+}
+.site-experience .food-card-photo img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.site-experience .food-card:hover .food-card-photo img { transform: scale(1.085); }
+.site-experience .food-card-content { padding: clamp(15px,1.75vw,26px); }
+.site-experience .food-card-content h3 {
+  color: #fff4e7;
+  font-size: clamp(16px,1.22vw,21px);
+  font-family: "Manrope",sans-serif;
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.35;
+}
+.site-experience .food-card-content p { color: #b0a19a; line-height: 1.75; }
+.site-experience .food-card-badge {
+  display: inline-flex;
+  width: fit-content;
+  color: #f6a487;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: .13em;
+  margin-bottom: 13px;
+}
+.site-experience .food-card .price {
+  color: #fff4e7;
+  font-size: clamp(18px,1.6vw,26px);
+  font-family: "Manrope",sans-serif;
+  font-weight: 800;
+  letter-spacing: -.045em;
+}
+.site-experience .food-add-button {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  background: #f15a43;
+  color: #1b0d0b;
+  transition: transform .3s ease,background-color .3s ease;
+}
+.site-experience .food-add-button:hover { background: #ff8a70; transform: rotate(45deg); }
+.site-experience .food-card-featured { background: #241b1a; }
+
+/* Editorial section rhythm, refined category tabs and promos */
+.site-experience section[data-testid="menu-section"],
+.site-experience section[data-testid="promotions-section"],
+.site-experience section[data-testid="kiosk-teaser-section"],
+.site-experience section[data-testid="location-section"] {
+  background: #0e0c0c;
+  padding-block: clamp(80px,9vw,140px);
+}
+.site-experience section[data-testid="menu-section"] {
+  position: relative;
+  background: radial-gradient(ellipse at 95% 10%,rgba(145,45,30,.09),transparent 44%),#0e0c0c;
+}
+.site-experience section:not(.hero-section) > .mx-auto { max-width: 1360px; }
+.site-experience section:not(.hero-section) .max-w-2xl > h2,
+.site-experience section:not(.hero-section) .max-w-2xl > h1 {
+  font-family: "Playfair Display",Georgia,serif;
+  font-size: clamp(38px,4.5vw,66px) !important;
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -.052em;
+  color: #f9eee3;
+  text-transform: none;
+}
+.site-experience section:not(.hero-section) .max-w-2xl > p:not(.eyebrow) {
+  color: #afa09a;
+  line-height: 1.9;
+}
+.site-experience .eyebrow { color: #fa826a; letter-spacing: .18em; }
+.site-experience section[data-testid="menu-section"] .category-nav {
+  top: 94px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(25,20,19,.92);
+  box-shadow: 0 10px 35px rgba(0,0,0,.18);
+  padding: 8px;
+}
+.site-experience .category-nav [role="tab"] {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .025em;
+  color: #cabbb2;
+  transition: background .2s,color .2s;
+}
+.site-experience .category-nav [role="tab"][aria-selected="true"] {
+  background: #f15a43;
+  color: #1f100c;
+  box-shadow: 0 3px 16px rgba(241,90,67,.19);
+}
+.site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] {
+  border-radius: 26px;
+  border: 1px solid rgba(255,222,207,.15);
+  box-shadow: 0 25px 65px rgba(0,0,0,.24);
+}
+.site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] > div:nth-child(2) {
+  background: linear-gradient(0deg,rgba(10,7,7,.98),rgba(12,7,7,.45) 54%,transparent);
+}
+.site-experience section[data-testid="promotions-section"] h3 {
+  font-family: "Playfair Display",Georgia,serif;
+  font-size: clamp(24px,2.8vw,43px);
+  font-weight: 600;
+  letter-spacing: -.045em;
+  line-height: 1.16;
+  text-transform: none;
+}
+.site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] span.rounded-full { background: #f15a43; color: #271410; }
+.site-experience section[data-testid="how-it-works-section"] {
+  background: #181313;
+  border-color: rgba(255,255,255,.07);
+  padding-block: clamp(85px,8vw,130px);
+}
+.site-experience section[data-testid="how-it-works-section"] li {
+  border-radius: 22px;
+  background: #211b1a;
+  border: 1px solid rgba(255,255,255,.10);
+  padding: 30px;
+}
+.site-experience section[data-testid="how-it-works-section"] li .font-display {
+  font-family: "Manrope",sans-serif;
+  font-weight: 800;
+  letter-spacing: -.025em;
+}
+.site-experience section[data-testid="kiosk-teaser-section"] img { filter: none !important; }
+.site-experience section[data-testid="kiosk-teaser-section"] .rounded-3xl,
+.site-experience section[data-testid="location-section"] .rounded-3xl {
+  border-radius: 25px;
+}
+.site-experience section[data-testid="location-section"] .glass {
+  background: #211b1a;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.site-experience [data-testid="site-footer"] {
+  background: #080707;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+.site-experience [data-testid="site-footer"] .brand-wordmark { font-size: 32px; }
+.site-experience [data-testid="site-footer"] a:hover { color: #ff8c70; }
+
+/* The app keeps the original hamburger navigation and interactive CMS editor */
+@media (max-width: 1130px) {
+  .site-experience .hero-main { min-height: 570px; gap: 28px; }
+  .site-experience .hero-copy h1 { font-size: clamp(3.15rem,5.65vw,5.1rem); }
+  .site-experience .hero-food { padding-right: 4px; }
+  .site-experience .hero-food-note { left: -20px; }
+}
+@media (max-width: 900px) {
+  .site-experience .site-header-inner { height: 78px; }
+  .site-experience .hero-section { padding-top: 88px; }
+  .site-experience .hero-frame { padding: 55px 27px 48px; }
+  .site-experience .hero-main { grid-template-columns: 1fr 1fr; min-height: 470px; gap: 20px; }
+  .site-experience .hero-copy h1 { font-size: clamp(2.6rem,5.3vw,4rem); }
+  .site-experience .hero-benefits { flex-wrap: wrap; margin-top: 26px; }
+  .site-experience .hero-food-plate { aspect-ratio: 1/1.24; }
+  .site-experience .hero-food-note { left: -15px; bottom: 48px; }
+  .site-experience section[data-testid="menu-section"] .category-nav { top: 78px; }
+}
+@media (max-width: 680px) {
+  .site-experience .site-header-inner { height: 72px; padding-inline: 18px; }
+  .site-experience .brand-wordmark { font-size: 21px; }
+  .site-experience .brand-tagline { font-size: 7px; }
+  .site-experience .hero-section { padding: 80px 10px 0; }
+  .site-experience .hero-frame { border-radius: 20px; padding: 58px 22px 42px; }
+  .site-experience .hero-frame::before { inset: 9px; border-radius: 14px; }
+  .site-experience .hero-frame::after { top: 22px; left: 25px; right: auto; font-size: 7px; letter-spacing: .15em; }
+  .site-experience .hero-main { grid-template-columns: 1fr; gap: 20px; min-height: 0; }
+  .site-experience .hero-copy .eyebrow { font-size: 9px; }
+  .site-experience .hero-copy h1 { font-size: clamp(3rem,10.6vw,5.2rem); margin-top: 20px; }
+  .site-experience .hero-copy > p:not(.eyebrow) { margin-top: 23px; font-size: 13px; line-height: 1.8; }
+  .site-experience .hero-copy > div:has(> .btn-primary) { margin-top: 25px; gap: 9px; }
+  .site-experience .hero-copy .btn-primary,.site-experience .hero-copy .btn-cream { padding-inline: 17px; min-height: 48px; font-size: 10px; }
+  .site-experience .hero-benefits { margin-top: 25px; padding-top: 19px; gap: 24px; }
+  .site-experience .hero-benefits > span { font-size: 9px; }
+  .site-experience .hero-food { width: 93%; max-width: 490px; margin: 0 auto; padding: 28px 10px 24px; }
+  .site-experience .hero-food-plate { width: 100%; aspect-ratio: 1 / 1.04; border-radius: 46% 46% 18px 18px; }
+  .site-experience .hero-food-caption { top: 14px; left: 8%; font-size: 8px; }
+  .site-experience .hero-food-note { left: -12px; bottom: 49px; padding: 10px 13px; font-size: 8px; }
+  .site-experience .hero-discover { width: 55px; height: 55px; right: 0; bottom: 13px; }
+  .site-experience .hero-favorites { margin-top: 40px; padding-top: 27px; }
+  .site-experience .hero-favorites h2 { font-size: 23px; }
+  .site-experience .hero-favorites .grid { gap: 12px; }
+  .site-experience .food-card { border-radius: 15px; }
+  .site-experience .food-card-content { padding: 14px; }
+  .site-experience .food-card-content h3 { font-size: 14px; }
+  .site-experience .food-card-content p { font-size: 11px; }
+  .site-experience .food-card .price { font-size: 17px; }
+  .site-experience .food-add-button { width: 39px; height: 39px; min-width: 39px; min-height: 39px; }
+  .site-experience section[data-testid="menu-section"] .category-nav { top: 72px; border-radius: 16px; }
+  .site-experience section:not(.hero-section) .max-w-2xl > h2 { font-size: clamp(32px,8.5vw,46px) !important; }
+  .site-experience [data-testid="site-footer"] { padding-bottom: 60px; }
+}
+@media (max-width: 385px) {
+  .site-experience .hero-copy h1 { font-size: 2.75rem; }
+  .site-experience .hero-copy .btn-primary,.site-experience .hero-copy .btn-cream { width: 100%; justify-content: center; }
+  .site-experience .hero-favorites .grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-experience *,
+  .site-experience *::before,
+  .site-experience *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
