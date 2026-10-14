@@ -40,6 +40,7 @@ export const Hero = () => {
   };
   return <section id="hero" className="hero-section" data-testid="hero-section" aria-labelledby="hero-title">
       <div className="hero-frame">
+        <HeroBackground media={settings?.media} mode="backdrop" />
         <div className="hero-main">
           <div className="hero-copy">
             <motion.p {...rise(0.1)} className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-current" /><CmsText field="Hero_jsx_4"/></motion.p>
@@ -57,7 +58,7 @@ export const Hero = () => {
           </div>
           <motion.div {...rise(0.3)} className="hero-food">
             <span className="hero-food-caption"><CmsText field="Hero_jsx_18"/></span>
-            <div className="hero-food-plate"><HeroBackground media={settings?.media} /></div>
+            <div className="hero-food-plate"><HeroBackground media={settings?.media} mode="poster" /></div>
             <div className="hero-food-note" data-testid="hero-quality-note"><Leaf className="h-4 w-4" /><span><CmsText field="Hero_jsx_19"/><br /><strong><CmsText field="Hero_jsx_20"/></strong></span></div>
             <Link to={copy["Hero_jsx_21"]} className="hero-discover" aria-label={copy["Hero_jsx_22"]} data-testid="hero-view-menu-button"><ArrowDownRight className="h-7 w-7" /></Link>
           </motion.div>
