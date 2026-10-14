@@ -111,7 +111,11 @@ export function CartPage() {
             config?.enabled?'Плати с карта · '+eur(total):'Онлайн плащанията са в настройка'}<ArrowRight size={17}/>
           </button>
           {config?.mode==='test'&&<p className="premium-checkout-test">Тестова версия: картите не се таксуват реално.</p>}
-          {config&&!config.enabled&&<p className="premium-checkout-test">Необходимо е да свържем тестовия Stripe акаунт и базата за поръчки.</p>}
+          {config&&!config.enabled&&<p className="premium-checkout-test">{config.configured && !config.databaseReady
+            ? 'Няма връзка с тестовата база за поръчки. Провери PAYMENT_DATABASE_URL и таблицата payment_orders в Neon stripe-test.'
+            : !config.webhookConfigured && config.configured
+            ? 'Необходимо е да настроим STRIPE_WEBHOOK_SECRET за Preview.'
+            : 'Необходимо е да свържем тестовия Stripe акаунт и базата за поръчки.'}</p>}
           {error&&<p role="alert" className="premium-checkout-error">{error}</p>}
           <p className="premium-checkout-security"><ShieldCheck size={14}/> Данните на картата се въвеждат само в защитената страница на Stripe.</p>
         </form>
