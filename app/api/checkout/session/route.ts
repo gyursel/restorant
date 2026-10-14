@@ -24,10 +24,16 @@ export async function POST(request:Request) {
 
     // The database record starts pending. A signed Stripe webhook, not the
     // browser redirect, is the only way to mark an order paid.
-    await sql`INSERT INTO payment_orders(id,status,amount_cents,currency,
-      customer_name,phone,note,items)
-      VALUES(${id}::uuid,'pending',${totalCents},'eur',
-      ${customer.name},${customer.phone},${customer.note},${JSON.stringify(lineItems)}::jsonb)`;
+    try {
+      await sql`INSERT INTO payment_orders(id,status,amount_cents,currency,
+        customer_name,phone,note,items)
+        VALUES(${id}::uuid,'pending',${totalCents},'eur',
+        ${customer.name},${customer.phone},${customer.note},${JSON.stringify(lineItems)}::jsonb)`;
+    } catch(error) {
+      // Runtime logs may contain connection details; record only the error class.
+      console.error('Payment order insert failed:',error instanceof Error ? error.name : 'unknown');
+      throw new HttpError(503,'Няма връзка с тестовата база за поръчки. Провери PAYMENT_DATABASE_URL и payment_orders в Neon.');
+    }
 
     try {
       const origin=new URL(request.url).origin;
