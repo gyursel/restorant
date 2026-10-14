@@ -1,8 +1,9 @@
 import {CmsText} from "@/content/CmsText";
 import { copy } from "@/content/repository";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ArrowUpRight, Check } from "lucide-react";
+import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 import { mediaSrc } from "@/lib/media";
 import { eur } from "@/lib/api";
 export const ProductCard = ({
@@ -10,11 +11,14 @@ export const ProductCard = ({
   featured = false
 }) => {
   const prefix = featured ? "featured-" : "";
-  const navigate = useNavigate();
+  const {add}=useCart();
+  const [added,setAdded]=useState(false);
   const off = !product.available;
   const quickAdd = e => {
     e.preventDefault();
-    navigate(`/product/${product.slug}`);
+    if(off)return;
+    add(product.slug);
+    setAdded(true);
   };
   return <article className={`food-card group ${featured ? "food-card-featured" : ""} ${off ? "opacity-60" : ""}`} data-testid={`${prefix}product-card-${product.slug}`}>
       <Link to={`/product/${product.slug}`} className="food-card-photo" data-testid={`${prefix}product-image-link-${product.slug}`}>
@@ -27,8 +31,8 @@ export const ProductCard = ({
         <p className="mt-2 line-clamp-2 text-xs text-slate-400 leading-relaxed">{product.description}</p>
         <div className="mt-auto flex items-center justify-between gap-2 pt-5">
           <span className="price text-base sm:text-lg" data-testid={`${prefix}product-price-${product.slug}`}>{eur(product.price)}</span>
-          <button onClick={quickAdd} disabled={off} aria-label={`Разгледай ${product.name}`} data-testid={`${prefix}quick-add-${product.slug}`} className="food-add-button">
-            <ArrowUpRight className="h-5 w-5" />
+          <button onClick={quickAdd} disabled={off} aria-label={`Добави ${product.name} в количката`} data-testid={`${prefix}quick-add-${product.slug}`} className="food-add-button">
+            {added ? <Check className="h-5 w-5" /> : <ArrowUpRight className="h-5 w-5" />}
           </button>
         </div>
       </div>
