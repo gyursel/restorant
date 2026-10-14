@@ -31,7 +31,7 @@ export async function POST(request:Request) {
     const sql=db();
     const paymentIntent=typeof session.payment_intent==='string' ? session.payment_intent : session.payment_intent?.id || null;
     if ((event.type==='checkout.session.completed'||event.type==='checkout.session.async_payment_succeeded')
-        && session.payment_status==='paid' && session.currency==='eur' && Number.isSafeInteger(session.amount_total) && session.amount_total!>0) {
+        && session.payment_status==='paid' && session.currency==='eur' && typeof session.amount_total==='number' && Number.isSafeInteger(session.amount_total) && session.amount_total>0) {
       // Idempotent: successful payment must match both the order and the
       // Stripe session, as well as the original server-calculated EUR total.
       await sql`UPDATE payment_orders SET status='paid',stripe_payment_intent=${paymentIntent},
