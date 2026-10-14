@@ -4,6 +4,8 @@ import {CheckCircle2,Clock3,Home,ShieldCheck,AlertTriangle} from 'lucide-react';
 import {useCart} from '@/context/CartContext';
 import {eur} from '@/lib/api';
 
+const fulfillmentLabels={new:'Получена · очаква приемане',accepted:'Приета',preparing:'Приготвя се',ready:'Готова за вземане',handed_over:'Предадена',cancel_requested:'Отказана — свържи се с ресторанта'};
+
 export function OrderSuccessPage() {
   const {search}=useLocation();
   const {clear}=useCart();
@@ -23,7 +25,12 @@ export function OrderSuccessPage() {
         if (!response.ok)throw new Error(result.error||'Проверяването не е успешно.');
         if (!active)return;
         setOrder(result);
-        if(result.status==='paid') {clear();return;}
+        if(result.status==='paid') {
+          clear();
+          if(!['handed_over','cancel_requested'].includes(result.fulfillmentStatus) && attempts++<90)
+            timer=setTimeout(poll,12000);
+          return;
+        }
         if(['failed','expired'].includes(result.status))return;
         if(attempts++<12)timer=setTimeout(poll,3000);
       } catch(err) {
@@ -50,7 +57,8 @@ export function OrderSuccessPage() {
       {order&&<div className="premium-order-receipt">
         <div><span>Номер</span><strong>{String(order.id).slice(0,8).toUpperCase()}</strong></div>
         <div><span>Сума</span><strong>{eur(order.amountCents/100)}</strong></div>
-        <div><span>Състояние</span><strong>{paid?'Платена':notPaid?'Неплатена':'Очаква потвърждение'}</strong></div>
+        <div><span>Плащане</span><strong>{paid?'Платена':notPaid?'Неплатена':'Очаква потвърждение'}</strong></div>
+        {paid&&<div><span>Подготовка</span><strong>{fulfillmentLabels[order.fulfillmentStatus]||'Приемане'}</strong></div>}
       </div>}
       {error&&<p className="premium-checkout-error" role="alert">{error}</p>}
       <p className="premium-checkout-security"><ShieldCheck size={15}/> Статусът се потвърждава от Stripe, не от пренасочването на браузъра.</p>
