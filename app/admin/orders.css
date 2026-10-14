@@ -1,0 +1,73 @@
+/* APEX DRIVE — premium kitchen operations panel. */
+.apex-orders{--order-gold:#dcb08c;--order-stroke:rgba(255,224,206,.11);min-width:0;color:#f1e9e2}
+.apex-orders-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:27px}
+.apex-orders-head h2{font:500 clamp(27px,3vw,39px)/1.2 'Playfair Display',Georgia,serif;margin:12px 0;color:#f6efe8;letter-spacing:-.04em}
+.apex-orders-head h2 span{font-style:italic;color:#ff9477}
+.apex-orders-head p:not(.cms-eyebrow){color:#aaa09a;line-height:1.7;font-size:12px}
+.apex-orders-tools{display:flex;flex-wrap:wrap;gap:9px}
+.apex-orders-tools>.cms-btn{min-height:44px}
+.apex-orders-banner{display:flex;gap:14px;margin:8px 0 26px;padding:20px;background:#2c2319;border:1px solid #f0b66e39;border-radius:15px;color:#f4c995}
+.apex-orders-banner svg{flex-shrink:0}.apex-orders-banner strong{display:block;font-size:14px;margin-bottom:6px}
+.apex-orders-banner p{font-size:12px;line-height:1.8;color:#ddc4a9}
+.apex-orders-banner code{padding:3px 5px;background:#ffffff12;border-radius:4px;white-space:nowrap;color:#fff2d2}
+.apex-orders-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:28px}
+.apex-orders-stats>div{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:22px;border-radius:18px;background:linear-gradient(145deg,#28211e,#1c1b1b);border:1px solid var(--order-stroke);min-width:0}
+.apex-orders-stats svg{color:#fa9a7d}.apex-orders-stats small{font-size:11px;color:#bdb0a9;letter-spacing:.015em}
+.apex-orders-stats strong{font-size:clamp(22px,2.6vw,34px);font-variant-numeric:tabular-nums;line-height:1.2;color:#fff4e7;overflow-wrap:anywhere}
+.apex-orders-stats span{font-size:10px;line-height:1.4;color:#958b84}
+.apex-orders-filters{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.apex-orders-filters>div{display:flex;flex-wrap:wrap;gap:6px}
+.apex-orders-filters button{position:relative;min-height:39px;display:flex;align-items:center;gap:7px;border:1px solid #ffffff12;background:#202020;border-radius:10px;padding:9px 13px;color:#aaa29d;font-size:11px;font-weight:700}
+.apex-orders-filters button.selected,.apex-orders-filters button:hover{border-color:#e86d4d88;background:#402620;color:#ffe7d8}
+.apex-orders-filters button b{min-width:18px;height:18px;padding:0 4px;display:grid;place-items:center;border-radius:999px;color:#1c0d0a;background:#ff997a;font-size:9px}
+.apex-orders-filters input{background:#1b1b1b;border:1px solid #ffffff22;border-radius:11px;padding:10px 13px;color:#fff;min-height:42px;min-width:200px;flex:1;max-width:330px;outline:none}
+.apex-orders-filters input:focus{border-color:#fb9a78}
+.apex-orders-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:18px}
+.apex-order-card{border:1px solid var(--order-stroke);background:linear-gradient(155deg,#221e1c,#191919);border-radius:19px;padding:22px;min-width:0;box-shadow:0 12px 40px #00000014}
+.apex-order-card.status-new{border-color:#ee806856}
+.apex-order-card.status-ready{border-color:#8aba9b50}
+.apex-order-card.status-cancel_requested{border-color:#f4af6866}
+.apex-order-top{display:flex;align-items:flex-start;gap:16px;justify-content:space-between}
+.apex-order-top>div:first-child{min-width:0}
+.apex-order-top small{font-size:10px;color:#dd9880;font-weight:800;letter-spacing:.04em}
+.apex-order-top h3{font-size:19px;font-weight:700;color:#fff3e6;margin:8px 0 5px;overflow-wrap:anywhere}
+.apex-order-top time{font-size:11px;color:#988d84}
+.apex-order-badges{display:flex;flex-direction:column;gap:8px;align-items:flex-end;text-align:right;min-width:110px}
+.apex-order-badges>span{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;font-size:10px;font-weight:800;white-space:nowrap}
+.apex-order-badges .is-paid{background:#203b2d;color:#ade3bb}
+.apex-order-badges .is-pending{background:#3c2b25;color:#fac1a6}
+.apex-order-badges .fulfillment{border:1px solid #ffffff17;color:#cfc1b7;background:#2e2925}
+.apex-order-badges .fulfillment.ready{background:#254134;color:#b2edbf}
+.apex-order-badges .fulfillment.cancel_requested{background:#44301f;color:#ffd49f}
+.apex-order-badges>strong{font-size:19px;color:#ffad8c;white-space:nowrap;font-variant-numeric:tabular-nums}
+.apex-order-info{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:19px 0 0;padding:13px 0;border-top:1px solid #ffffff13;border-bottom:1px solid #ffffff13}
+.apex-order-info a{color:#ffc2a5;text-decoration:none;font-weight:700}
+.apex-order-info a:hover{text-decoration:underline}
+.apex-order-info span{font-size:11px;color:#a9a09a}
+.apex-order-items{margin:16px 0;padding:0;list-style:none;display:grid;gap:11px}
+.apex-order-items li{display:flex;align-items:baseline;gap:9px;font-size:12px;color:#eee2d6;line-height:1.5}
+.apex-order-items li>strong{color:#e9a88a;min-width:28px}
+.apex-order-items li>span{flex:1}
+.apex-order-items li>small{color:#cfc5ba;white-space:nowrap}
+.apex-order-note{margin-top:12px;padding:13px;background:#ffffff06;border-radius:10px;color:#d5c6bd;line-height:1.6;font-size:12px}
+.apex-order-note strong{color:#f2b9a4}
+.apex-orders-refund-warning{padding:14px;margin-top:16px;font-size:12px;line-height:1.6;background:#422c1c;border:1px solid #e9a35b4d;border-radius:9px;color:#ffd8a4}
+.apex-order-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:21px}
+.apex-order-actions .cms-btn{min-height:45px;flex:1}
+.apex-order-reject{margin-top:18px;padding:16px;background:#30241f;border:1px solid #ffffff12;border-radius:12px}
+.apex-order-reject label{display:flex;flex-direction:column;gap:9px;font-size:11px;color:#f1c1a3}
+.apex-order-reject textarea{border:1px solid #ffffff22;border-radius:9px;padding:11px;min-width:0;width:100%;color:#ffecdf;background:#1b1817;resize:vertical;min-height:65px;outline:none}
+.apex-order-reject textarea:focus{border-color:#e88c71}
+.apex-order-reject .cms-btn{margin-top:12px;white-space:normal;min-height:47px}
+.apex-orders-empty{grid-column:1/-1;padding:60px 24px;background:#211d1b;border:1px dashed #ffffff22;border-radius:18px;color:#aca09a;text-align:center}
+.apex-orders-bottom-note{display:flex;align-items:flex-start;gap:7px;margin-top:19px;color:#89817b;font-size:11px;line-height:1.6}
+.apex-orders-bottom-note svg{flex-shrink:0}
+@media(max-width:1200px){.apex-orders-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.apex-orders-list{grid-template-columns:1fr}}
+@media(max-width:720px){
+ .apex-orders-stats{gap:9px}.apex-orders-stats>div{padding:15px;border-radius:13px}
+ .apex-orders-stats strong{font-size:23px}
+ .apex-orders-head{align-items:flex-start}.apex-orders-filters input{max-width:none;width:100%;flex:auto}
+ .apex-order-card{padding:16px}.apex-order-top{gap:8px}.apex-order-top h3{font-size:16px}
+ .apex-order-badges{min-width:90px}.apex-order-badges>strong{font-size:17px}
+ .apex-order-actions{flex-direction:column}.apex-order-actions .cms-btn{width:100%}
+}
