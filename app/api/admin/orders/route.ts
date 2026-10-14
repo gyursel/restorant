@@ -24,10 +24,18 @@ export async function GET() {
     if (!process.env.PAYMENT_DATABASE_URL)
       return json({configured:false,orders:[],reason:'payment_database_not_configured'});
     const sql=paymentsDb();
-    const orders=await sql`SELECT id,status,fulfillment_status,
-      customer_name,phone,note,handler_note,items,
-      amount_cents,currency,created_at,paid_at,fulfillment_updated_at
-      FROM payment_orders ORDER BY created_at DESC LIMIT 150`;
+    let orders;
+    try {
+      orders=await sql`SELECT id,status,fulfillment_status,
+        customer_name,phone,note,handler_note,items,
+        amount_cents,currency,created_at,paid_at,fulfillment_updated_at
+        FROM payment_orders ORDER BY created_at DESC LIMIT 150`;
+    } catch(error) {
+      const code=String((error as {code?:string})?.code||'');
+      if(code==='42P01'||code==='42703')
+        throw new HttpError(503,'Изпълни payments.sql и payments-order-management.sql в базата за поръчки.');
+      throw error;
+    }
     return json({configured:true,orders});
   } catch(error) { return failure(error); }
 }
