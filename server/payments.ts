@@ -17,7 +17,7 @@ export const isCheckoutEnabled = () => {
 };
 
 export function paymentsDb() {
-  if (!process.env.PAYMENT_DATABASE_URL) throw new HttpError(503,'Тестовата база за поръчки не е настроена.');
+  if (!process.env.PAYMENT_DATABASE_URL) throw new HttpError(503,'Базата за онлайн поръчки не е настроена.');
   return neon(process.env.PAYMENT_DATABASE_URL);
 }
 
@@ -127,7 +127,7 @@ export async function orderStatus(id:string) {
           WHERE id=${id}::uuid AND status='pending'
           AND checkout_session_id=${session.id}
           AND amount_cents=${session.amount_total} AND currency=${session.currency}
-          RETURNING id,status,checkout_session_id,amount_cents,currency,items,created_at`;
+          RETURNING id,status,COALESCE(to_jsonb(payment_orders)->>'fulfillment_status','new') AS fulfillment_status,checkout_session_id,amount_cents,currency,items,created_at`;
         if (updated.length) row=updated[0];
         else {
           // A webhook may have updated the same order while we verified Stripe.
