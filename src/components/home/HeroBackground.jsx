@@ -1,48 +1,82 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { Pause, Play } from "lucide-react";
+import { Pause, Play, Video } from "lucide-react";
 import { mediaSrc } from "@/lib/media";
 
 /**
- * mode=backdrop: cinematic full-frame video behind the hero content.
- * mode=poster: CMS-managed food photo in the foreground plate.
- * Video is controlled by settings.media.video_enabled and settings.media.hero_video.
+ * The cinematic hero is decorative. Respect reduced motion, data saver, tab
+ * visibility and intersection; always retain the CMS poster as fallback.
  */
 export const HeroBackground = ({ media, mode = "backdrop" }) => {
   const video = useRef(null);
-  const reduceMotion = useReducedMotion();
+  const host = useRef(null);
+  const reducedMotion = useReducedMotion();
+  const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
-  const saveData = typeof navigator !== "undefined" && Boolean(navigator.connection?.saveData);
+  const [pausedByUser, setPausedByUser] = useState(false);
+  const [inView, setInView] = useState(true);
   const poster = mediaSrc(media?.hero_image || "/images/fd_burger_classic.webp");
-  const enabled = Boolean(mode === "backdrop" && media?.video_enabled && media?.hero_video && !reduceMotion && !saveData);
+  const dataSaver = typeof navigator !== "undefined" && Boolean(navigator.connection?.saveData);
+  const enabled = mode === "backdrop" && Boolean(media?.video_enabled && media?.hero_video) && !reducedMotion && !dataSaver;
 
   useEffect(() => {
-    setPlaying(false);
+    setReady(false);
     setFailed(false);
+    setPlaying(false);
+    setPausedByUser(false);
   }, [media?.hero_video, enabled]);
+
+  useEffect(() => {
+    if (!enabled || !host.current || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(Boolean(entry?.isIntersecting));
+    }, { threshold: 0.08 });
+    observer.observe(host.current);
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  useEffect(() => {
+    if (!enabled || failed) return;
+    const element = video.current;
+    if (!element) return;
+    const updatePlayback = () => {
+      if (document.hidden || !inView || pausedByUser) {
+        element.pause();
+      } else {
+        // A muted background may autoplay. When blocked, keep the poster and
+        // provide a manual play button without triggering an infinite retry.
+        const pending = element.play();
+        if (pending?.catch) pending.catch(() => setPlaying(false));
+      }
+    };
+    updatePlayback();
+    document.addEventListener("visibilitychange", updatePlayback);
+    return () => document.removeEventListener("visibilitychange", updatePlayback);
+  }, [enabled, failed, inView, pausedByUser, media?.hero_video]);
+
+  const toggle = () => {
+    if (!video.current) return;
+    if (video.current.paused) {
+      setPausedByUser(false);
+      video.current.play().catch(() => setPlaying(false));
+    } else {
+      setPausedByUser(true);
+      video.current.pause();
+    }
+  };
 
   if (mode === "poster") {
     return <img className="absolute inset-0 h-full w-full object-cover" src={poster} alt="" fetchPriority="high" data-testid="hero-background-image" />;
   }
 
-  const toggle = () => {
-    const element = video.current;
-    if (!element) return;
-    if (element.paused) {
-      element.play().catch(() => setFailed(true));
-    } else {
-      element.pause();
-    }
-  };
-
   return <>
-    <div className="hero-video-backdrop" aria-hidden="true">
+    <div className="hero-video-backdrop" ref={host} data-video-state={enabled && !failed ? (playing ? "playing" : "paused") : "poster"} aria-hidden="true">
       <img src={poster} alt="" className="hero-video-poster" />
       {enabled && !failed && (
         <video
-          key={media.hero_video}
           ref={video}
+          key={media.hero_video}
           src={mediaSrc(media.hero_video)}
           poster={poster}
           autoPlay
@@ -52,25 +86,28 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
           preload="metadata"
           tabIndex={-1}
           data-testid="hero-background-video"
-          className="hero-video-element"
-          onPlay={() => setPlaying(true)}
+          className={"hero-video-element" + (ready && playing ? " is-visible" : "")}
+          onLoadedData={() => setReady(true)}
+          onPlaying={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           onError={() => setFailed(true)}
         />
       )}
       <div className="hero-video-tint" />
+      <div className="hero-video-noise" />
     </div>
     {enabled && !failed && (
       <button
         type="button"
         className="hero-video-toggle"
         data-testid="hero-video-toggle-play"
-        aria-label={playing ? "Пауза на видеофона" : "Пусни видеофона"}
+        aria-label={playing ? "Спри видеофона" : "Пусни видеофона"}
         aria-pressed={playing}
         onClick={toggle}
       >
         {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
         <span>{playing ? "Пауза" : "Пусни"}</span>
+        <Video size={13} className="hero-video-toggle-decoration" aria-hidden="true" />
       </button>
     )}
   </>;
