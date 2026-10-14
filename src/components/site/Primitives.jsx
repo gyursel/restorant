@@ -8,6 +8,8 @@ export const Reveal = ({
   y = 24
 }) => {
   const reduce = useReducedMotion();
+  const compact = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
+  if (reduce || compact) return <div className={className}>{children}</div>;
   return <motion.div className={className} initial={reduce ? false : {
     opacity: 0,
     y
