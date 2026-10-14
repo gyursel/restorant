@@ -309,13 +309,11 @@
     border-radius: 20px;
   }
   .site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] .p-6,
-  .site-experience section[data-testid="promotions-section"] [data-testid^="promo-card-"] .sm\\:p-8 { padding: 20px; }
   .site-experience section[data-testid="promotions-section"] h3 { font-size: clamp(23px,6.8vw,35px); line-height: 1.12; }
   .site-experience section[data-testid="how-it-works-section"] { padding-block: 65px; }
   .site-experience section[data-testid="how-it-works-section"] ol { gap: 12px; margin-top: 28px; }
   .site-experience section[data-testid="how-it-works-section"] li { padding: 20px; border-radius: 18px; }
   .site-experience section[data-testid="kiosk-teaser-section"] .grid { gap: 30px; }
-  .site-experience section[data-testid="kiosk-teaser-section"] .aspect-\\[3\\/4\\] { max-height: 390px; }
   .site-experience section[data-testid="location-section"] .mt-12 { margin-top: 26px; }
   .site-experience section[data-testid="location-section"] iframe { min-height: 245px; }
   .site-experience section[data-testid="location-section"] .glass { padding: 19px; border-radius: 19px; overflow-wrap: anywhere; }
