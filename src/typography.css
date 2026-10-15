@@ -1,0 +1,96 @@
+/*
+ * APEX DRIVE — Premium Urban typography
+ * Self-hosted variable fonts: Montserrat for statement headings, Onest for UI.
+ * Scope visual changes to the storefront. The CMS/admin keeps its current UI.
+ */
+.site-experience {
+  font-family: "Onest Variable", system-ui, sans-serif;
+  font-optical-sizing: auto;
+  font-synthesis: none;
+}
+.site-experience h1,
+.site-experience h2,
+.site-experience h3,
+.site-experience .font-editorial,
+.site-experience .brand-wordmark {
+  font-family: "Montserrat Variable", Arial, sans-serif;
+  font-optical-sizing: auto;
+}
+.site-experience .eyebrow,
+.site-experience button,
+.site-experience input,
+.site-experience textarea,
+.site-experience select,
+.site-experience nav,
+.site-experience .price,
+.site-experience .brand-tagline {
+  font-family: "Onest Variable", system-ui, sans-serif;
+}
+.site-experience .site-header .brand-wordmark {
+  font-weight: 820;
+  letter-spacing: -.067em;
+}
+.site-experience .hero-copy h1,
+.site-experience .hero-copy h1.font-editorial {
+  font-weight: 770;
+  line-height: 1.075;
+  letter-spacing: -.058em;
+}
+.site-experience .hero-title-last {
+  font-weight: 760;
+  letter-spacing: -.058em;
+}
+.site-experience .hero-favorites h2,
+.site-experience .food-card-content h3 {
+  font-weight: 740;
+  letter-spacing: -.04em;
+}
+.site-experience .food-card-content h3 {
+  line-height: 1.34;
+}
+.site-experience section:not(.hero-section) .max-w-2xl > h1,
+.site-experience section:not(.hero-section) .max-w-2xl > h2 {
+  font-weight: 750;
+  line-height: 1.15;
+}
+.site-experience .premium-cart-heading h1,
+.site-experience .premium-order-status-card h1,
+.site-experience .premium-cart-empty h2 {
+  font-family: "Montserrat Variable", Arial, sans-serif;
+  font-weight: 750;
+}
+.site-experience .price,
+.site-experience .premium-total strong:last-child {
+  font-variant-numeric: tabular-nums;
+  font-weight: 750;
+}
+@media (max-width: 767px) {
+  .site-experience .hero-copy h1,
+  .site-experience .hero-copy h1.font-editorial {
+    font-size: clamp(37px, 10vw, 58px);
+    letter-spacing: -.055em;
+    line-height: 1.11;
+  }
+  .site-experience .site-header .brand-wordmark {
+    letter-spacing: -.065em;
+  }
+  .site-experience .hero-favorites h2 {
+    letter-spacing: -.04em;
+  }
+}
+@media (min-width: 540px) and (max-width: 767px) {
+  /* Two-column landscape/tablet layout has less space for the hero copy. */
+  .site-experience .hero-copy h1,
+  .site-experience .hero-copy h1.font-editorial {
+    font-size: clamp(32px, 6.35vw, 45px);
+  }
+}
+@media (max-width: 359px) {
+  .site-experience .hero-copy h1,
+  .site-experience .hero-copy h1.font-editorial {
+    font-size: clamp(31px, 9.7vw, 35px);
+  }
+  .site-experience .site-header .brand-wordmark {
+    font-size: 18px;
+  }
+}

@@ -7,13 +7,13 @@
 .site-experience .premium-back-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;color:#eab79f;min-height:44px}
 .site-experience .premium-back-link:hover{color:#fff2e8}
 .site-experience .premium-cart-heading{margin:23px 0 43px;max-width:640px}
-.site-experience .premium-cart-heading h1,.site-experience .premium-order-status-card h1{font:500 clamp(42px,5.6vw,74px)/1.12 "Playfair Display",Georgia,serif;letter-spacing:-.056em;color:#fff2e7;margin:15px 0}
+.site-experience .premium-cart-heading h1,.site-experience .premium-order-status-card h1{font:750 clamp(38px,5.2vw,67px)/1.12 "Montserrat Variable",Arial,sans-serif;letter-spacing:-.056em;color:#fff2e7;margin:15px 0}
 .site-experience .premium-cart-heading h1 em{font-style:italic;color:#ff9275}
 .site-experience .premium-cart-heading >p:last-child,.site-experience .premium-order-status-card>p{line-height:1.75;font-size:15px;color:#b5a6a0}
 .site-experience .premium-cart-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(350px,.9fr);align-items:start;gap:clamp(22px,4vw,58px)}
 .site-experience .premium-cart-list,.site-experience .premium-checkout-form{min-width:0;padding:clamp(18px,2.4vw,32px);background:linear-gradient(145deg,#201a18,#171313);border:1px solid rgba(255,219,198,.13);border-radius:24px}
 .site-experience .premium-cart-section-title{display:flex;align-items:center;gap:10px;color:#ff9175;margin-bottom:22px}
-.site-experience .premium-cart-section-title h2{font:700 20px/1.25 "Manrope",sans-serif;color:#fff2e7;letter-spacing:-.03em}
+.site-experience .premium-cart-section-title h2{font:700 20px/1.25 "Onest Variable",sans-serif;color:#fff2e7;letter-spacing:-.03em}
 .site-experience .premium-cart-section-title>span{margin-left:auto;color:#ab9b93;font-size:12px}
 .site-experience .premium-cart-product{display:flex;align-items:flex-start;gap:17px;padding:20px 0;border-top:1px solid rgba(255,255,255,.09)}
 .site-experience .premium-cart-product>img{height:94px;width:94px;flex-shrink:0;object-fit:cover;border-radius:15px;background:#34231f}
@@ -54,7 +54,7 @@
 .site-experience .premium-checkout-error{padding:14px;margin-top:14px;border:1px solid rgba(255,125,125,.35);background:rgba(161,37,26,.15);border-radius:12px;color:#ffc5b8;font-size:13px;line-height:1.6}
 .site-experience .premium-payment-message{padding:14px 18px;margin:12px 0 22px;color:#f0c8ac;font-size:13px;border-radius:13px;background:#2e231e;border:1px solid rgba(255,187,142,.23)}
 .site-experience .premium-cart-empty{min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;border:1px dashed rgba(255,207,175,.27);border-radius:25px;color:#dd9779;text-align:center;padding:40px 20px}
-.site-experience .premium-cart-empty h2{font:500 32px/1.2 "Playfair Display",serif;color:#f9e9df}
+.site-experience .premium-cart-empty h2{font:750 32px/1.2 "Montserrat Variable",Arial,sans-serif;color:#f9e9df}
 .site-experience .premium-cart-empty p{font-size:14px;color:#b4a49a}
 .site-experience .premium-cart-empty .btn-primary{margin-top:9px}
 .site-experience .premium-order-status{display:grid;place-items:center;padding:138px 20px 120px}

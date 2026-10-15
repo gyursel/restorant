@@ -5,10 +5,10 @@ a, button, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 button, a { touch-action: manipulation; }
 :focus-visible { outline: 2px solid var(--fd-accent); outline-offset: 4px; }
 input, textarea, select { color-scheme: dark; }
-h1.font-display { font-family: "Playfair Display", Georgia, serif; font-weight: 400; text-transform: none; letter-spacing: -0.035em; }
-.brand-wordmark { display: inline-flex; flex-direction: column; font-family: "Playfair Display", Georgia, serif; font-size: 23px; letter-spacing: -0.04em; line-height: 1.2; color: #f6f3ee; white-space: nowrap; }
+h1.font-display { font-family: "Montserrat Variable", Arial, sans-serif; font-weight: 750; text-transform: none; letter-spacing: -0.045em; }
+.brand-wordmark { display: inline-flex; flex-direction: column; font-family: "Montserrat Variable", Arial, sans-serif; font-size: 23px; letter-spacing: -0.045em; line-height: 1.2; color: #f6f3ee; white-space: nowrap; }
 .brand-period { color: #f05255; }
-.brand-tagline { font-family: "Manrope", sans-serif; font-size: 8px; letter-spacing: 0.28em; margin-top: 6px; color: #aaa59e; }
+.brand-tagline { font-family: "Onest Variable", sans-serif; font-size: 8px; letter-spacing: 0.28em; margin-top: 6px; color: #aaa59e; }
 .brand-wordmark-small { font-size: 19px; }
 .brand-wordmark-small .brand-tagline { font-size: 7px; }
 .site-header-inner { max-width: 1280px; height: 100px; margin: auto; padding: 0 36px; }
@@ -49,18 +49,18 @@ h1.font-display { font-family: "Playfair Display", Georgia, serif; font-weight: 
 [data-testid="product-detail-page"] .product-photo { border-radius: 50%; border: 10px solid #34332f; box-shadow: 0 25px 50px -15px #0009; }
 [data-testid="product-detail-page"] h1 { font-size: clamp(2.25rem, 4vw, 3.75rem); }
 [data-testid="cart-drawer"] { border-radius: 28px 0 0 28px; }
-[data-testid="cart-drawer"] h2 { font-family: "Playfair Display", Georgia, serif; font-size: 24px; font-weight: 400; text-transform: none; letter-spacing: -0.03em; }
+[data-testid="cart-drawer"] h2 { font-family: "Montserrat Variable", Arial, sans-serif; font-size: 24px; font-weight: 750; text-transform: none; letter-spacing: -0.03em; }
 [data-testid="checkout-page"] > h1, [data-testid="track-lookup-page"] h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); }
 [data-testid="checkout-summary"] { border-top: 2px solid #e62429; }
 [data-testid="order-page"] .glass-strong { border-top: 2px solid #e62429; }
-[data-testid="kiosk-page"] h1 { font-family: "Playfair Display", Georgia, serif; font-size: 42px; text-transform: none; }
+[data-testid="kiosk-page"] h1 { font-family: "Montserrat Variable", Arial, sans-serif; font-size: 42px; text-transform: none; }
 [data-testid="staff-login-page"] { background: #171717; }
 [data-testid="staff-login-page"] > div { border-top: 2px solid #e62429; }
 [data-testid="admin-dashboard"] table tbody tr:hover { background: #ffffff03; }
 [data-testid="admin-dashboard"] [role="tab"][data-state="active"] { background: #e62429; color: #fff; }
 [data-testid="admin-dashboard"] [role="tablist"] { border: 1px solid #363432; }
 [data-testid="admin-dashboard"] .admin-intro { margin: 0 auto; max-width: 1500px; padding: 36px 24px 0; }
-[data-testid="admin-dashboard"] .admin-intro h1 { font-family: "Playfair Display", Georgia, serif; font-size: 36px; letter-spacing: -0.03em; }
+[data-testid="admin-dashboard"] .admin-intro h1 { font-family: "Montserrat Variable", Arial, sans-serif; font-size: 36px; letter-spacing: -0.03em; }
 [data-testid="kitchen-page"] { font-variant-numeric: tabular-nums; }
 
 @media (max-width: 1023px) {
