@@ -112,9 +112,9 @@ export function CartPage() {
           </button>
           {config?.mode==='test'&&<p className="premium-checkout-test">Тестова версия: картите не се таксуват реално.</p>}
           {config&&!config.enabled&&<p className="premium-checkout-test">{config.configured && !config.databaseReady
-            ? 'Няма връзка с тестовата база за поръчки. Провери PAYMENT_DATABASE_URL и таблицата payment_orders в Neon stripe-test.'
+            ? 'Онлайн поръчките временно не са достъпни. Моля, опитайте по-късно.'
             : !config.webhookConfigured && config.configured
-            ? 'Необходимо е да настроим STRIPE_WEBHOOK_SECRET за Preview.'
+            ? 'Потвърждаването на плащанията още се настройва.'
             : 'Необходимо е да свържем тестовия Stripe акаунт и базата за поръчки.'}</p>}
           {error&&<p role="alert" className="premium-checkout-error">{error}</p>}
           <p className="premium-checkout-security"><ShieldCheck size={14}/> Данните на картата се въвеждат само в защитената страница на Stripe.</p>

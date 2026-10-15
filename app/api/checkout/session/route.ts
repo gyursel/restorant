@@ -32,7 +32,7 @@ export async function POST(request:Request) {
     } catch(error) {
       // Runtime logs may contain connection details; record only the error class.
       console.error('Payment order insert failed:',error instanceof Error ? error.name : 'unknown');
-      throw new HttpError(503,'Няма връзка с тестовата база за поръчки. Провери PAYMENT_DATABASE_URL и payment_orders в Neon.');
+      throw new HttpError(503,'Системата за поръчки е временно недостъпна. Опитай отново по-късно.');
     }
 
     try {
@@ -62,7 +62,8 @@ export async function POST(request:Request) {
     } catch(error) {
       await sql`UPDATE payment_orders SET status='failed',updated_at=NOW()
         WHERE id=${id}::uuid AND status='pending'`.catch(()=>{});
-      console.error('Checkout session creation failed:',error instanceof Error ? error.message : 'unknown');
+      // Stripe and database error messages may contain customer or integration data.
+      console.error('Checkout session creation failed:',error instanceof Error ? error.name : 'unknown');
       throw new HttpError(502,'Не успяхме да отворим плащането. Опитай отново.');
     }
   } catch(error) { return failure(error); }

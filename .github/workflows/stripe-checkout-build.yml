@@ -1,10 +1,11 @@
-name: Stripe checkout build check
+name: APEX DRIVE build and site audit
 
 on:
   push:
     branches:
       - feature/stripe-checkout-test
       - feature/official-orders-admin-v1
+      - optimize/site-audit-2026-10
   workflow_dispatch:
 
 permissions:
@@ -23,3 +24,5 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build Next.js
         run: npm run build
+      - name: Verify required pages and security guards
+        run: npm run check:files
