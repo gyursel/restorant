@@ -1,0 +1,98 @@
+/* APEX DRIVE / Checkout — always scoped to the public storefront. */
+.site-experience .premium-mobile-dock {grid-template-columns:repeat(5,minmax(0,1fr));}
+.site-experience .premium-dock-icon{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.site-experience .premium-dock-icon b{position:absolute;min-width:16px;height:16px;right:-12px;top:-9px;padding:0 4px;display:grid;place-items:center;border-radius:999px;background:#ff7757;color:#1d0c09;font-size:10px;line-height:1}
+.site-experience .premium-cart-page,.site-experience .premium-order-status{min-height:75dvh;background:radial-gradient(ellipse at 90% 5%,rgba(179,65,38,.13),transparent 47%),#0e0c0c}
+.site-experience .premium-cart-container{max-width:1280px;margin:auto;padding:138px clamp(16px,4vw,50px) 90px}
+.site-experience .premium-back-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;color:#eab79f;min-height:44px}
+.site-experience .premium-back-link:hover{color:#fff2e8}
+.site-experience .premium-cart-heading{margin:23px 0 43px;max-width:640px}
+.site-experience .premium-cart-heading h1,.site-experience .premium-order-status-card h1{font:500 clamp(42px,5.6vw,74px)/1.12 "Playfair Display",Georgia,serif;letter-spacing:-.056em;color:#fff2e7;margin:15px 0}
+.site-experience .premium-cart-heading h1 em{font-style:italic;color:#ff9275}
+.site-experience .premium-cart-heading >p:last-child,.site-experience .premium-order-status-card>p{line-height:1.75;font-size:15px;color:#b5a6a0}
+.site-experience .premium-cart-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(350px,.9fr);align-items:start;gap:clamp(22px,4vw,58px)}
+.site-experience .premium-cart-list,.site-experience .premium-checkout-form{min-width:0;padding:clamp(18px,2.4vw,32px);background:linear-gradient(145deg,#201a18,#171313);border:1px solid rgba(255,219,198,.13);border-radius:24px}
+.site-experience .premium-cart-section-title{display:flex;align-items:center;gap:10px;color:#ff9175;margin-bottom:22px}
+.site-experience .premium-cart-section-title h2{font:700 20px/1.25 "Manrope",sans-serif;color:#fff2e7;letter-spacing:-.03em}
+.site-experience .premium-cart-section-title>span{margin-left:auto;color:#ab9b93;font-size:12px}
+.site-experience .premium-cart-product{display:flex;align-items:flex-start;gap:17px;padding:20px 0;border-top:1px solid rgba(255,255,255,.09)}
+.site-experience .premium-cart-product>img{height:94px;width:94px;flex-shrink:0;object-fit:cover;border-radius:15px;background:#34231f}
+.site-experience .premium-cart-product-info{flex:1;min-width:0}
+.site-experience .premium-cart-product-name{display:block;font-weight:800;font-size:15px;line-height:1.4;color:#fbe9db}
+.site-experience .premium-cart-product-info>p{font-size:12px;color:#aa9990;margin-top:5px}
+.site-experience .premium-cart-quantity{display:flex;align-items:center;gap:5px;margin-top:12px;width:max-content;border-radius:13px;background:#2c211f;border:1px solid rgba(255,255,255,.1)}
+.site-experience .premium-cart-quantity button{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;color:#f8d9c5}
+.site-experience .premium-cart-quantity button:hover{background:#42302b}
+.site-experience .premium-cart-quantity span{min-width:19px;text-align:center;color:#f9eee4;font-weight:800}
+.site-experience .premium-cart-product-end{display:flex;align-items:flex-end;flex-direction:column;gap:14px}
+.site-experience .premium-cart-product-end strong{font-size:16px;white-space:nowrap;color:#fff2e5}
+.site-experience .premium-cart-product-end button{display:grid;place-items:center;min-height:43px;min-width:43px;color:#e49f89}
+.site-experience .premium-cart-product-end button:hover{color:#ff6046}
+.site-experience .premium-checkout-form{position:relative}
+.site-experience .premium-checkout-field{margin:18px 0;display:flex;flex-direction:column;gap:9px}
+.site-experience .premium-checkout-field label{font-size:12px;font-weight:800;color:#f2d1bc}
+.site-experience .premium-checkout-field input,.site-experience .premium-checkout-field textarea{width:100%;background:#120f0e;border:1px solid rgba(255,219,198,.2);border-radius:12px;min-height:49px;padding:12px 15px;color:#fff1e7;font-size:16px;line-height:1.5;outline:none}
+.site-experience .premium-checkout-field textarea{min-height:85px;resize:vertical}
+.site-experience .premium-checkout-field input:focus,.site-experience .premium-checkout-field textarea:focus{border-color:#ff926e;box-shadow:0 0 0 2px rgba(255,146,110,.12)}
+.site-experience .premium-checkout-field input::placeholder,.site-experience .premium-checkout-field textarea::placeholder{color:#776e68}
+.site-experience .premium-pickup-box{display:flex;align-items:center;gap:12px;padding:16px;border-radius:15px;background:rgba(248,126,89,.08);border:1px solid rgba(255,165,130,.2);color:#f4bc9d}
+.site-experience .premium-pickup-box svg{flex-shrink:0}
+.site-experience .premium-pickup-box span{display:flex;flex-direction:column;gap:4px}
+.site-experience .premium-pickup-box strong{color:#f9d9c7;font-size:13px}
+.site-experience .premium-pickup-box small{font-size:12px;color:#b9a49c}
+.site-experience .premium-cart-totals{margin:23px 0 20px;padding:20px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);display:grid;gap:15px}
+.site-experience .premium-cart-totals>div{display:flex;justify-content:space-between;gap:15px;color:#baa9a1;font-size:13px}
+.site-experience .premium-cart-totals>div span:last-child{text-align:right}
+.site-experience .premium-cart-totals .premium-total{align-items:center;color:#fbeade;font-size:20px;padding-top:15px;border-top:1px solid rgba(255,255,255,.1)}
+.site-experience .premium-total strong:last-child{white-space:nowrap;color:#ff9674;font-size:25px}
+.site-experience .premium-pay-button{display:flex;width:100%;min-height:57px;align-items:center;justify-content:center;gap:10px;padding:14px 15px;background:#f15a43;color:#220d08;border-radius:15px;font-size:13px;font-weight:800;text-align:center;line-height:1.4}
+.site-experience .premium-pay-button:not(:disabled):hover{background:#ff8166}
+.site-experience .premium-pay-button:disabled{opacity:.58;cursor:not-allowed}
+.site-experience .premium-checkout-security{display:flex;align-items:flex-start;gap:6px;margin:16px 0 0;font-size:11px;line-height:1.6;color:#ac9b93}
+.site-experience .premium-checkout-security svg{flex-shrink:0;margin-top:1px;color:#f1a382}
+.site-experience .premium-checkout-test{font-size:12px;line-height:1.6;color:#e8ac91;margin-top:14px}
+.site-experience .premium-checkout-error{padding:14px;margin-top:14px;border:1px solid rgba(255,125,125,.35);background:rgba(161,37,26,.15);border-radius:12px;color:#ffc5b8;font-size:13px;line-height:1.6}
+.site-experience .premium-payment-message{padding:14px 18px;margin:12px 0 22px;color:#f0c8ac;font-size:13px;border-radius:13px;background:#2e231e;border:1px solid rgba(255,187,142,.23)}
+.site-experience .premium-cart-empty{min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;border:1px dashed rgba(255,207,175,.27);border-radius:25px;color:#dd9779;text-align:center;padding:40px 20px}
+.site-experience .premium-cart-empty h2{font:500 32px/1.2 "Playfair Display",serif;color:#f9e9df}
+.site-experience .premium-cart-empty p{font-size:14px;color:#b4a49a}
+.site-experience .premium-cart-empty .btn-primary{margin-top:9px}
+.site-experience .premium-order-status{display:grid;place-items:center;padding:138px 20px 120px}
+.site-experience .premium-order-status-card{max-width:560px;width:100%;padding:clamp(26px,5vw,55px);background:linear-gradient(155deg,#241b18,#151111);border:1px solid rgba(255,208,173,.18);border-radius:25px;text-align:center}
+.site-experience .premium-order-state-icon{color:#f6aa83;display:block;margin:0 auto 20px}
+.site-experience .premium-order-state-icon.is-paid{color:#9cddb2}
+.site-experience .premium-order-status-card h1{font-size:clamp(30px,5vw,48px)}
+.site-experience .premium-order-status-card>.eyebrow{color:#f7b296;font-size:10px}
+.site-experience .premium-order-receipt{padding:21px 0;margin-top:23px;border-block:1px solid rgba(255,255,255,.12);display:grid;gap:12px;text-align:left}
+.site-experience .premium-order-receipt>div{display:flex;justify-content:space-between;gap:15px;font-size:13px}
+.site-experience .premium-order-receipt span{color:#ae9e95}
+.site-experience .premium-order-receipt strong{color:#f9ecdf}
+.site-experience .premium-order-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+@media(max-width:920px){
+ .site-experience .premium-cart-layout{grid-template-columns:1fr;gap:24px}
+ .site-experience .premium-cart-container{padding-top:110px}
+ .site-experience .premium-checkout-form{max-width:none}
+}
+@media(max-width:767px){
+ .site-experience .premium-mobile-dock{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .site-experience .premium-dock-item{font-size:9px}
+ .site-experience .premium-cart-container{padding:94px 13px calc(50px + env(safe-area-inset-bottom))}
+ .site-experience .premium-cart-heading{margin:17px 4px 25px}
+ .site-experience .premium-cart-heading h1{font-size:clamp(38px,9vw,53px)}
+ .site-experience .premium-cart-heading>p:last-child{font-size:13px}
+ .site-experience .premium-cart-list,.site-experience .premium-checkout-form{border-radius:19px;padding:17px 15px}
+ .site-experience .premium-cart-product{gap:10px}
+ .site-experience .premium-cart-product>img{width:74px;height:77px;border-radius:12px}
+ .site-experience .premium-cart-product-name{font-size:13px}
+ .site-experience .premium-cart-product-end strong{font-size:13px}
+ .site-experience .premium-cart-quantity{margin-top:9px}
+ .site-experience .premium-cart-quantity button{width:38px;height:38px}
+ .site-experience .premium-cart-section-title h2{font-size:18px}
+ .site-experience .premium-order-status{padding:108px 15px 88px}
+ .site-experience .premium-order-status-card{padding:28px 21px}
+}
+@media(max-width:360px){
+ .site-experience .premium-cart-product>img{width:57px;height:68px}
+ .site-experience .premium-cart-product-end strong{font-size:12px}
+ .site-experience .premium-dock-item{gap:2px;font-size:8px}
+}
