@@ -19,9 +19,12 @@ export const buttonSchema=z.object({
 export type ButtonConfig=z.infer<typeof buttonSchema>;
 export const defaultButton=buttonSchema.parse({});
 const color=z.string().regex(/^#[0-9a-fA-F]{6}$/);
+export const fontOptions=[["onest","Onest Variable"],["manrope","Manrope"],["playfair","Playfair Display"],["montserrat","Montserrat Variable"],["inter","Inter"],["roboto","Roboto"],["oswald","Oswald"],["raleway","Raleway"],["poppins","Poppins"],["lato","Lato"],["nunito","Nunito"],["ubuntu","Ubuntu"],["rubik","Rubik"],["outfit","Outfit"],["barlow","Barlow"],["archivo","Archivo"],["exo2","Exo 2"],["spacegrotesk","Space Grotesk"],["rajdhani","Rajdhani"],["teko","Teko"],["orbitron","Orbitron"],["bebas","Bebas Neue"]] as const;
+const fontIds=["onest","manrope","playfair","montserrat","inter","roboto","oswald","raleway","poppins","lato","nunito","ubuntu","rubik","outfit","barlow","archivo","exo2","spacegrotesk","rajdhani","teko","orbitron","bebas"] as [string,...string[]];
 export const appearanceSchema=z.object({
   background:color.default('#0d0d0d'),surface:color.default('#191918'),text:color.default('#f5f0e8'),muted:color.default('#b3aba2'),accent:color.default('#d18a4b'),
-  bodyFont:z.enum(['onest','manrope']).default('onest'),headingFont:z.enum(['playfair','montserrat']).default('playfair'),
+  bodyFont:z.enum(fontIds).default('onest'),headingFont:z.enum(fontIds).default('playfair'),
+  gradientEnabled:z.boolean().default(false),gradientStart:color.default('#0d0d0d'),gradientEnd:color.default('#34201a'),gradientAngle:z.number().int().min(0).max(360).default(135),
   radius:z.number().min(0).max(32).default(4),spacing:z.number().min(48).max(160).default(96),
   shadow:z.number().min(0).max(40).default(12),motion:z.enum(['full','reduced']).default('full'),
   cardStyle:z.enum(['bordered','minimal']).default('bordered'),buttonStyle:z.enum(['solid','outline']).default('solid'),
@@ -34,5 +37,6 @@ export function buttonStyle(config:ButtonConfig):Record<string,string>{
 }
 export function appearanceStyle(raw:unknown):Record<string,string>{
   const a=appearanceSchema.safeParse(raw||{});const v=a.success?a.data:defaultAppearance;
-  return {'--apx-bg':v.background,'--apx-card':v.surface,'--apx-warm':v.text,'--apx-muted':v.muted,'--apx-red':v.accent,'--apx-accent':v.accent,'--apx-radius':`${v.radius}px`,'--apx-spacing':`${v.spacing}px`,'--apx-shadow':`${v.shadow}px`,'--apx-body':v.bodyFont==='manrope'?'Manrope, sans-serif':'"Onest Variable", sans-serif','--apx-heading':v.headingFont==='playfair'?'"Playfair Display", Georgia, serif':'"Montserrat Variable", sans-serif'};
+  const font=(id:string)=>{const found=fontOptions.find(x=>x[0]===id);return found?'"'+found[1]+'", sans-serif':'sans-serif'};
+  return {'--apx-page-background':v.gradientEnabled?`linear-gradient(${v.gradientAngle}deg, ${v.gradientStart}, ${v.gradientEnd})`:v.background,'--apx-bg':v.background,'--apx-card':v.surface,'--apx-warm':v.text,'--apx-muted':v.muted,'--apx-red':v.accent,'--apx-accent':v.accent,'--apx-radius':`${v.radius}px`,'--apx-spacing':`${v.spacing}px`,'--apx-shadow':`${v.shadow}px`,'--apx-body':font(v.bodyFont),'--apx-heading':font(v.headingFont)};
 }
