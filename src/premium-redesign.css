@@ -37,3 +37,21 @@
 .site-experience .site-header:has(+ *){background:transparent}
 .site-experience .hero-video-tint{background:linear-gradient(90deg,rgba(9,9,10,.88),rgba(9,9,10,.45) 58%,rgba(9,9,10,.18)),linear-gradient(0deg,var(--apx-bg),transparent 30%)}
 @media(min-width:768px) and (max-width:1023px){.site-experience .hero-main{padding-top:154px}}
+
+/* Unified warm charcoal, sampled from the cart visual palette and lifted slightly.
+   Keep CMS photographic/video backgrounds, cards and buttons intact. */
+.site-experience{
+ --apx-unified-bg:color-mix(in srgb,var(--apx-bg) 56%,#3b2b26);
+ background:var(--apx-unified-bg);
+}
+.site-experience main{background:var(--apx-unified-bg)}
+.site-experience .home-section-wrap:not([style*="background-image"]){background-color:var(--apx-unified-bg)!important}
+.site-experience .home-section-wrap>section:not(.hero-section){background-color:transparent}
+.site-experience .hero-section,.site-experience .hero-frame{background:transparent!important}
+.site-experience .hero-featured-shell{background:var(--apx-unified-bg)}
+.site-experience .premium-cart-page,.site-experience .premium-order-status{background:var(--apx-unified-bg)}
+.site-experience footer{background:var(--apx-unified-bg)}
+.site-experience .premium-mobile-menu{background:var(--apx-unified-bg)}
+@media(max-width:767px){
+ .site-experience .premium-mobile-dock{background:color-mix(in srgb,var(--apx-unified-bg) 96%,#000)!important}
+}
