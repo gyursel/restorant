@@ -1,3 +1,5 @@
+import {CmsImage} from '@/components/site/CmsImage';
+import {ConfigurableButton} from "@/components/site/ConfigurableButton";
 import {CmsText} from "@/content/CmsText";
 import { copy } from "@/content/repository";
 import { Link } from "react-router-dom";
@@ -31,7 +33,7 @@ const PromoCard = ({
   promo,
   large
 }) => <article data-testid={`promo-card-${promo.id}`} className={`group relative overflow-hidden rounded-3xl border border-white/10 metal-edge ${large ? "min-h-[420px]" : "min-h-[198px]"}`}>
-    <img src={mediaSrc(promo.image)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+    <CmsImage src={mediaSrc(promo.image)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
     <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/70 to-[#171717]/10" />
     <div className="relative flex h-full flex-col justify-end p-6 sm:p-8" style={{
     minHeight: "inherit"
@@ -84,7 +86,7 @@ export const KioskTeaser = () => {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
       <Reveal className="relative order-2 lg:order-1">
         <div className="relative mx-auto max-w-md aspect-[3/4] overflow-hidden rounded-3xl border border-white/10 metal-edge">
-          {settings?.media?.kiosk_image && <img src={mediaSrc(settings.media.kiosk_image)} alt={copy["Sections_jsx_16"]} loading="lazy" className="h-full w-full object-cover grayscale" data-testid="kiosk-teaser-image" />}
+          {settings?.media?.kiosk_image && <CmsImage src={mediaSrc(settings.media.kiosk_image)} alt={copy["Sections_jsx_16"]} loading="lazy" className="h-full w-full object-cover grayscale" data-testid="kiosk-teaser-image" />}
           <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 to-transparent" />
         </div>
       </Reveal>
@@ -92,7 +94,7 @@ export const KioskTeaser = () => {
         <SectionHeading eyebrow={copy["Sections_jsx_17"]} title={copy["Sections_jsx_18"]} text={copy["Sections_jsx_19"]} />
         <Reveal delay={0.15} className="mt-8 flex items-center gap-6">
           <KioskOrb state="listening" size={110} />
-          <Link to={copy["Sections_jsx_20"]} className="btn-primary" data-testid="kiosk-teaser-cta"><CmsText field="Sections_jsx_21"/><ArrowRight className="h-4 w-4" /></Link>
+          <ConfigurableButton slot="assistant-cta" to={copy["Sections_jsx_20"]} className="btn-primary" data-testid="kiosk-teaser-cta"><CmsText field="Sections_jsx_21"/><ArrowRight className="h-4 w-4" /></ConfigurableButton>
         </Reveal>
         <p className="mt-6 text-xs text-slate-500"><CmsText field="Sections_jsx_22"/></p>
       </div>

@@ -1,3 +1,4 @@
+import {ConfigurableButton} from "@/components/site/ConfigurableButton";
 import {CmsText} from "@/content/CmsText";
 import { getContent, copy } from "@/content/repository";
 import { useEffect, useRef, useState } from "react";
@@ -42,10 +43,19 @@ export const Header = () => {
         mobileToggle.current?.focus({ preventScroll: true });
       }
     };
+    const trap = e => {
+      if(e.key !== 'Tab') return;
+      const controls = [...document.querySelectorAll('#premium-mobile-navigation a, .premium-mobile-toggle')].filter(el=>el.getClientRects().length);
+      const first=controls[0],last=controls[controls.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}
+      if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}
+    };
+    window.addEventListener('keydown',trap);
     window.addEventListener("keydown", close);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", close);
+      window.removeEventListener("keydown",trap);
     };
   }, [mobile]);
   const solid = scrolled || pathname !== "/" || mobile;
@@ -58,12 +68,12 @@ export const Header = () => {
             </Link>)}
         </nav>
         <div className="flex items-center gap-2">
-          <Link to={copy["Header_jsx_9"]} data-testid="header-kiosk-link" className="btn-primary !min-h-11 !px-5 !text-xs hidden md:inline-flex"><CmsText field="Header_jsx_10"/><span className="h-1.5 w-1.5 rounded-full bg-white" />
-          </Link>
-          <button onClick={() => setOpen(true)} data-testid="header-cart-button" aria-label={`Количка, ${count} продукта`} className="relative grid h-11 w-11 place-items-center rounded-full glass hover:border-[#f05255]/60 transition-colors">
+          <ConfigurableButton slot="header-assist" to={copy["Header_jsx_9"]} data-testid="header-kiosk-link" className="btn-primary !min-h-11 !px-5 !text-xs hidden md:inline-flex"><CmsText field="Header_jsx_10"/><span className="h-1.5 w-1.5 rounded-full bg-white" />
+          </ConfigurableButton>
+          <ConfigurableButton slot="header-cart" onClick={() => setOpen(true)} data-testid="header-cart-button" aria-label={`Количка, ${count} продукта`} className="relative grid h-11 w-11 place-items-center rounded-full glass hover:border-[#f05255]/60 transition-colors">
             <ShoppingBag className="h-5 w-5" />
             {count > 0 && <span data-testid="header-cart-count" className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[#e62429] px-1 text-[10px] font-bold text-white">{count}</span>}
-          </button>
+          </ConfigurableButton>
           <button ref={mobileToggle} type="button" onClick={() => setMobile(v => !v)} data-testid="mobile-menu-toggle" aria-label={mobile ? "Затвори навигацията" : copy["Header_jsx_11"]} aria-expanded={mobile} aria-controls="premium-mobile-navigation" className="premium-mobile-toggle lg:hidden grid h-11 w-11 place-items-center rounded-full glass">
             {mobile ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>

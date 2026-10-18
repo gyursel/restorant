@@ -1,5 +1,6 @@
+import {useSectionConfig} from '@/content/SectionConfig';
 import {CmsText} from "@/content/CmsText";
-import { copy } from "@/content/repository";
+import { copy, getContent } from "@/content/repository";
 import { motion, useReducedMotion } from "framer-motion";
 export const Reveal = ({
   children,
@@ -7,7 +8,8 @@ export const Reveal = ({
   className = "",
   y = 24
 }) => {
-  const reduce = useReducedMotion();
+  const userReducedMotion = useReducedMotion();
+  const reduce = userReducedMotion || getContent()?.appearance?.motion === "reduced";
   const compact = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
   if (reduce || compact) return <div className={className}>{children}</div>;
   return <motion.div className={className} initial={reduce ? false : {
@@ -33,14 +35,14 @@ export const SectionHeading = ({
   text,
   id,
   pageTitle = false
-}) => <Reveal className="max-w-2xl">
+}) => {const section=useSectionConfig();title=section.title||title;text=section.description||text;return <Reveal className="max-w-2xl">
     <p className="eyebrow mb-4">{eyebrow}</p>
-    {pageTitle ? <h1 id={id} className="font-editorial text-4xl sm:text-5xl lg:text-6xl leading-tight" data-testid="menu-page-title">{title}</h1> : <h2 id={id} className="text-base md:text-lg font-medium text-[#f6f3ee] leading-tight">{title}</h2>}
+    {pageTitle ? <h1 id={id} className="font-editorial text-4xl sm:text-5xl lg:text-6xl leading-tight" data-testid="menu-page-title">{title}</h1> : <h2 id={id} className="section-title">{title}</h2>}
     {text && <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">{text}</p>}
-  </Reveal>;
+  </Reveal>};
 export const Logo = ({
   small = false
-}) => <span className={`brand-wordmark ${small ? "brand-wordmark-small" : ""}`}>
+}) => getContent()?.settings?.media?.logo_image?<img className="cms-brand-logo" src={getContent().settings.media.logo_image} alt={getContent().settings.restaurant_name||"APEX DRIVE BULGARIA"}/>:<span className={`brand-wordmark ${small ? "brand-wordmark-small" : ""}`}>
     <span><CmsText field="Primitives_jsx_1"/><span className="text-[#f05255]"><CmsText field="Primitives_jsx_2"/></span><span className="brand-period"><CmsText field="Primitives_jsx_3"/></span></span>
     <span className="brand-tagline"><CmsText field="Primitives_jsx_4"/></span>
   </span>;

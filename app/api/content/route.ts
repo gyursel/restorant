@@ -9,7 +9,7 @@ const productionContentUrl = 'https://apex-drive-bulgaria.vercel.app/api/content
 
 export async function GET() {
   try {
-    if (process.env.VERCEL_ENV === 'preview') {
+    if (process.env.VERCEL_ENV === 'preview' && process.env.CMS_ISOLATED_PREVIEW !== 'true') {
       const response = await fetch(productionContentUrl, {
         cache: 'no-store',
         headers: { Accept: 'application/json' },

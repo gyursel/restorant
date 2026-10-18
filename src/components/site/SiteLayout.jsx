@@ -1,3 +1,4 @@
+import {appearanceStyle} from "@/cms/design";
 import {CmsText} from "@/content/CmsText";
 import { copy, getContent } from "@/content/repository";
 import { useEffect } from "react";
@@ -40,7 +41,7 @@ export default function SiteLayout() {
     window.scrollTo(0, 0);
     return undefined;
   }, [pathname, hash]);
-  return <CartProvider><div className="site-experience min-h-screen bg-[#171717] text-[#f6f3ee]">
+  return <CartProvider><div style={appearanceStyle(getContent()?.appearance)} data-motion={getContent()?.appearance?.motion} data-card-style={getContent()?.appearance?.cardStyle} data-button-style={getContent()?.appearance?.buttonStyle} className="site-experience min-h-screen bg-[#171717] text-[#f6f3ee]">
       <a href={copy["SiteLayout_jsx_1"]} data-testid="skip-to-content-link" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-black"><CmsText field="SiteLayout_jsx_2"/></a>
       <Header />
       <main id="main">

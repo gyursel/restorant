@@ -10,7 +10,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check:files": "node scripts/check-files.mjs"
+    "check:files": "node scripts/check-files.mjs",
+    "test:cms": "node scripts/test-visual-cms.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fontsource-variable/montserrat": "^5.3.0",
