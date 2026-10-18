@@ -475,3 +475,24 @@
  .site-experience .hero-main{padding-top:calc(86px + env(safe-area-inset-top))!important}
  .site-experience .hero-copy h1,.site-experience .hero-copy h1.font-editorial{font-size:clamp(29px,8vw,34px)!important}
 }
+
+/* Compact Bulgarian mobile typography tuned to the user's screenshot. */
+@media(max-width:767px){
+ .site-experience .hero-main{padding-top:calc(85px + env(safe-area-inset-top))!important;padding-bottom:12px!important}
+ .site-experience .hero-copy .eyebrow{font-size:clamp(8px,2.2vw,10px)!important;letter-spacing:.055em!important;line-height:1.4!important}
+ .site-experience .hero-copy .eyebrow .h-px{width:22px!important;flex-shrink:0}
+ .site-experience .hero-copy h1,.site-experience .hero-copy h1.font-editorial{font-size:clamp(28px,7.3vw,38px)!important;line-height:1.1!important;letter-spacing:-.02em!important;margin-top:11px!important}
+ .site-experience .hero-copy>p:not(.eyebrow){font-size:clamp(12px,3vw,14px)!important;line-height:1.53!important;margin-top:12px!important;max-width:40ch}
+ .site-experience .hero-copy>div:has(>.btn-primary){margin-top:17px!important;gap:8px!important}
+ .site-experience .hero-copy .btn-primary,.site-experience .hero-copy .btn-cream{font-size:clamp(10px,2.65vw,12px)!important;min-height:46px!important;padding:10px 6px!important;letter-spacing:0!important}
+ .site-experience .hero-benefits{margin-top:17px!important;padding-top:8px!important;gap:8px!important}
+ .site-experience .hero-benefits>span{font-size:clamp(9px,2.35vw,11px)!important;line-height:1.45!important}
+ .site-experience .hero-caption{font-size:clamp(7px,1.95vw,9px)!important;letter-spacing:.08em!important}
+ .site-experience .hero-favorites h2{font-size:clamp(20px,5.5vw,27px)!important;line-height:1.16!important}
+ .site-experience .hero-favorites>div:first-child{gap:10px!important;align-items:center}
+ .site-experience .hero-favorites>div:first-child a{font-size:10px!important;white-space:nowrap}
+}
+@media(max-width:380px){
+ .site-experience .hero-main{padding-top:calc(80px + env(safe-area-inset-top))!important}
+ .site-experience .hero-copy h1,.site-experience .hero-copy h1.font-editorial{font-size:clamp(27px,7.2vw,31px)!important}
+}
