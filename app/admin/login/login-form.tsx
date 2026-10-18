@@ -1,21 +1,35 @@
 'use client';
 import {useState} from 'react';
-import '../panel.css';
+import {ArrowRight,Eye,EyeOff,LockKeyhole,Mail,ShieldCheck} from 'lucide-react';
+import './login-luxury.css';
 export default function LoginForm(){
- const [email,setEmail]=useState(''),[password,setPassword]=useState(''),[pending,setPending]=useState(false),[error,setError]=useState('');
+ const [email,setEmail]=useState(''),[password,setPassword]=useState(''),[show,setShow]=useState(false),[pending,setPending]=useState(false),[error,setError]=useState('');
  async function submit(e:React.FormEvent){e.preventDefault();setPending(true);setError('');try{
   const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
   const data=await r.json();if(!r.ok)throw new Error(data.error||'Неуспешен вход.');
   location.assign('/admin');
  }catch(e:any){setError(e.message)}finally{setPending(false)}}
- return <main className="cms-loading" style={{minHeight:'100vh',display:'grid',placeItems:'center',background:'#101113'}}>
-  <form onSubmit={submit} style={{width:'min(92vw,430px)',background:'#1c1e20',padding:35,border:'1px solid #343638',borderRadius:18,display:'grid',gap:16}}>
-  <a href="/" style={{color:'#fff',fontWeight:800,textDecoration:'none'}}>APEX <span style={{color:'#f44736'}}>DRIVE</span></a>
-  <h1 style={{color:'#fff',fontSize:24,margin:0}}>Административен вход</h1>
-  <label style={{display:'grid',gap:7,color:'#fff'}}>Имейл<input required type="email" autoComplete="username" value={email} onChange={e=>setEmail(e.target.value)} style={{padding:12,borderRadius:8,color:'#111'}}/></label>
-  <label style={{display:'grid',gap:7,color:'#fff'}}>Парола<input required type="password" autoComplete="current-password" value={password} onChange={e=>setPassword(e.target.value)} style={{padding:12,borderRadius:8,color:'#111'}}/></label>
-  {error&&<p role="alert" style={{color:'#ff8d86',fontSize:14}}>{error}</p>}
-  <button disabled={pending} className="cms-btn primary" style={{justifyContent:'center',padding:14}} type="submit">{pending?'Проверка…':'Влез в панела'}</button>
-  <a href="/" style={{color:'#aaa',textAlign:'center'}}>Към сайта</a>
-  </form></main>;
+ return <main className="lux-login">
+  <aside className="lux-scene">
+   <a href="/" className="lux-brand"><span className="lux-mark">◇</span><span>APEX <em>DRIVE</em></span></a>
+   <div className="lux-welcome"><h2>Welcome<br/>Back</h2><p>Радваме се да те видим отново.<br/>Твоят ресторант те очаква.</p></div>
+   <span className="lux-copyright">© {new Date().getFullYear()} APEX DRIVE. All rights reserved.</span>
+  </aside>
+  <section className="lux-main">
+   <form className="lux-card" onSubmit={submit}>
+    <div className="lux-emblem" aria-hidden="true">◇</div>
+    <h1>Login</h1><p className="lux-subtitle">Login to your account to continue</p>
+    <div className="lux-fields">
+     <label htmlFor="lux-email">Email Address</label>
+     <div className="lux-input"><Mail size={19}/><input id="lux-email" type="email" required autoComplete="username" placeholder="you@example.com" value={email} onChange={e=>setEmail(e.target.value)}/></div>
+     <label htmlFor="lux-password">Password</label>
+     <div className="lux-input"><LockKeyhole size={19}/><input id="lux-password" type={show?'text':'password'} required autoComplete="current-password" placeholder="••••••••" value={password} onChange={e=>setPassword(e.target.value)}/><button className="lux-eye" type="button" onClick={()=>setShow(v=>!v)} aria-label={show?'Скрий паролата':'Покажи паролата'}>{show?<EyeOff size={19}/>:<Eye size={19}/>}</button></div>
+    </div>
+    {error&&<p className="lux-error" role="alert">{error}</p>}
+    <button className="lux-submit" disabled={pending} type="submit"><span>{pending?'Проверка…':'Login'}</span><ArrowRight size={21}/></button>
+    <a className="lux-return" href="/">← Към сайта</a>
+   </form>
+   <p className="lux-security"><ShieldCheck size={16}/> Your data is secure with us</p>
+  </section>
+ </main>;
 }
