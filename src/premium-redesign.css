@@ -55,3 +55,24 @@
 @media(max-width:767px){
  .site-experience .premium-mobile-dock{background:color-mix(in srgb,var(--apx-unified-bg) 96%,#000)!important}
 }
+
+/* CMS-selected full desktop background. Other modes stay unchanged. */
+@media(min-width:768px){
+ .site-experience[style*="--apx-desktop-image: url("]{
+   background-image:linear-gradient(rgba(10,8,8,.22),rgba(10,8,8,.22)),var(--apx-desktop-image)!important;
+   background-position:center center!important;
+   background-size:cover!important;
+   background-repeat:no-repeat!important;
+   background-attachment:fixed!important;
+ }
+ .site-experience[style*="--apx-desktop-image: url("] main,
+ .site-experience[style*="--apx-desktop-image: url("] .home-section-wrap:not([style*="background-image"]),
+ .site-experience[style*="--apx-desktop-image: url("] .home-section-wrap>section:not(.hero-section),
+ .site-experience[style*="--apx-desktop-image: url("] .hero-featured-shell,
+ .site-experience[style*="--apx-desktop-image: url("] footer,
+ .site-experience[style*="--apx-desktop-image: url("] .premium-cart-page,
+ .site-experience[style*="--apx-desktop-image: url("] .premium-order-status{
+   background:transparent!important;
+   background-color:transparent!important;
+ }
+}
