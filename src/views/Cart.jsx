@@ -1,3 +1,5 @@
+import {CmsImage} from '@/components/site/CmsImage';
+import {ConfigurableButton} from "@/components/site/ConfigurableButton";
 import {useEffect,useState} from 'react';
 import {Link,useLocation} from 'react-router-dom';
 import {ArrowLeft,ArrowRight,CheckCircle2,Minus,Plus,ShieldCheck,ShoppingBag,Trash2,Truck} from 'lucide-react';
@@ -63,7 +65,7 @@ export function CartPage() {
         <div className="premium-cart-list">
           <div className="premium-cart-section-title"><ShoppingBag size={18}/><h2>Продукти</h2><span>{itemCount} бр.</span></div>
           {items.map(({product,slug,quantity})=><article key={slug} className="premium-cart-product">
-            <img src={mediaSrc(product.image)} alt="" width="120" height="120" loading="lazy" decoding="async" />
+            <CmsImage src={mediaSrc(product.image)} alt="" width="120" height="120" loading="lazy" decoding="async" />
             <div className="premium-cart-product-info">
               <Link to={'/product/'+slug} className="premium-cart-product-name">{product.name}</Link>
               <p>{eur(product.price)} / бр.</p>
@@ -106,10 +108,10 @@ export function CartPage() {
             <div><span>Доставка</span><span>Няма — вземане на място</span></div>
             <div className="premium-total"><strong>Общо за плащане</strong><strong>{eur(total)}</strong></div>
           </div>
-          <button type="submit" className="premium-pay-button" disabled={busy||!config?.enabled}>
+          <ConfigurableButton slot="checkout-submit" type="submit" className="premium-pay-button" disabled={busy||!config?.enabled}>
             <ShieldCheck size={19}/>{busy?'Подготвяме защитеното плащане…':
             config?.enabled?'Плати с карта · '+eur(total):'Онлайн плащанията са в настройка'}<ArrowRight size={17}/>
-          </button>
+          </ConfigurableButton>
           {config?.mode==='test'&&<p className="premium-checkout-test">Тестова версия: картите не се таксуват реално.</p>}
           {config&&!config.enabled&&<p className="premium-checkout-test">{config.configured && !config.databaseReady
             ? 'Онлайн поръчките временно не са достъпни. Моля, опитайте по-късно.'

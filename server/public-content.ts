@@ -6,7 +6,7 @@ import {state} from './cms';
 // Preview must remain read-only and display the official site's published data.
 export const publishedContent=cache(async ():Promise<any|null>=>{
   try{
-    if(process.env.VERCEL_ENV==='preview'){
+    if(process.env.VERCEL_ENV==='preview'&&process.env.CMS_ISOLATED_PREVIEW!=='true'){
       const response=await fetch('https://apex-drive-bulgaria.vercel.app/api/content',{
         cache:'no-store',
         headers:{Accept:'application/json'},

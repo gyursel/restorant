@@ -1,3 +1,4 @@
+import {validateButtonAssets} from './png-assets';
 import { neon } from '@neondatabase/serverless';
 import seed from './seed.json';
 import { validateContent } from './validation';
@@ -41,6 +42,7 @@ export async function state(): Promise<Row> {
 }
 export async function save(content: unknown, version: number, user: string) {
   const parsed = validateContent(content);
+  await validateButtonAssets(parsed.buttons);
   const sql = db();
   await state();
   const rows = await sql`UPDATE cms_state
@@ -53,7 +55,8 @@ export async function publish(version: number, user: string) {
   const sql = db();
   const row = await state();
   if (row.version !== version) throw new HttpError(409, 'Черновата е променена. Презаредете панела.');
-  validateContent(JSON.parse(row.draft));
+  const parsed = validateContent(JSON.parse(row.draft));
+  await validateButtonAssets(parsed.buttons);
   const now = new Date().toISOString();
   // One statement guarantees version update and publication history are atomic.
   const result = await sql`WITH updated AS (

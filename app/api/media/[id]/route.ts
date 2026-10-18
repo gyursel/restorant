@@ -5,7 +5,7 @@ export async function GET(_request:Request,{params}:{params:Promise<{id:string}>
   const {id}=await params;
   if(!/^[0-9a-f-]{36}$/.test(id))throw new HttpError(404,'Няма такъв файл.');
   // Preview displays public CMS media from Production, including newly uploaded images.
-  if(process.env.VERCEL_ENV==='preview'){
+  if(process.env.VERCEL_ENV==='preview'&&process.env.CMS_ISOLATED_PREVIEW!=='true'){
    return new Response(null,{status:307,headers:{Location:`https://apex-drive-bulgaria.vercel.app/api/media/${id}`,'Cache-Control':'no-store'}});
   }
   const sql=db();const rows=await sql`SELECT url FROM cms_media WHERE id=${id}`;

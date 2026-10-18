@@ -1,3 +1,4 @@
+import {getContent} from '@/content/repository';
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Pause, Play, Video } from "lucide-react";
@@ -20,7 +21,7 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
   const connection = typeof navigator !== "undefined" ? navigator.connection : null;
   const dataSaver = Boolean(connection?.saveData) || /^(slow-2g|2g)$/.test(connection?.effectiveType || "");
   const mobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-  const enabled = mode === "backdrop" && Boolean(media?.video_enabled && media?.hero_video) && !reducedMotion && !dataSaver;
+  const enabled = mode === "backdrop" && Boolean(media?.video_enabled && media?.hero_video) && !reducedMotion && getContent()?.appearance?.motion!=="reduced" && !dataSaver;
 
   useEffect(() => {
     setReady(false);
@@ -74,7 +75,7 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
 
   return <>
     <div className="hero-video-backdrop" ref={host} data-video-state={enabled && !failed ? (playing ? "playing" : "paused") : "poster"} aria-hidden="true">
-      <img src={poster} alt="" className="hero-video-poster" />
+      <img src={poster} alt="" className="hero-video-poster" fetchPriority="high" />
       {enabled && !failed && (
         <video
           ref={video}
