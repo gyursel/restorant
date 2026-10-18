@@ -3,7 +3,7 @@ import {readFileSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
 import ts from 'typescript';
 const temp=new URL('./.cms-test/',import.meta.url);mkdirSync(temp,{recursive:true});
 try{
- for(const [source,name] of [['src/cms/design.ts','design'],['server/validation.ts','validation']]){
+ for(const [source,name] of [['src/cms/design.ts','design'],['server/validation.ts','validation'],['app/admin/edit-history.ts','edit-history']]){
  const code=ts.transpileModule(readFileSync(source,'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText.replace("'../src/cms/design'","'./design.mjs'");writeFileSync(new URL(name+'.mjs',temp),code);
  }
  const {buttonSchema,defaultButton,appearanceSchema,buttonStyle}=await import(new URL('design.mjs',temp));
@@ -23,5 +23,11 @@ try{
  test('Appearance blocks CSS injection and unknown font values',()=>{assert.equal(appearanceSchema.safeParse({accent:'red; background:url(https://evil)'}).success,false);assert.equal(appearanceSchema.safeParse({bodyFont:'evil'}).success,false)});
  test('Media metadata and section settings survive validation',()=>{const d=structuredClone(seed);d.mediaMetadata={'/images/example.png':{alt:'Пример',category:'buttons',archived:false}};Object.assign(d.pages.home.sections[0],{title:'Нов вкус',description:'Описание',background:'#111111',alignment:'center'});const result=validateContent(d);assert.deepEqual(result.mediaMetadata,d.mediaMetadata);assert.equal(result.pages.home.sections[0].title,'Нов вкус')});
  test('Duplicate sections and unsupported categories still fail',()=>{const d=structuredClone(seed);d.pages.home.sections.push(d.pages.home.sections[0]);assert.throws(()=>validateContent(d));const other=structuredClone(seed);other.menu.products[0].category='missing';assert.throws(()=>validateContent(other))});
+ const {startHistory,recordEdit,moveHistory,changedAreas}=await import(new URL('edit-history.mjs',temp));
+ test('Typing groups into one undo step and preserves the original document',()=>{const original={name:'A'};let h=startHistory(original);h=recordEdit(h,{name:'AB'},'name',1000);h=recordEdit(h,{name:'ABC'},'name',1200);assert.equal(h.past.length,1);assert.deepEqual(moveHistory(h,'undo').present,original);assert.equal(original.name,'A')});
+ test('Undo and redo restore edits across different fields',()=>{let h=startHistory({name:'A',price:1});h=recordEdit(h,{name:'B',price:1},'name',1000);h=recordEdit(h,{name:'B',price:2},'price',1100);const undone=moveHistory(h,'undo');assert.equal(undone.present.price,1);assert.deepEqual(moveHistory(undone,'redo').present,h.present)});
+ test('New edits after undo discard the abandoned redo branch',()=>{let h=recordEdit(startHistory(0),1,'price',1000);h=moveHistory(h,'undo');h=recordEdit(h,2,'price',1100);assert.equal(h.future.length,0);assert.equal(moveHistory(h,'redo').present,2)});
+ test('History is bounded and no-op edits add no entry',()=>{let h=startHistory(0);for(let i=1;i<=100;i++)h=recordEdit(h,i,String(i),i);assert.equal(h.past.length,60);assert.equal(recordEdit(h,100,'same'),h)});
+ test('Publish review compares with published content, including saved drafts',()=>{const published={copy:{title:'A'},menu:{price:1}};const draft={copy:{title:'B'},menu:{price:2}};assert.deepEqual(changedAreas(published,draft).map(x=>x.id),['copy','menu']);assert.deepEqual(changedAreas(draft,structuredClone(draft)),[])});
  console.log(`\n${passed} visual CMS checks passed.`);
 }finally{rmSync(temp,{recursive:true,force:true})}

@@ -4,7 +4,7 @@ export const dynamic='force-dynamic';
 export const runtime='nodejs';
 export async function GET(_request:Request,{params}:{params:Promise<{action:string}>}){
  try{await authorize();const {action}=await params;
-  if(action==='draft'){const s=await state();return json({content:JSON.parse(s.draft),version:s.version,publishedVersion:s.published_version,updatedAt:s.updated_at});}
+  if(action==='draft'){const s=await state();return json({content:JSON.parse(s.draft),version:s.version,publishedVersion:s.published_version,publishedContent:JSON.parse(s.published),updatedAt:s.updated_at});}
   const sql=db();
   if(action==='history')return json(await sql`SELECT version,created_at FROM cms_revisions ORDER BY version DESC LIMIT 50`);
   if(action==='media')return json(await sql`SELECT id,name,mime,size,created_at FROM cms_media ORDER BY created_at DESC LIMIT 200`);
