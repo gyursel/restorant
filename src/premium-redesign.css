@@ -89,7 +89,7 @@
    background-attachment:fixed!important;
  }
  .site-experience[data-desktop-background="image"] main,
- .site-experience[data-desktop-background="image"] .home-section-wrap,
+ .site-experience[data-desktop-background="image"] .home-section-wrap:not([style*="background-image"]),
  .site-experience[data-desktop-background="image"] .home-section-wrap>section:not(.hero-section),
  .site-experience[data-desktop-background="image"] .hero-featured-shell,
  .site-experience[data-desktop-background="image"] footer,
@@ -97,9 +97,5 @@
  .site-experience[data-desktop-background="image"] .premium-order-status{
    background-color:transparent!important;
    background-image:none!important;
- }
- /* Keep the separately configured hero video and explicit section photo overlays. */
- .site-experience[data-desktop-background="image"] .home-section-wrap[style*="background-image"]{
-   background-image:revert-layer!important;
  }
 }
