@@ -426,3 +426,18 @@
  .site-experience .hero-copy>div:has(>.btn-primary){grid-template-columns:1fr}
  .site-experience .hero-copy h1,.site-experience .hero-copy h1.font-editorial{font-size:clamp(30px,8.5vw,35px)}
 }
+
+/* Compact hero layout: move content up and establish consistent rhythm. */
+@media(max-width:767px){
+ .site-experience .hero-main{padding-top:calc(82px + env(safe-area-inset-top))!important;padding-bottom:24px!important}
+ .site-experience .hero-copy .eyebrow{margin:0;line-height:1.45}
+ .site-experience .hero-copy h1,.site-experience .hero-copy h1.font-editorial{margin-top:10px;font-size:clamp(32px,8.6vw,44px);line-height:1.07}
+ .site-experience .hero-copy>p:not(.eyebrow){margin-top:12px;font-size:13px;line-height:1.55}
+ .site-experience .hero-copy>div:has(>.btn-primary){margin-top:16px;gap:8px}
+ .site-experience .hero-benefits{margin-top:17px;padding-top:12px;gap:9px}
+ .site-experience .hero-caption{padding-bottom:12px}
+}
+@media(max-width:380px){
+ .site-experience .hero-main{padding-top:calc(78px + env(safe-area-inset-top))!important}
+ .site-experience .hero-copy h1,.site-experience .hero-copy h1.font-editorial{font-size:clamp(30px,8.4vw,34px)}
+}
