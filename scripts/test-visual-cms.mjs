@@ -23,5 +23,18 @@ try{
  test('Appearance blocks CSS injection and unknown font values',()=>{assert.equal(appearanceSchema.safeParse({accent:'red; background:url(https://evil)'}).success,false);assert.equal(appearanceSchema.safeParse({bodyFont:'evil'}).success,false)});
  test('Media metadata and section settings survive validation',()=>{const d=structuredClone(seed);d.mediaMetadata={'/images/example.png':{alt:'Пример',category:'buttons',archived:false}};Object.assign(d.pages.home.sections[0],{title:'Нов вкус',description:'Описание',background:'#111111',alignment:'center'});const result=validateContent(d);assert.deepEqual(result.mediaMetadata,d.mediaMetadata);assert.equal(result.pages.home.sections[0].title,'Нов вкус')});
  test('Duplicate sections and unsupported categories still fail',()=>{const d=structuredClone(seed);d.pages.home.sections.push(d.pages.home.sections[0]);assert.throws(()=>validateContent(d));const other=structuredClone(seed);other.menu.products[0].category='missing';assert.throws(()=>validateContent(other))});
+ // Render the actual public button component to verify semantic regressions.
+ const jsx=ts.transpileModule(readFileSync('src/components/site/ConfigurableButton.jsx','utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,allowJs:true}}).outputText.replace("'@/content/repository'","'./repository.mjs'").replace("'@/cms/design'","'./design.mjs'");
+ writeFileSync(new URL('button.mjs',temp),jsx);
+ writeFileSync(new URL('repository.mjs',temp),'let content={};export const getContent=()=>content;export const setContent=v=>content=v;');
+ const {setContent}=await import(new URL('repository.mjs',temp));
+ const {ConfigurableButton}=await import(new URL('button.mjs',temp));
+ const {createElement:h}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');const {MemoryRouter}=await import('react-router-dom');
+ const png={...defaultButton,mode:'png',image:'/images/example.png'};
+ setContent({buttons:{'hero-primary':png,'checkout-submit':png,'product-add':png}});
+ test('PNG navigation preserves its anchor destination and accessible text',()=>{const html=renderToStaticMarkup(h(MemoryRouter,null,h(ConfigurableButton,{slot:'hero-primary',to:'/menu'},'Виж менюто')));assert.match(html,/href="\/menu"/);assert.match(html,/png-accessible-label/);assert.match(html,/Виж менюто/);assert.match(html,/alt=""/)});
+ test('PNG checkout remains a disabled native submit button when unavailable',()=>{const html=renderToStaticMarkup(h(ConfigurableButton,{slot:'checkout-submit',type:'submit',disabled:true},'Плати'));assert.match(html,/<button/);assert.match(html,/type="submit"/);assert.match(html,/disabled=""/)});
+ test('PNG product actions retain their product-specific accessible name',()=>{const html=renderToStaticMarkup(h(ConfigurableButton,{slot:'product-add','aria-label':'Добави Quantum Classic'},'Добави'));assert.match(html,/aria-label="Добави Quantum Classic"/);assert.match(html,/type="button"/)});
+ test('Standard reset renders the caller styling and label without PNG assets',()=>{setContent({buttons:{'hero-primary':defaultButton}});const html=renderToStaticMarkup(h(MemoryRouter,null,h(ConfigurableButton,{slot:'hero-primary',to:'/menu',className:'btn-primary'},'Меню')));assert.match(html,/class="btn-primary/);assert.doesNotMatch(html,/<img/)});
  console.log(`\n${passed} visual CMS checks passed.`);
 }finally{rmSync(temp,{recursive:true,force:true})}
