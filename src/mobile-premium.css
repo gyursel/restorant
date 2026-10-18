@@ -392,3 +392,15 @@
  .site-experience .hero-copy h1 {font-size:clamp(32px,9vw,38px)}
  .site-experience .premium-mobile-dock {padding-inline:4px}
 }
+
+/* Full-bleed hero video: eliminate dark strip above the visual on mobile. */
+@media(max-width:767px){
+ .site-experience .home-section-wrap:has(.hero-section){background:transparent!important}
+ .site-experience .hero-section{padding:0!important;background:transparent}
+ .site-experience .hero-frame{padding:0 16px 18px!important;background:transparent;border-radius:0;overflow:hidden}
+ .site-experience .hero-main{padding:152px 0 42px!important}
+ .site-experience .hero-video-backdrop{inset:0!important}
+ .site-experience .hero-video-poster,.site-experience .hero-video-element{inset:0!important;width:100%!important;height:100%!important;object-fit:cover;object-position:center 34%}
+ .site-experience .hero-video-tint{background:linear-gradient(180deg,rgba(7,7,9,.38) 0%,rgba(7,7,9,.5) 38%,rgba(7,7,9,.82) 84%,var(--apx-bg) 100%)}
+ .site-experience:has(.hero-section) .site-header{background:rgba(11,10,12,.18)!important;border-bottom-color:rgba(255,255,255,.09);backdrop-filter:blur(7px)}
+}
