@@ -27,3 +27,13 @@
 /* CMS gradient background: section surfaces remain transparent only when enabled. */
 .site-experience[style*="--apx-page-background: linear-gradient"] .home-section-wrap:not(:has(.hero-video-backdrop)){background-color:transparent!important}
 .site-experience[style*="--apx-page-background: linear-gradient"] .hero-section{background:transparent}
+
+/* Hero video reaches the top edge behind the floating navigation. */
+.site-experience .home-section-wrap:has(> .hero-section){background-color:transparent!important}
+.site-experience .hero-section{padding-top:0!important;background:transparent}
+.site-experience .hero-frame{background:transparent}
+.site-experience .hero-main{padding-top:184px}
+.site-experience .hero-video-poster,.site-experience .hero-video-element{width:100%;left:0;right:0;object-position:center}
+.site-experience .site-header:has(+ *){background:transparent}
+.site-experience .hero-video-tint{background:linear-gradient(90deg,rgba(9,9,10,.88),rgba(9,9,10,.45) 58%,rgba(9,9,10,.18)),linear-gradient(0deg,var(--apx-bg),transparent 30%)}
+@media(min-width:768px) and (max-width:1023px){.site-experience .hero-main{padding-top:154px}}
