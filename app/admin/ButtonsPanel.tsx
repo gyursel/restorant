@@ -2,9 +2,9 @@
 import {useState} from 'react';
 import {buttonSlots,defaultButton,buttonStyle,type ButtonConfig} from '../../src/cms/design';
 import {ButtonVisual} from '../../src/components/site/ConfigurableButton';
-type Props={doc:any;update:(path:(string|number)[],value:any)=>void;upload:(file:File|undefined,done?:(url:string)=>void)=>Promise<void>;busy:boolean;preview:()=>void};
-export default function ButtonsPanel({doc,update,upload,busy,preview}:Props){
- const [slot,setSlot]=useState<keyof typeof buttonSlots>('hero-primary');
+type Props={initialSlot?:string;doc:any;update:(path:(string|number)[],value:any)=>void;upload:(file:File|undefined,done?:(url:string)=>void)=>Promise<void>;busy:boolean;preview:()=>void};
+export default function ButtonsPanel({doc,update,upload,busy,preview,initialSlot='hero-primary'}:Props){
+ const [slot,setSlot]=useState<keyof typeof buttonSlots>(initialSlot in buttonSlots?initialSlot as keyof typeof buttonSlots:'hero-primary');
  const [viewport,setViewport]=useState<'desktop'|'tablet'|'mobile'>('desktop');
  const [error,setError]=useState('');
  const config:ButtonConfig={...defaultButton,...doc.buttons?.[slot]};
