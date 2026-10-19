@@ -1,6 +1,6 @@
-import {appearanceStyle} from "@/cms/design";
-import {CmsText} from "@/content/CmsText";
-import { copy, getContent } from "@/content/repository";
+import {lilyAppearance} from "./lily-appearance";
+import {CmsText} from "@/components/site/PublicText";
+import { copy, getContent } from "@/components/site/public-copy";
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "@/components/site/Header";
@@ -20,12 +20,12 @@ export default function SiteLayout() {
     const product=pathname.startsWith('/product/')
       ? content.menu?.products?.find(p=>p.slug===pathname.slice('/product/'.length))
       : null;
-    const homeTitle=content.meta?.title||'APEX DRIVE BULGARIA';
+    const homeTitle=(content.meta?.title?.replace(/APEX/gi,'LILY'))||'LILY DRIVE BULGARIA';
     document.title=product
       ? product.name+' | '+homeTitle
       : pathname==='/menu' ? 'Меню и цени | '+homeTitle : homeTitle;
     const description=product?.description||
-      (pathname==='/menu'?'Разгледай актуалното меню, цени и предложения в APEX DRIVE BULGARIA.':content.meta?.description);
+      (pathname==='/menu'?'Разгледай актуалното меню, цени и предложения в LILY DRIVE BULGARIA.':content.meta?.description);
     const meta=document.querySelector('meta[name="description"]');
     if(meta&&description)meta.setAttribute('content',description);
   },[pathname]);
@@ -41,11 +41,11 @@ export default function SiteLayout() {
     window.scrollTo(0, 0);
     return undefined;
   }, [pathname, hash]);
-  return <CartProvider><div style={appearanceStyle(getContent()?.appearance)} data-desktop-background={getContent()?.appearance?.backgroundMode==='image'&&getContent()?.appearance?.backgroundImage?'image':'default'} data-motion={getContent()?.appearance?.motion} data-card-style={getContent()?.appearance?.cardStyle} data-button-style={getContent()?.appearance?.buttonStyle} className="site-experience min-h-screen bg-[#171717] text-[#f6f3ee]">
+  return <CartProvider><div style={lilyAppearance(getContent()?.appearance)} data-desktop-background={getContent()?.appearance?.backgroundMode==='image'&&getContent()?.appearance?.backgroundImage?'image':'default'} data-motion={getContent()?.appearance?.motion} data-card-style={getContent()?.appearance?.cardStyle} data-button-style={getContent()?.appearance?.buttonStyle} className="site-experience lily-experience min-h-screen bg-[#171717] text-[#f6f3ee]">
       <a href={copy["SiteLayout_jsx_1"]} data-testid="skip-to-content-link" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-black"><CmsText field="SiteLayout_jsx_2"/></a>
       <Header />
       <main id="main">
-        <Outlet />
+        <div key={pathname} className="lily-route-scene"><Outlet /></div>
       </main>
       <Footer />
       <MobileDock />

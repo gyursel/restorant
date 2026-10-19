@@ -1,37 +1,34 @@
-# LILY DRIVE handoff
+# LILY DRIVE handoff — session 2
 
-Status: IN PROGRESS — intake checkpoint only, not a completed redesign.
-Branch: `redesign/lily-drive-cinematic`
-Baseline/latest pre-checkpoint commit: `21b267c2f03f4f829e848928a43e8cf65b76118f`
-The commit containing this document is the checkpoint; resolve its exact SHA with `git rev-parse HEAD` after fetching. A commit cannot embed its own SHA; subsequent handoff commits record the preceding verified pushed checkpoint explicitly.
+Status: public visual implementation ready for review; connected-environment acceptance and hosted preview remain limited by access. Do not describe this as pixel-perfect or production-verified.
+Branch: `redesign/lily-drive-cinematic`.
+Recovered remote checkpoint: `087dfd009197e87cdd98fd74fbc4cdaa84a876a9` (three intake documents only). No previous frontend redesign existed in that checkpoint. Baseline application: `21b267c2f03f4f829e848928a43e8cf65b76118f`.
+The commit containing this document is the new checkpoint; resolve its exact SHA from the branch. Final delivery must verify the remote branch SHA.
 
-## Completed / modified
-Full original requirements and mandatory continuation protocol preserved. Initial source boundaries inspected. Only `docs/LILY_DRIVE_MASTER_PLAN.md`, `docs/LILY_DRIVE_HANDOFF.md`, `docs/LILY_DRIVE_PROGRESS.md` added.
+## Implemented
+- Original LILY urban food hero, monumental metallic wordmark, refined navigation, serif hierarchy, crimson CTAs, public-only branding adapter and public metadata/loading copy.
+- Cohesive card, promotion, assistant, process, location, footer, product and checkout presentation. Existing handlers, routes, data and admin stay intact.
+- New optimized WebP hero and 16-second periodic-motion video with smaller mobile variant. Detailed provenance, prompt and exact media specifications in `LILY_DRIVE_DESIGN.md`.
+- Responsive desktop/tablet/mobile layouts, including fixes for legacy mobile `!important` conflicts; 44px add controls, pause, reduced-motion/static fallback and existing keyboard menu dismissal.
+- Route illumination and retained section reveals. This is a fade-in lighting treatment, not a full outgoing/incoming scene compositor.
 
-## Next task, in priority order
-1. Inspect actual reference https://new-look-site-1.preview.emergentagent.com/#menu and the two reference recordings; record observed composition and motion. Do not invent observations.
-2. Inspect current public website, establish DESIGN.md, isolate all new styles to public container.
-3. Implement frontend-only stages listed in progress, validating and pushing each meaningful milestone.
-4. Run build/typecheck/check:files and non-mutating functional tests. Verify protected-path diff.
-5. Obtain preview via existing non-production workflow only if safely available.
+## Verification evidence
+- Production build, TypeScript and file-integrity checks passed during implementation; final clean commands recorded in progress.
+- Browser reviewed at desktop 1363px and real iframe viewports 320, 390, 768px. Measured body widths 305/375/753px respectively (scrollbars excluded), no horizontal overflow. Desktop menu: zero broken images.
+- Sample-data browser flow: menu → Drinks filter (3 correct products) → quick-add cola → cola detail → add again → cart. Count 2 and total 5.60 EUR (2 × 2.80). No checkout submission or real order/payment.
+- Mobile menu expanded and Escape closed it. Existing tab/category controls and fixed mobile navigation worked.
+- Enabled-video fixture: readyState 4, 1280×720 decoded, muted/loop true, currentTime advancing; pause control paused it. Reduced-motion fixture: zero video elements, one poster.
+- QA used temporary `/qa` and `/qa-mobile` routes seeded from the existing JSON because no database credentials were available. Test routes and temporary launch script were removed before committing. Live CMS/API/payment integration was not end-to-end verified.
 
-## Known issues / remaining visual differences
-All visual requirements remain unimplemented at this checkpoint. Vercel project detail access denied (403); CLI absent. No preview verified. Reference browser navigation timed out. Sampled contact sheets from both recordings were inspected; this is not full frame-by-frame or motion verification.
+## Constraints and remaining limits
+Vercel project read returned HTTP403 under `team_ru46461D9ucBRXJ3QZKK0qRB` for `prj_Vw3fSgcfjLAKmLdRkYCqNwapCkOB`; local Vercel CLI unavailable. No Vercel settings/env changes or deployment calls. A hosted preview may be produced by existing branch Git integration, but it must be independently verified before reporting a URL.
 
-## Checks performed
-`git branch -a`; GitHub search_branches confirmed target absent; `git log -5 --oneline`; `git status --short`; source/workflow reads. No build or visual tests run at this checkpoint.
+The CMS seed disables video (`video_enabled:false`), so the default unmodified sample state correctly shows a poster. To see video in a connected review environment, the owner must deliberately enable it through existing controls; this task did not change CMS data.
 
-## Resume
-Fetch origin, switch to existing target branch, pull --ff-only, read all three docs, inspect latest log and source, verify completed items, continue NEXT incomplete task. Do not restart or create a competing branch. Do not overwrite unrelated work.
+Product assets remain their existing ~720px originals. New hero source is 1672px wide; not claimed as native 4K. No real-device FPS, Lighthouse or physical-device Safari testing. Actual CMS images/appearance can differ from sample content. Existing assistant/info placeholders and payment-disabled state were preserved, not implemented as new business functionality.
 
-## Protected areas
-See master plan boundary inventory. Backend, database, API, CMS, admin, auth, integrations, ordering/payment business logic, environment/deployment configuration, production and main are strictly protected. Do not deploy production or merge.
+## Modified files
+See `LILY_DRIVE_CHANGED_FILES.md`. No backend, database, API, CMS, authentication, cart business logic, deployment or environment files were changed. `app/[[...path]]/page.tsx` changes are limited to public metadata branding; its data access and routing are unchanged. Root layout and admin are untouched.
 
-## Access blocker — must resolve before further implementation
-GitHub `create_branch` returned HTTP 403 Resource not accessible by integration. Local `git push` failed because no GitHub username/credential was available. NO REMOTE CHECKPOINT EXISTS. Local commit is not available to another account through GitHub. Restore repository write access before continuing. Vercel project read also returned 403; no production or preview deployment was attempted.
-
-Latest local intake commit: `8d7140385ddb012bdb4bfaf97ed129f943a90912`. This follow-up documentation commit supersedes it; resolve with `git rev-parse HEAD`. Latest verified remote baseline remains `21b267c2f03f4f829e848928a43e8cf65b76118f`.
-
-Resume first action: restore GitHub integration write access for gyursel/restorant, recheck target branch to avoid conflicts, then publish local intake checkpoint. If this local checkout is unavailable, reconstruct the docs from the original brief and attached handoff; do not claim they were pushed.
-
-Verification: `node scripts/check-files.mjs` PASS; `git diff --check` PASS. Only three documentation files changed. No application implementation or runtime tests claimed. `npm ci --ignore-scripts` was attempted; completion not verified.
+## Resume / review
+Fetch this same branch, read all four design/progress/handoff documents and inspect the latest diff. Do not create another redesign. With existing authorized local environment, run `npm ci`, `npm run build`, `npm run start`; review `/`, `/menu`, `/product/cola`, `/cart`. Do not configure secrets or alter protected systems merely to finish a visual test. If authorized Vercel access becomes available, inspect existing preview for this commit, verify real published CMS content, media, ordering UI and admin isolation. Do not merge main or deploy production.

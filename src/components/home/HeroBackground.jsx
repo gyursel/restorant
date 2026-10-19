@@ -1,4 +1,4 @@
-import {getContent} from '@/content/repository';
+import {getContent} from '@/components/site/public-copy';
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Pause, Play, Video } from "lucide-react";
@@ -17,11 +17,14 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
   const [failed, setFailed] = useState(false);
   const [pausedByUser, setPausedByUser] = useState(false);
   const [inView, setInView] = useState(true);
-  const poster = mediaSrc(media?.hero_image || "/images/fd_burger_classic.webp");
+  const defaultImage = !media?.hero_image || media.hero_image === '/images/fd_burger_classic.webp';
+  const poster = mediaSrc(defaultImage ? '/images/lily-hero.webp' : media.hero_image);
+
   const connection = typeof navigator !== "undefined" ? navigator.connection : null;
   const dataSaver = Boolean(connection?.saveData) || /^(slow-2g|2g)$/.test(connection?.effectiveType || "");
   const mobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-  const enabled = mode === "backdrop" && Boolean(media?.video_enabled && media?.hero_video) && !reducedMotion && getContent()?.appearance?.motion!=="reduced" && !dataSaver;
+  const videoSource = !media?.hero_video || media.hero_video === '/videos/food-burger.mp4' ? (mobile ? '/videos/lily-atmosphere-mobile.mp4' : '/videos/lily-atmosphere.mp4') : media.hero_video;
+  const enabled = mode === "backdrop" && Boolean(media?.video_enabled !== false && videoSource) && !reducedMotion && getContent()?.appearance?.motion!=="reduced" && !dataSaver;
 
   useEffect(() => {
     setReady(false);
@@ -79,8 +82,8 @@ export const HeroBackground = ({ media, mode = "backdrop" }) => {
       {enabled && !failed && (
         <video
           ref={video}
-          key={media.hero_video}
-          src={mediaSrc(media.hero_video)}
+          key={videoSource}
+          src={mediaSrc(videoSource)}
           poster={poster}
           autoPlay
           muted

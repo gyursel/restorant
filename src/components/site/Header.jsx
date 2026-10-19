@@ -1,6 +1,6 @@
 import {ConfigurableButton} from "@/components/site/ConfigurableButton";
-import {CmsText} from "@/content/CmsText";
-import { getContent, copy } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { getContent, copy } from "@/components/site/public-copy";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu as MenuIcon, ShoppingBag, X } from "lucide-react";
@@ -80,7 +80,7 @@ export const Header = () => {
         </div>
       </div>
       {mobile && <nav id="premium-mobile-navigation" className="premium-mobile-menu lg:hidden" aria-label="Мобилно меню" data-testid="mobile-nav">
-          <p className="premium-mobile-menu-label">НАВИГАЦИЯ / APEX DRIVE</p>
+          <p className="premium-mobile-menu-label">НАВИГАЦИЯ / LILY DRIVE</p>
           {[...NAV, {
         label: copy["Header_jsx_12"],
         to: "/kiosk",

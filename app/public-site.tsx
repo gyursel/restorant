@@ -32,4 +32,4 @@ useEffect(()=>{if(!new URLSearchParams(location.search).has('editor'))return;con
  window.parent.postMessage({type:'apex-select',button:button?.dataset.buttonSlot,key,image:image?.getAttribute('src'),product,section:sectionType||undefined},location.origin);
 };window.addEventListener('message',onMessage);document.addEventListener('click',onClick,true);return()=>{window.removeEventListener('message',onMessage);document.removeEventListener('click',onClick,true)}},[]);
 useEffect(()=>{if(App&&new URLSearchParams(location.search).has('editor'))window.parent.postMessage({type:'apex-ready'},location.origin)},[App]);
-if(error)return <div style={{padding:'140px 24px'}}>Сайтът не можа да се зареди. <button onClick={()=>location.reload()}>Опитайте отново</button></div>;return App?<App key={version}/>:<div style={{padding:'140px 24px',color:'#aaa'}}>Зареждане на APEX DRIVE…</div>}
+if(error)return <div style={{padding:'140px 24px'}}>Сайтът не можа да се зареди. <button onClick={()=>location.reload()}>Опитайте отново</button></div>;return App?<App key={version}/>:<div style={{padding:'140px 24px',color:'#aaa'}}>Зареждане на LILY DRIVE…</div>}

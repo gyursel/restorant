@@ -6,13 +6,13 @@ export const dynamic='force-dynamic';
 
 const base='https://apex-drive-bulgaria.vercel.app';
 type Props={params:Promise<{path?:string[]}>};
-const description='Премиум Drive-Thru ресторант. Бургери, меню и вземане от място в APEX DRIVE BULGARIA.';
+const description='Премиум Drive-Thru ресторант. Бургери, меню и вземане от място в LILY DRIVE.';
 
 export async function generateMetadata({params}:Props):Promise<Metadata>{
   const segments=(await params).path||[];
   const [section,slug]=segments;
   const data=await publishedContent();
-  const siteName=String(data?.meta?.title||'APEX DRIVE BULGARIA');
+  const siteName=String(data?.meta?.title||'LILY DRIVE').replace(/APEX/gi,'LILY');
   const metaDescription=String(data?.meta?.description||description).slice(0,300);
   const canonicalPath='/'+segments.map(encodeURIComponent).join('/');
   let title=siteName;
@@ -23,7 +23,7 @@ export async function generateMetadata({params}:Props):Promise<Metadata>{
   const known=!segments.length || (section==='menu'&&segments.length===1) || Boolean(product);
   if(section==='menu'&&segments.length===1){
     title='Меню и цени | '+siteName;
-    details='Разгледай менюто на APEX DRIVE BULGARIA: бургери, картофки, напитки и оферти.';
+    details='Разгледай менюто на LILY DRIVE: бургери, картофки, напитки и оферти.';
   }
   if(product){
     title=String(product.name)+' | '+siteName;

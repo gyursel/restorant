@@ -49,7 +49,7 @@ export function OrderSuccessPage() {
       {paid?<CheckCircle2 className="premium-order-state-icon is-paid" size={52}/>:
         notPaid?<AlertTriangle className="premium-order-state-icon" size={52}/>:
           <Clock3 className="premium-order-state-icon" size={52}/>}
-      <p className="eyebrow">APEX DRIVE · ОНЛАЙН ПОРЪЧКА</p>
+      <p className="eyebrow">LILY DRIVE · ОНЛАЙН ПОРЪЧКА</p>
       <h1>{paid?'Плащането е потвърдено.':notPaid?'Плащането не е завършено.':'Проверяваме плащането…'}</h1>
       <p>{paid?'Благодарим! Поръчката е платена. Запази номера за справка и изчакай потвърждение от ресторанта.':
         notPaid?'Поръчката не е платена. Можеш да опиташ отново.':

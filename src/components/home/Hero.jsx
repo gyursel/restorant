@@ -1,7 +1,7 @@
 import {useSectionConfig} from '@/content/SectionConfig';
 import {ConfigurableButton} from "@/components/site/ConfigurableButton";
-import {CmsText} from "@/content/CmsText";
-import { copy, getContent } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { copy, getContent } from "@/components/site/public-copy";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowRight, ChefHat, Timer } from "lucide-react";
@@ -45,6 +45,7 @@ export const Hero = () => {
   return <section id="hero" className="hero-section" data-testid="hero-section" aria-labelledby="hero-title">
       <div className="hero-frame">
         <HeroBackground media={{...settings?.media,...(section.backgroundImage?{hero_image:section.backgroundImage}:{})}} mode="backdrop" />
+        <div className="lily-monument" aria-hidden="true"><span>LILY</span><small>DRIVE</small></div>
         <div className="hero-main">
           <div className="hero-copy">
             <motion.p {...rise(0.1)} className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-current" /><CmsText field="Hero_jsx_4"/></motion.p>

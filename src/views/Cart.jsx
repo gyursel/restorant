@@ -6,7 +6,7 @@ import {ArrowLeft,ArrowRight,CheckCircle2,Minus,Plus,ShieldCheck,ShoppingBag,Tra
 import {useCart} from '@/context/CartContext';
 import {eur} from '@/lib/api';
 import {mediaSrc} from '@/lib/media';
-import {getContent} from '@/content/repository';
+import {getContent} from '@/components/site/public-copy';
 
 export function CartPage() {
   const {items,cart,total,itemCount,remove,setQuantity}=useCart();
@@ -48,7 +48,7 @@ export function CartPage() {
     <div className="premium-cart-container">
       <Link to="/menu" className="premium-back-link"><ArrowLeft size={16}/> Обратно към менюто</Link>
       <div className="premium-cart-heading">
-        <p className="eyebrow">ТВОЯТ ИЗБОР · APEX DRIVE</p>
+        <p className="eyebrow">ТВОЯТ ИЗБОР · LILY DRIVE</p>
         <h1>Твоята <em>поръчка.</em></h1>
         <p>Поръчай онлайн и вземи от място. Плащането се извършва сигурно през Stripe.</p>
       </div>

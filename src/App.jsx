@@ -1,3 +1,4 @@
+import './lily-cinematic.css';
 import {lazy,Suspense} from 'react';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import SiteLayout from '@/components/site/SiteLayout';
