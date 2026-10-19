@@ -41,3 +41,10 @@
 - `npm run check:files`: PASS.
 - `npm run test:cms`: PASS, all 18 existing checks.
 - `git diff --check` and protected-path audit: required immediately before remote publication.
+
+## Verified remote delivery
+Implementation pushed and independently fetched at `8fe675623ac3c3a01bdef1e57f4bfa0d60a7ad00`, parent `087dfd009197e87cdd98fd74fbc4cdaa84a876a9`. Remote root tree `2f7fe9067d16f75fc9154d1edc8c838f656e875a` exactly matched the locally reviewed index, including binary blob hashes. Remote main remained `21b267c2f03f4f829e848928a43e8cf65b76118f`. Protected-path audit and `git diff --cached --check` passed; 28 allowed files changed.
+
+GitHub reported the automatic Vercel status for implementation commit as `failure`, with details at https://vercel.com/gyursels-projects/apex-drive-bulgaria/8Kn8oaohHaAfJnEPxXqrisNNCb6G . Deployment inspection also returned HTTP403, so the actual failure cause could not be read. Do not assume this is a code build error or an authentication build failure: neither is verified. No working hosted preview URL is available. No production deployment or configuration changes were made.
+
+This documentation-only follow-up records the verified implementation checkpoint. Its own final SHA is available from the branch; no code changes follow the tested implementation.

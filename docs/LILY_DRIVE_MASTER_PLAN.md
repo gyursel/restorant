@@ -669,3 +669,10 @@ These are sampled static observations only, not verified timing, smoothness, com
 
 ## Session 2 verified continuation — 2026-10-19
 Recovered remote intake checkpoint `087dfd009197e87cdd98fd74fbc4cdaa84a876a9`; earlier no-remote statements in the intake history are now superseded by that observed branch. Public visual implementation completed for review in the same branch. Live reference and both supplied recordings inspected. See `LILY_DRIVE_DESIGN.md`, latest handoff and progress for actual implementation, provenance, test evidence and access limitations. No production or protected-system changes authorized or performed. Keep video-disabled CMS state intact.
+
+## Verified remote delivery
+Implementation pushed and independently fetched at `8fe675623ac3c3a01bdef1e57f4bfa0d60a7ad00`, parent `087dfd009197e87cdd98fd74fbc4cdaa84a876a9`. Remote root tree `2f7fe9067d16f75fc9154d1edc8c838f656e875a` exactly matched the locally reviewed index, including binary blob hashes. Remote main remained `21b267c2f03f4f829e848928a43e8cf65b76118f`. Protected-path audit and `git diff --cached --check` passed; 28 allowed files changed.
+
+GitHub reported the automatic Vercel status for implementation commit as `failure`, with details at https://vercel.com/gyursels-projects/apex-drive-bulgaria/8Kn8oaohHaAfJnEPxXqrisNNCb6G . Deployment inspection also returned HTTP403, so the actual failure cause could not be read. Do not assume this is a code build error or an authentication build failure: neither is verified. No working hosted preview URL is available. No production deployment or configuration changes were made.
+
+This documentation-only follow-up records the verified implementation checkpoint. Its own final SHA is available from the branch; no code changes follow the tested implementation.
