@@ -1,5 +1,5 @@
-import {CmsText} from "@/content/CmsText";
-import { copy } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { copy } from "@/components/site/public-copy";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/site/Primitives";
 const getLinks = () => [{

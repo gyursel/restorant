@@ -1,3 +1,4 @@
+import {lilyContent} from '../src/cms/lily-content';
 import {validateButtonAssets} from './png-assets';
 import { neon } from '@neondatabase/serverless';
 import seed from './seed.json';
@@ -22,11 +23,14 @@ type Row = {
   draft: string; published: string; version: number;
   published_version: number; updated_at: string; updated_by: string;
 };
+function upgradedRow(row:Row):Row {
+  return {...row,draft:JSON.stringify(lilyContent(JSON.parse(row.draft))),published:JSON.stringify(lilyContent(JSON.parse(row.published)))};
+}
 export async function state(): Promise<Row> {
   const sql = db();
   let rows = await sql`SELECT draft,published,version,published_version,updated_at,updated_by
       FROM cms_state WHERE id = 'main'`;
-  if (rows.length) return rows[0] as Row;
+  if (rows.length) return upgradedRow(rows[0] as Row);
   const content = JSON.stringify(seed);
   const now = new Date().toISOString();
   // Seeding is safe under concurrent serverless requests.
@@ -38,10 +42,10 @@ export async function state(): Promise<Row> {
   rows = await sql`SELECT draft,published,version,published_version,updated_at,updated_by
       FROM cms_state WHERE id = 'main'`;
   if (!rows[0]) throw new HttpError(503, 'Няма данни за сайта.');
-  return rows[0] as Row;
+  return upgradedRow(rows[0] as Row);
 }
 export async function save(content: unknown, version: number, user: string) {
-  const parsed = validateContent(content);
+  const parsed = validateContent(lilyContent(validateContent(content)));
   await validateButtonAssets(parsed.buttons);
   const sql = db();
   await state();
@@ -60,7 +64,7 @@ export async function publish(version: number, user: string) {
   const now = new Date().toISOString();
   // One statement guarantees version update and publication history are atomic.
   const result = await sql`WITH updated AS (
-      UPDATE cms_state SET published=draft,published_version=version+1,version=version+1,
+      UPDATE cms_state SET published=${JSON.stringify(parsed)},draft=${JSON.stringify(parsed)},published_version=version+1,version=version+1,
           updated_at=${now},updated_by=${user}
       WHERE id='main' AND version=${version} RETURNING version,published
     ) INSERT INTO cms_revisions(version,content,created_at,created_by)

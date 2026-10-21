@@ -1,5 +1,5 @@
-import {CmsText} from "@/content/CmsText";
-import { copy } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { copy } from "@/components/site/public-copy";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { usePublicSettings } from "@/hooks/useMenu";
 import { DAYS } from "@/lib/api";

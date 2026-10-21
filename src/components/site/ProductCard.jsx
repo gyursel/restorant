@@ -1,7 +1,7 @@
 import {CmsImage} from '@/components/site/CmsImage';
 import {ConfigurableButton} from "@/components/site/ConfigurableButton";
-import {CmsText} from "@/content/CmsText";
-import { copy } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { copy } from "@/components/site/public-copy";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { useState } from "react";

@@ -2,7 +2,7 @@
 import {useState} from 'react';
 export default function MediaPanel({media,doc,update}:any){
  const [search,setSearch]=useState(''),[category,setCategory]=useState('all'),[archived,setArchived]=useState(false);
- const originals=[doc.settings.media.hero_image,doc.settings.media.kiosk_image,doc.settings.media.logo_image,...doc.menu.products.map((p:any)=>p.image),...doc.promotions.map((p:any)=>p.image),...Object.values(doc.buttons||{}).flatMap((b:any)=>[b.image,b.hoverImage,b.activeImage,b.disabledImage])].filter(Boolean);
+ const originals=[doc.appearance?.backgroundImage,...doc.pages.home.sections.map((s:any)=>s.backgroundImage),'/images/lily-hero.webp',doc.settings.media.hero_image,doc.settings.media.kiosk_image,doc.settings.media.logo_image,...doc.menu.products.map((p:any)=>p.image),...doc.promotions.map((p:any)=>p.image),...Object.values(doc.buttons||{}).flatMap((b:any)=>[b.image,b.hoverImage,b.activeImage,b.disabledImage])].filter(Boolean);
  const list=[...media.filter((m:any)=>m.mime?.startsWith('image/')).map((m:any)=>({...m,url:'/api/media/'+m.id})),...[...new Set(originals)].filter(url=>!media.some((m:any)=>url==='/api/media/'+m.id)).map(url=>({url,name:'Изображение от сайта'}))];
  const categories={general:'Общи',products:'Продукти',backgrounds:'Фонове',buttons:'PNG бутони',branding:'Бранд'};
  const set=(url:string,key:string,value:any)=>update(['mediaMetadata'],{...doc.mediaMetadata,[url]:{alt:'',category:'general',...doc.mediaMetadata?.[url],[key]:value}});

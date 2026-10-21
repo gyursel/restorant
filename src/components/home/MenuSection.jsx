@@ -1,5 +1,5 @@
-import {CmsText} from "@/content/CmsText";
-import { copy } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { copy } from "@/components/site/public-copy";
 import { useMemo, useState } from "react";
 import { useMenu } from "@/hooks/useMenu";
 import { ProductCard } from "@/components/site/ProductCard";

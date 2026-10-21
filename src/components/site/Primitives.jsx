@@ -1,6 +1,6 @@
 import {useSectionConfig} from '@/content/SectionConfig';
-import {CmsText} from "@/content/CmsText";
-import { copy, getContent } from "@/content/repository";
+import {CmsText} from "@/components/site/PublicText";
+import { copy, getContent } from "@/components/site/public-copy";
 import { motion, useReducedMotion } from "framer-motion";
 export const Reveal = ({
   children,
@@ -42,7 +42,7 @@ export const SectionHeading = ({
   </Reveal>};
 export const Logo = ({
   small = false
-}) => getContent()?.settings?.media?.logo_image?<img className="cms-brand-logo" src={getContent().settings.media.logo_image} alt={getContent().settings.restaurant_name||"APEX DRIVE BULGARIA"}/>:<span className={`brand-wordmark ${small ? "brand-wordmark-small" : ""}`}>
+}) => getContent()?.settings?.media?.logo_image?<img className="cms-brand-logo" src={getContent().settings.media.logo_image} alt={getContent().settings.restaurant_name||"LILY DRIVE BULGARIA"}/>:<span className={`brand-wordmark ${small ? "brand-wordmark-small" : ""}`}>
     <span><CmsText field="Primitives_jsx_1"/><span className="text-[#f05255]"><CmsText field="Primitives_jsx_2"/></span><span className="brand-period"><CmsText field="Primitives_jsx_3"/></span></span>
     <span className="brand-tagline"><CmsText field="Primitives_jsx_4"/></span>
   </span>;
