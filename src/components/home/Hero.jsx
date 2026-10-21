@@ -45,7 +45,6 @@ export const Hero = () => {
   return <section id="hero" className="hero-section" data-testid="hero-section" aria-labelledby="hero-title">
       <div className="hero-frame">
         <HeroBackground media={{...settings?.media,...(section.backgroundImage?{hero_image:section.backgroundImage}:{})}} mode="backdrop" />
-        <div className="lily-monument" aria-hidden="true"><span><CmsText field="Lily_wordmark"/></span><small><CmsText field="Lily_submark"/></small></div>
         <div className="hero-main">
           <div className="hero-copy">
             <motion.p {...rise(0.1)} className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-current" /><CmsText field="Hero_jsx_4"/></motion.p>
