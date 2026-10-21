@@ -3,14 +3,18 @@ import {readFileSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
 import ts from 'typescript';
 const temp=new URL('./.cms-test/',import.meta.url);mkdirSync(temp,{recursive:true});
 try{
- for(const [source,name] of [['src/cms/lily-content.ts','lily-content'],['src/cms/design.ts','design'],['server/validation.ts','validation'],['app/admin/edit-history.ts','edit-history'],['app/admin/pro-tools.ts','pro-tools']]){
- const code=ts.transpileModule(readFileSync(source,'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText.replace("'../src/cms/design'","'./design.mjs'");writeFileSync(new URL(name+'.mjs',temp),code);
+ for(const [source,name] of [['src/cms/element-design.ts','element-design'],['src/cms/lily-content.ts','lily-content'],['src/cms/design.ts','design'],['server/validation.ts','validation'],['app/admin/edit-history.ts','edit-history'],['app/admin/pro-tools.ts','pro-tools']]){
+ const code=ts.transpileModule(readFileSync(source,'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText.replace("'../src/cms/element-design'","'./element-design.mjs'").replace("'../src/cms/design'","'./design.mjs'");writeFileSync(new URL(name+'.mjs',temp),code);
  }
  const {buttonSchema,defaultButton,appearanceSchema,buttonStyle}=await import(new URL('design.mjs',temp));
  const {validateContent}=await import(new URL('validation.mjs',temp));
  let passed=0;const test=(name,fn)=>{fn();passed++;console.log('PASS',name)};
  const seed=JSON.parse(readFileSync('server/seed.json','utf8'));
  test('Existing content remains valid and receives backward-compatible defaults',()=>{const d=validateContent(seed);assert.deepEqual(d.buttons,{});assert.equal(d.appearance.accent,'#d18a4b');assert.deepEqual(d.menu,seed.menu)});
+ test('Element styles survive draft and publish validation',()=>{const styles={'[data-testid="product-card-classic"]':{opacity:0.35,borderRadius:28,borderWidth:2,borderColor:'#abcdef',borderStyle:'solid'}};assert.deepEqual(validateContent({...seed,elementStyles:styles}).elementStyles,styles)});
+ test('Element styles reject unsafe CSS and out-of-range values',()=>{for(const styles of [{'body{color:red}':{opacity:1}},{body:{opacity:2}},{body:{backgroundColor:'url(https://evil)'}},{body:{position:'fixed'}},{body:{borderRadius:-1}}])assert.throws(()=>validateContent({...seed,elementStyles:styles}))});
+ const {elementCSS}=await import(new URL('element-design.mjs',temp));
+ test('Published CSS uses units and supports reset',()=>{assert.equal(elementCSS({'[data-testid="card"]':{opacity:0.5,borderRadius:20}}),'[data-testid="card"]{opacity:0.5!important;border-radius:20px!important}');assert.equal(elementCSS({}),'')});
  test('PNG requires a primary image',()=>assert.equal(buttonSchema.safeParse({mode:'png'}).success,false));
  test('Uploaded PNG references and all interaction states survive a save',()=>{const c={...defaultButton,mode:'png',image:'/api/media/12345678-1234-1234-1234-123456789abc',hoverImage:'/images/hover.png',activeImage:'/images/active.png',disabledImage:'/images/disabled.png'};const d=validateContent({...seed,buttons:{'hero-primary':c}});assert.deepEqual(d.buttons['hero-primary'],c)});
  test('Script and remote image URLs are rejected for PNG buttons',()=>{for(const image of ['javascript:alert(1)','data:image/png;base64,AAA','https://attacker.test/a.png','//attacker.test/a.png','/api/media/../secret'])assert.equal(buttonSchema.safeParse({...defaultButton,mode:'png',image}).success,false)});

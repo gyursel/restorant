@@ -1,0 +1,5 @@
+import {z} from 'zod';
+const color=z.string().regex(/^#[0-9a-fA-F]{6}$/);
+export const elementStyleSchema=z.object({opacity:z.number().min(0).max(1).optional(),borderRadius:z.number().min(0).max(200).optional(),borderWidth:z.number().min(0).max(20).optional(),borderColor:color.optional(),borderStyle:z.enum(['solid','dashed','dotted','none']).optional(),backgroundColor:color.optional(),color:color.optional(),padding:z.number().min(0).max(120).optional(),fontSize:z.number().min(8).max(160).optional()}).strict();
+export const elementStylesSchema=z.record(z.string().min(1).max(1500).regex(/^[^{}<>;\n]+$/),elementStyleSchema).refine(v=>Object.keys(v).length<=500).default({});
+export function elementCSS(raw:unknown){const parsed=elementStylesSchema.safeParse(raw||{});if(!parsed.success)return '';return Object.entries(parsed.data).map(([selector,style])=>`${selector}{${Object.entries(style).map(([key,value])=>`${key.replace(/[A-Z]/g,c=>'-'+c.toLowerCase())}:${value}${typeof value==='number'&&key!=='opacity'?'px':''}!important`).join(';')}}`).join('\n');}
