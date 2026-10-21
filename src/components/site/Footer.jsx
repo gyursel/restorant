@@ -32,7 +32,7 @@ export const Footer = () => <footer className="relative border-t border-white/5 
         <p className="mt-4 max-w-md text-xs text-slate-500"><CmsText field="Footer_jsx_9"/></p>
       </div>
       <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
-        {getLinks().map(l => <li key={l.to}>
+        {getLinks().map(l => <li key={l.to} className={l.to === "/admin" ? "col-start-2" : undefined}>
             <Link to={l.to} className="text-slate-400 hover:text-[#f05255] transition-colors" data-testid={`footer-link-${l.to.replace(/\//g, "")}`}>{l.label}</Link>
           </li>)}
       </ul>
