@@ -1,3 +1,4 @@
+import {lilyContent} from '../../../src/cms/lily-content';
 import { state, json, failure, HttpError } from '../../../server/cms';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -19,7 +20,7 @@ export async function GET() {
         throw new HttpError(502, 'Основният сайт не върна публикуваното съдържание.');
       }
       const content = await response.json();
-      return json(content);
+      return json(lilyContent(content));
     }
     return json(JSON.parse((await state()).published));
   } catch (error) {

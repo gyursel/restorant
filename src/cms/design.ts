@@ -1,7 +1,7 @@
 import {z} from 'zod';
 export const buttonSlots = {
   'hero-primary':'Начало · основен бутон', 'hero-secondary':'Начало · втори бутон',
-  'header-assist':'Навигация · APEX Assist', 'header-cart':'Навигация · количка',
+  'header-assist':'Навигация · LILY Assist', 'header-cart':'Навигация · количка',
   'product-add':'Продуктова карта · добавяне', 'detail-add':'Детайли · добавяне',
   'assistant-cta':'Секция · асистент', 'checkout-submit':'Количка · плащане',
 } as const;

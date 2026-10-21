@@ -20,7 +20,7 @@ export default function SiteLayout() {
     const product=pathname.startsWith('/product/')
       ? content.menu?.products?.find(p=>p.slug===pathname.slice('/product/'.length))
       : null;
-    const homeTitle=(content.meta?.title?.replace(/APEX/gi,'LILY'))||'LILY DRIVE BULGARIA';
+    const homeTitle=content.meta?.title||'LILY DRIVE BULGARIA';
     document.title=product
       ? product.name+' | '+homeTitle
       : pathname==='/menu' ? 'Меню и цени | '+homeTitle : homeTitle;

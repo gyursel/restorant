@@ -12,7 +12,7 @@ export async function generateMetadata({params}:Props):Promise<Metadata>{
   const segments=(await params).path||[];
   const [section,slug]=segments;
   const data=await publishedContent();
-  const siteName=String(data?.meta?.title||'LILY DRIVE').replace(/APEX/gi,'LILY');
+  const siteName=String(data?.meta?.title||'LILY DRIVE');
   const metaDescription=String(data?.meta?.description||description).slice(0,300);
   const canonicalPath='/'+segments.map(encodeURIComponent).join('/');
   let title=siteName;

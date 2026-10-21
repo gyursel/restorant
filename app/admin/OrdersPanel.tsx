@@ -215,7 +215,7 @@ export default function OrdersPanel() {
           </div>}
           {rejecting===order.id&&<div className="apex-order-reject">
             <label>Причина за отказа (задължителна)
-              <textarea rows={2} minLength={5} maxLength={500} value={rejectReason}
+              <textarea className="resize-none" style={{resize:'none'}} rows={2} minLength={5} maxLength={500} value={rejectReason}
                 onChange={e=>setRejectReason(e.target.value)}
                 placeholder="Причина, която ще запазим в историята на поръчката…"/></label>
             <button type="button" className="cms-btn" disabled={working!==''||rejectReason.trim().length<5}

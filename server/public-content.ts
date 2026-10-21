@@ -1,3 +1,4 @@
+import {lilyContent} from '../src/cms/lily-content';
 import {cache} from 'react';
 import {state} from './cms';
 
@@ -13,7 +14,7 @@ export const publishedContent=cache(async ():Promise<any|null>=>{
         signal:AbortSignal.timeout(8000),
       });
       if(!response.ok)return null;
-      return await response.json();
+      return lilyContent(await response.json());
     }
     return JSON.parse((await state()).published);
   }catch(error){

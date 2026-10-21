@@ -1,0 +1,25 @@
+/* LILY workspace: same food photography, crimson accents and editorial headings. */
+.cms-app{--cms-accent:#c92b25;--cms-bg:#080a0b;--cms-border:#ffffff17;background:var(--cms-bg)}
+.cms-app .cms-sidebar,.cms-app .cms-topbar{background:#0d1011}
+.cms-app .cms-card,.cms-app .cms-edit-panel,.cms-app .cms-product-list{background:#121415}
+.cms-app .cms-btn.primary{background:var(--cms-accent);border-color:var(--cms-accent);color:#fff}
+.cms-app .cms-btn.primary:hover{background:#e13a2f;border-color:#e13a2f}
+.cms-app .cms-brand>span,.cms-app .cms-sidebar nav button.active svg,.cms-app .cms-text-btn{color:#ed786e}
+.cms-app .cms-sidebar nav button.active,.cms-app .cms-product-row.active,.cms-app .cms-text-list button.active{background:#c92b2517;border-color:#c92b2545}
+.cms-app .cms-toggle input,.cms-app .cms-range input{accent-color:var(--cms-accent)}
+.cms-app input:focus,.cms-app textarea:focus,.cms-app select:focus{border-color:#ed786e}
+.cms-app :focus-visible{outline-color:#ed786e}
+.cms-app .cms-page-heading h1,.cms-app .cms-feature h2{font-family:'Playfair Display',Georgia,serif;font-weight:400}
+.cms-app .cms-feature{background:linear-gradient(100deg,#1f1413,#121415)}
+.cms-app .cms-feature>img{object-fit:cover;border-radius:4px;opacity:.65}
+.cms-app textarea{resize:none;min-height:104px}
+.cms-app button:disabled{cursor:not-allowed}
+.cms-app button:not(:disabled),.cms-app summary,.cms-app a{cursor:pointer}
+.cms-app .cms-editor-dialog .cms-change-list>div>span{background:var(--cms-accent)}
+
+html:has(.cms-app),.cms-app *{scrollbar-width:thin;scrollbar-color:#5b5551 #0d1011}
+.cms-app ::-webkit-scrollbar{width:10px;height:10px}.cms-app ::-webkit-scrollbar-thumb{background:#5b5551;border:2px solid #0d1011;border-radius:8px}.cms-app ::-webkit-scrollbar-thumb:hover{background:#827268}.cms-app ::-webkit-scrollbar-track{background:#0d1011}
+@media(forced-colors:active){html:has(.cms-app),.cms-app *{scrollbar-color:auto}}
+.cms-app .cms-search-clear{position:absolute;right:8px;padding:6px}.cms-app .cms-search-clear svg{position:static}.cms-app .cms-search input{padding-right:38px!important}
+
+.cms-app,.cms-app *{scrollbar-width:thin;scrollbar-color:#5b5551 #0d1011}
