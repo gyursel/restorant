@@ -33,7 +33,7 @@ export const Footer = () => <footer className="relative border-t border-white/5 
       </div>
       <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
         {getLinks().map(l => <li key={l.to} className={l.to === "/admin" ? "col-start-2" : undefined}>
-            <Link to={l.to} className="text-slate-400 hover:text-[#f05255] transition-colors" data-testid={`footer-link-${l.to.replace(/\//g, "")}`}>{l.label}</Link>
+            {l.to === "/admin" ? <a href="/admin" className="text-slate-400 hover:text-[#f05255] transition-colors" data-testid="footer-link-admin">{l.label}</a> : <Link to={l.to} className="text-slate-400 hover:text-[#f05255] transition-colors" data-testid={`footer-link-${l.to.replace(/\//g, "")}`}>{l.label}</Link>}
           </li>)}
       </ul>
     </div>
