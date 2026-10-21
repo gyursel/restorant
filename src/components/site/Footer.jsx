@@ -20,6 +20,9 @@ const getLinks = () => [{
 }, {
   to: "/terms",
   label: copy["Footer_jsx_6"]
+}, {
+  to: "/admin",
+  label: "Админ панел"
 }];
 export const Footer = () => <footer className="relative border-t border-white/5 bg-[#101010] pb-28 lg:pb-12 pt-16" data-testid="site-footer">
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-[1.4fr_1fr]">
@@ -34,8 +37,5 @@ export const Footer = () => <footer className="relative border-t border-white/5 
           </li>)}
       </ul>
     </div>
-    <div className="mx-auto mt-12 max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
-      <span><CmsText field="Footer_jsx_10"/>{new Date().getFullYear()}{copy["Footer_jsx_11"]}</span>
-      <a href="/admin" className="text-slate-400 hover:text-[#f05255] transition-colors" data-testid="footer-admin-link">Админ панел</a>
-    </div>
+    <div className="mx-auto mt-12 max-w-7xl px-4 sm:px-6 lg:px-8 text-xs text-slate-600"><CmsText field="Footer_jsx_10"/>{new Date().getFullYear()}{copy["Footer_jsx_11"]}</div>
   </footer>;
