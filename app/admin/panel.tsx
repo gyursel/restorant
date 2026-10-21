@@ -5,13 +5,14 @@ import './panel.css';
 import './lily-admin.css';
 import {lilyContent} from '../../src/cms/lily-content';
 import OrdersPanel from './OrdersPanel';
+import ProfessionalPanel from './ProfessionalPanel';
 import ButtonsPanel from './ButtonsPanel';
 import AppearancePanel from './AppearancePanel';
 import MediaPanel from './MediaPanel';
 import {startHistory,recordEdit,moveHistory,type EditHistory} from './edit-history';
 import {CommandMenu,PublishReview,Dialog,ConfirmAction} from './EditorDialogs';
 type Doc=any;
-const tabs=[['overview','Общ преглед',LayoutDashboard],['visual','Визуален редактор',MousePointer2],['buttons','PNG бутони',MousePointer2],['appearance','Външен вид',Eye],['menu','Меню и цени',UtensilsCrossed],['orders','Поръчки',ShoppingBag],['promotions','Промоции',Tag],['media','Медийна библиотека',ImageIcon],['settings','Настройки',Settings],['history','История',History]] as const;
+const tabs=[['overview','Общ преглед',LayoutDashboard],['tools','Работни инструменти',Check],['visual','Визуален редактор',MousePointer2],['buttons','PNG бутони',MousePointer2],['appearance','Външен вид',Eye],['menu','Меню и цени',UtensilsCrossed],['orders','Поръчки',ShoppingBag],['promotions','Промоции',Tag],['media','Медийна библиотека',ImageIcon],['settings','Настройки',Settings],['history','История',History]] as const;
 const groups:Record<string,string>={Hero:'Начална секция',HeroBackground:'Видео',Header:'Навигация',Footer:'Долен колонтитул',Sections:'Промоции и обслужване',Location:'Локация и контакти',MenuSection:'Меню',Primitives:'Марка и заглавия',Preview:'Информационни страници',SiteLayout:'Достъпност',api:'Дни от седмицата'};
 const heroLabels:Record<string,string>={Lily_wordmark:'Голям надпис — LILY',Lily_submark:'Подзаглавие — DRIVE',Hero_jsx_4:'Надзаглавие',Hero_jsx_5:'Заглавие — ред 1',Hero_jsx_6:'Заглавие — ред 2',Hero_jsx_7:'Заглавие — ред 3',Hero_jsx_8:'Описание — ред 1',Hero_jsx_9:'Описание — ред 2',Hero_jsx_11:'Основен бутон',Hero_jsx_13:'Втори бутон'};
 const sectionLabels:Record<string,string>={hero:'Начална секция',menu:'Меню',promotions:'Промоции',assistant:'Асистент',steps:'Как работи',location:'Локация и контакти'};
@@ -57,6 +58,7 @@ return <div className={'cms-app '+(focus&&tab==='visual'?'cms-focus-mode':'')}><
 {tab==='buttons'&&<ButtonsPanel key={buttonSlot} initialSlot={buttonSlot} doc={doc} update={update} upload={upload} busy={busy} preview={()=>setTab('visual')}/>}
 {tab==='appearance'&&<AppearancePanel doc={doc} update={update} upload={upload} setPicker={setPicker} busy={busy}/>}
 {tab==='orders'&&<OrdersPanel/>}
+{tab==='tools'&&<ProfessionalPanel doc={doc} publishedDoc={publishedDoc} update={update} notify={setNotice} navigate={(item:any)=>{setTab(item.tab);setSearch('');if(item.product)setProductId(item.product)}}/>}
 {tab==='history'&&<div className="cms-card"><div className="cms-history-heading"><span>ВЕРСИЯ</span><span>ПУБЛИКУВАНА НА</span><span>ДЕЙСТВИЕ</span></div>{history.map(h=><div className="cms-history-row" key={h.version}><strong>Версия {h.version}{h.version===published&&<small>Текуща</small>}</strong><span>{new Date(h.created_at).toLocaleString('bg-BG',{timeZone:'Europe/Sofia'})}</span><button className="cms-btn" disabled={busy} onClick={async()=>{const run=async()=>{if(operation.current)return;operation.current=true;setBusy(true);try{await api('restore',{version,restoreVersion:h.version});await load();setNotice('Версията е възстановена като чернова. Прегледайте я преди публикуване.')}catch(e:any){setError(e.message)}finally{operation.current=false;setBusy(false)}};if(dirty){setConfirmation({message:'Незапазените промени ще бъдат заменени с избраната версия.',action:'Възстанови чернова',run});return}await run()}}>Възстанови чернова</button></div>)}</div>}
 </div><footer className="cms-footer">LILY DRIVE BULGARIA <span>Съдържание и управление · Stripe плащания и поръчки</span></footer></div>
 {commands&&<CommandMenu tabs={tabs} doc={doc} close={()=>setCommands(false)} navigate={(item:any)=>{setTab(item.tab);setSearch('');setSide(false);if(item.product)setProductId(item.product);if(item.selected)setSelected(item.selected)}}/>}
